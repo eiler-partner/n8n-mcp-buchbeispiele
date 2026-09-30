@@ -10,9 +10,9 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 node_modules/
+# Neue Laborberichte bleiben lokal. Die datierten Berichte zum Buchstand unter
+# code/chNN/reports/ sind trotzdem versioniert (einmalig mit git add -f aufgenommen).
 reports/
-!code/ch22/reports/
-!code/ch22/reports/verification-2026-09-29.json
 var/
 .exchange/
 results/

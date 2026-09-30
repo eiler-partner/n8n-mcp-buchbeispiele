@@ -1,0 +1,232 @@
+{
+  "observed_at_utc": "2026-09-30T07:32:21.759896+00:00",
+  "n8n_image": "n8nio/n8n:2.40.7",
+  "protocol": "2026-07-28",
+  "fixture_data": "synthetic",
+  "report": {
+    "schema": "ch44-briefing-v1",
+    "status": "review_required",
+    "statements": [
+      {
+        "statement_id": "delivery_days",
+        "status": "single_source",
+        "text": "Lieferdauer: 2,4 Tage (nur eine Quelle).",
+        "claims": [
+          {
+            "claim_id": "e39d735f1b852bce",
+            "value": "2.4",
+            "unit": "days",
+            "evidence": [
+              {
+                "source_id": "web-briefing",
+                "uri": "fixture://web/briefing",
+                "retrieved_at_utc": "2026-09-30T07:32:21.480015+00:00",
+                "published_at_utc": "2026-07-06T07:00:00Z",
+                "raw_sha256": "e5a15c5c630de505d24d4713205c701498181975be95b481d9aafaaee9435c84",
+                "locator": "span[data-metric]/1",
+                "steps": [
+                  "read_source",
+                  "parse_html",
+                  "normalize",
+                  "deduplicate"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "statement_id": "orders",
+        "status": "conflicted",
+        "text": "Bestellungen: 1198 und 1200; die Quellen widersprechen sich.",
+        "claims": [
+          {
+            "claim_id": "ba9b29aa84d954db",
+            "value": "1198",
+            "unit": "count",
+            "evidence": [
+              {
+                "source_id": "file-regions",
+                "uri": "fixture://regions.csv",
+                "retrieved_at_utc": "2026-09-30T07:32:21.511749+00:00",
+                "published_at_utc": "2026-07-06T09:00:00Z",
+                "raw_sha256": "6b01b9142f2183456f684a34bfc007b056d23027dfbb7981119345a1af5b2fcc",
+                "locator": "sum(orders)",
+                "steps": [
+                  "read_source",
+                  "sum_csv_rows",
+                  "normalize",
+                  "deduplicate"
+                ]
+              }
+            ]
+          },
+          {
+            "claim_id": "219094269f93c5b5",
+            "value": "1200",
+            "unit": "count",
+            "evidence": [
+              {
+                "source_id": "api-quarter",
+                "uri": "fixture://api/quarter",
+                "retrieved_at_utc": "2026-09-30T07:32:21.445423+00:00",
+                "published_at_utc": "2026-07-05T08:00:00Z",
+                "raw_sha256": "9399ec9d363d0e55941be06eab88c8b98c9fd0ba7de28b6612071a5a34e80590",
+                "locator": "/metrics/0",
+                "steps": [
+                  "read_source",
+                  "parse_json",
+                  "normalize",
+                  "deduplicate"
+                ]
+              },
+              {
+                "source_id": "web-briefing",
+                "uri": "fixture://web/briefing",
+                "retrieved_at_utc": "2026-09-30T07:32:21.480015+00:00",
+                "published_at_utc": "2026-07-06T07:00:00Z",
+                "raw_sha256": "e5a15c5c630de505d24d4713205c701498181975be95b481d9aafaaee9435c84",
+                "locator": "span[data-metric]/0",
+                "steps": [
+                  "read_source",
+                  "parse_html",
+                  "normalize",
+                  "deduplicate"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "statement_id": "returns",
+        "status": "multi_source",
+        "text": "Retouren: 48 (in mehreren Quellen vorhanden).",
+        "claims": [
+          {
+            "claim_id": "4fabd95fc9518855",
+            "value": "48",
+            "unit": "count",
+            "evidence": [
+              {
+                "source_id": "api-quarter",
+                "uri": "fixture://api/quarter",
+                "retrieved_at_utc": "2026-09-30T07:32:21.445423+00:00",
+                "published_at_utc": "2026-07-05T08:00:00Z",
+                "raw_sha256": "9399ec9d363d0e55941be06eab88c8b98c9fd0ba7de28b6612071a5a34e80590",
+                "locator": "/metrics/1",
+                "steps": [
+                  "read_source",
+                  "parse_json",
+                  "normalize",
+                  "deduplicate"
+                ]
+              },
+              {
+                "source_id": "file-regions",
+                "uri": "fixture://regions.csv",
+                "retrieved_at_utc": "2026-09-30T07:32:21.511749+00:00",
+                "published_at_utc": "2026-07-06T09:00:00Z",
+                "raw_sha256": "6b01b9142f2183456f684a34bfc007b056d23027dfbb7981119345a1af5b2fcc",
+                "locator": "sum(returns)",
+                "steps": [
+                  "read_source",
+                  "sum_csv_rows",
+                  "normalize",
+                  "deduplicate"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "api-quarter",
+        "status": "accepted",
+        "uri": "fixture://api/quarter",
+        "media_type": "application/json",
+        "retrieved_at_utc": "2026-09-30T07:32:21.445423+00:00",
+        "published_at_utc": "2026-07-05T08:00:00Z",
+        "raw_sha256": "9399ec9d363d0e55941be06eab88c8b98c9fd0ba7de28b6612071a5a34e80590"
+      },
+      {
+        "source_id": "web-briefing",
+        "status": "accepted",
+        "uri": "fixture://web/briefing",
+        "media_type": "text/html",
+        "retrieved_at_utc": "2026-09-30T07:32:21.480015+00:00",
+        "published_at_utc": "2026-07-06T07:00:00Z",
+        "raw_sha256": "e5a15c5c630de505d24d4713205c701498181975be95b481d9aafaaee9435c84"
+      },
+      {
+        "source_id": "file-regions",
+        "status": "accepted",
+        "uri": "fixture://regions.csv",
+        "media_type": "text/csv",
+        "retrieved_at_utc": "2026-09-30T07:32:21.511749+00:00",
+        "published_at_utc": "2026-07-06T09:00:00Z",
+        "raw_sha256": "6b01b9142f2183456f684a34bfc007b056d23027dfbb7981119345a1af5b2fcc"
+      },
+      {
+        "source_id": "web-robots-blocked",
+        "status": "blocked",
+        "reason": "robots_disallow",
+        "retrieved_at_utc": "2026-09-30T07:32:21.539075+00:00"
+      },
+      {
+        "source_id": "web-tdm-blocked",
+        "status": "blocked",
+        "reason": "tdm_reserved",
+        "retrieved_at_utc": "2026-09-30T07:32:21.567198+00:00"
+      },
+      {
+        "source_id": "web-terms-blocked",
+        "status": "blocked",
+        "reason": "terms_review_required",
+        "retrieved_at_utc": "2026-09-30T07:32:21.596259+00:00"
+      },
+      {
+        "source_id": "web-redirect-blocked",
+        "status": "blocked",
+        "reason": "redirect_blocked",
+        "retrieved_at_utc": "2026-09-30T07:32:21.622893+00:00"
+      }
+    ],
+    "profile": {
+      "source_count": 7,
+      "accepted_count": 3,
+      "blocked_count": 4,
+      "duplicate_groups": 2,
+      "conflict_metrics": 1,
+      "csv_rows": 2,
+      "csv_missing_cells": 0
+    },
+    "budget": {
+      "steps": 7,
+      "bytes_read": 932,
+      "elapsed_ms": 214.49,
+      "limits": {
+        "max_steps": 7,
+        "max_bytes": 131072,
+        "max_seconds": 20
+      }
+    },
+    "path": "n8n-mcp-readonly"
+  },
+  "fixture_http_requests": [
+    "GET /robots.txt",
+    "HEAD /api/quarter",
+    "GET /api/quarter",
+    "GET /robots.txt",
+    "HEAD /web/briefing",
+    "GET /web/briefing",
+    "GET /robots.txt",
+    "GET /robots.txt",
+    "HEAD /web/tdm",
+    "GET /robots.txt",
+    "HEAD /web/redirect"
+  ],
+  "scope": "local read-only teaching pipeline; no legal clearance or external crawling"
+}

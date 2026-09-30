@@ -1,0 +1,50 @@
+{
+  "observed_at_utc": "2026-09-29T19:45:06.410412+00:00",
+  "synthetic_data_only": true,
+  "n8n_owner_and_reviewer_forms": true,
+  "n8n_escalation_webhook": true,
+  "identity_authenticated": false,
+  "cases": [
+    {
+      "request_id": "ch29-1790711104-normal",
+      "state": "committed",
+      "outbox_count": 1,
+      "tool_calls": 1,
+      "events": [
+        "proposed",
+        "owner_approved",
+        "reviewer_approved",
+        "outbox_written"
+      ]
+    },
+    {
+      "request_id": "ch29-1790711104-denied",
+      "state": "rejected",
+      "outbox_count": 0,
+      "tool_calls": 0,
+      "events": [
+        "proposed",
+        "owner_denied"
+      ]
+    },
+    {
+      "request_id": "ch29-1790711104-timed",
+      "state": "committed",
+      "outbox_count": 1,
+      "tool_calls": 1,
+      "events": [
+        "proposed",
+        "owner_approved",
+        "review_timeout_escalated",
+        "escalation_approved",
+        "outbox_written"
+      ]
+    }
+  ],
+  "negative_checks": [
+    "preapproval_write_blocked",
+    "same_actor_blocked",
+    "duplicate_commit_idempotent",
+    "tampered_draft_blocked"
+  ]
+}

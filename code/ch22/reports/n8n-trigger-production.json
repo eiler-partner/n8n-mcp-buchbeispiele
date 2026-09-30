@@ -1,0 +1,23 @@
+{
+  "call": {
+    "is_error": false,
+    "item_ids": [
+      "N8N-022"
+    ],
+    "query": "n8n",
+    "tool": "catalog_lookup"
+  },
+  "endpoint": "http://127.0.0.1:5678/mcp/ch22-catalog",
+  "era": "legacy",
+  "modern_probe": {
+    "era": "legacy",
+    "error_code": -32000,
+    "http_status": 400
+  },
+  "protocol_version": "2025-11-25",
+  "server_name": "MCP_Server_Trigger",
+  "tools": [
+    "catalog_lookup"
+  ],
+  "transport": "streamable-http"
+}

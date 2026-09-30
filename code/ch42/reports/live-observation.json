@@ -1,0 +1,45 @@
+{
+  "observed_at_utc": "2026-09-29T19:51:18.978464+00:00",
+  "source_image": "n8nio/n8n:2.40.7",
+  "restore_image": "n8nio/n8n:2.40.7",
+  "postgres_image": "postgres:17.11-alpine",
+  "data": "synthetic",
+  "backup_format": "pg_dump -Fc",
+  "archive_sha256": "c6ac686e29076f71ab623c98ca246c2f3e3d7b9717479ad012eae8cac969b6b6",
+  "snapshot_at_utc": "2026-09-29T19:51:07.999092+00:00",
+  "simulated_incident_at_utc": "2026-09-29T19:51:08.246431+00:00",
+  "metrics": {
+    "observed_rpo_seconds": 0.247,
+    "observed_rto_seconds": 10.649,
+    "rpo_target_seconds": 120,
+    "rto_target_seconds": 180,
+    "rpo_met": true,
+    "rto_met": true
+  },
+  "source_records": 2,
+  "restored_records": 1,
+  "restored_webhook": {
+    "lab": "ch42",
+    "version": "v1",
+    "challenge": "90a41ca7ce9e4fd5"
+  },
+  "preflight_rejections": [
+    {
+      "case": "missing_key",
+      "rejected_as": "instance_key_missing"
+    },
+    {
+      "case": "wrong_key",
+      "rejected_as": "instance_key_mismatch"
+    },
+    {
+      "case": "corrupt_archive",
+      "rejected_as": "archive_digest_mismatch"
+    }
+  ],
+  "limits": [
+    "key digest preflight, not credential decryption",
+    "logical snapshot, not PITR or multi-store atomic backup",
+    "lab measurements, not production SLO"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "observed_at_utc": "2026-09-30T07:24:47.909065+00:00",
+  "scope": "synthetic local n8n and Docker integration; no model quality claim",
+  "checks": [
+    {
+      "case_id": "c01",
+      "variant": "candidate",
+      "contract_pass": true,
+      "golden_pass": true,
+      "exact_match": true
+    },
+    {
+      "case_id": "c05",
+      "variant": "candidate",
+      "contract_pass": true,
+      "golden_pass": true,
+      "exact_match": true
+    },
+    {
+      "case_id": "c08",
+      "variant": "candidate",
+      "contract_pass": true,
+      "golden_pass": true,
+      "exact_match": true
+    },
+    {
+      "case_id": "c05",
+      "variant": "baseline",
+      "error_class": "schema",
+      "golden_pass": false,
+      "exact_match": false
+    },
+    {
+      "case_id": "c06",
+      "variant": "baseline",
+      "error_class": "schema",
+      "golden_pass": false,
+      "exact_match": false
+    },
+    {
+      "case_id": "c08",
+      "variant": "baseline",
+      "error_class": "golden_mismatch",
+      "golden_pass": false,
+      "exact_match": false
+    },
+    {
+      "negative_request": "unknown_case",
+      "status": 422
+    }
+  ],
+  "all_passed": true
+}

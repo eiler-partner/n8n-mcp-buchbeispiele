@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-27",
+  "platform": {
+    "host": "Mac mini M4",
+    "architecture": "arm64",
+    "docker_desktop": "running"
+  },
+  "contract_tests": {
+    "command": "uv run pytest",
+    "passed": 22,
+    "failed": 0
+  },
+  "docker_lab": {
+    "build_succeeded": true,
+    "services_healthy": ["boundary-api", "capture-sink"],
+    "vulnerable_mode": {
+      "executed": true,
+      "sink_status": 202,
+      "captures_after_run": 1
+    },
+    "hardened_mode": {
+      "executed": false,
+      "reason_codes": [
+        "UNTRUSTED_SOURCE_TO_EXTERNAL_SINK",
+        "APPROVAL_MISSING_OR_STALE"
+      ],
+      "captures_after_run": 1,
+      "audit_canary_redacted": true
+    }
+  },
+  "n8n_integration": {
+    "image": "n8nio/n8n:2.40.0",
+    "workflow_imported": true,
+    "cli_execution_status": "success",
+    "last_node_executed": "Blocked and Audited",
+    "capture_count": 0,
+    "notes": [
+      "The standard n8n image reports that Python is absent for the optional internal Python task runner; this workflow uses no Python Code node.",
+      "The main n8n service was stopped before CLI execution to release the task-broker port."
+    ]
+  },
+  "optional_provider_tests": {
+    "ollama": "not_run",
+    "openai": "not_run",
+    "anthropic": "not_run",
+    "reason": "Exploratory provider rounds are optional and not part of the deterministic security acceptance."
+  }
+}

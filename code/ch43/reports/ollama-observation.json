@@ -1,0 +1,20 @@
+{
+  "observed_at_utc": "2026-09-29T19:49:19.299004+00:00",
+  "model": "qwen3:14b",
+  "digest": "bdbd181c33f2ed1b31c972991882db3cf4d192569092138a7d29e973cd9debe8",
+  "prompt_version": "ch43-extractive-1",
+  "corpus_sha256": "273a4955778f5c5772638a0bfed4ecdc2d927f28dabe7f9ebad4a95e618f6dd1",
+  "form_valid": true,
+  "gate_accepted": true,
+  "safe_result": {
+    "quote": "Dienstreisen brauchen eine Genehmigung zehn Arbeitstage vor Reisebeginn.",
+    "citation": {
+      "source_id": "travel",
+      "version": 2,
+      "section": "2",
+      "sha256": "054894d9963528ff3246dea31ddd3c70afc46706fed09eb91b99f1130da571c3"
+    }
+  },
+  "total_duration_ns": 15474796125,
+  "scope": "dated model observation, not stable quality guarantee"
+}

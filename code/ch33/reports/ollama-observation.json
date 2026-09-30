@@ -1,0 +1,22 @@
+{
+  "observed_at_utc": "2026-09-29T19:45:57.616608+00:00",
+  "model_name": "all-minilm:latest",
+  "model_digest": "1b226e2802dbb772b5fc32a58f103ca1804ef7501331012de126ab22f67475ef",
+  "dimension": 384,
+  "l2_norm_min": 0.9999998665521656,
+  "l2_norm_max": 1.000000094078426,
+  "query": "Wie viele Arbeitstage vor dem Urlaub muss der Antrag eingehen?",
+  "input_count": 9,
+  "top_ids": [
+    "v2-vacation",
+    "v2-scope",
+    "v2-travel"
+  ],
+  "top_scores": [
+    0.680166,
+    0.439437,
+    0.369295
+  ],
+  "scope": "synthetic 2026-09 employee chunks",
+  "claim_limit": "dated form and ranking observation; no general retrieval-quality claim"
+}

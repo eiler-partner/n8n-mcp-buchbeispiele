@@ -1,0 +1,47 @@
+{
+  "observed_at_utc": "2026-09-29T19:52:43.664046+00:00",
+  "scope": "synthetic local n8n and Docker integration; no model benchmark",
+  "checks": [
+    {
+      "scenario": "lokal-qualitaet",
+      "selected": "praezise-lokal",
+      "measurement_kind": "synthetic_fixture_not_real_model_benchmark"
+    },
+    {
+      "scenario": "lokal-kosten",
+      "selected": "sparsam-lokal",
+      "measurement_kind": "synthetic_fixture_not_real_model_benchmark"
+    },
+    {
+      "scenario": "tool-lokal",
+      "selected": "praezise-lokal",
+      "measurement_kind": "synthetic_fixture_not_real_model_benchmark"
+    },
+    {
+      "scenario": "timeout_fallback",
+      "selected": "sparsam-lokal",
+      "fallback_from": "praezise-lokal"
+    },
+    {
+      "negative_request": {
+        "scenario": "lokal-qualitaet",
+        "failure_kind": "policy"
+      },
+      "status": 422
+    },
+    {
+      "negative_request": {
+        "scenario": "tool-lokal",
+        "failure_kind": "timeout"
+      },
+      "status": 422
+    },
+    {
+      "negative_request": {
+        "scenario": "unbekannt"
+      },
+      "status": 422
+    }
+  ],
+  "all_passed": true
+}

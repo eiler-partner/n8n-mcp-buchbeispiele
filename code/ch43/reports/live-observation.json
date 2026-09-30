@@ -1,0 +1,151 @@
+{
+  "observed_at_utc": "2026-09-30T07:31:44.402769+00:00",
+  "n8n_image": "n8nio/n8n:2.40.7",
+  "protocol": "2026-07-28",
+  "data": "synthetic",
+  "model": "extractive_fixture_no_download",
+  "cases": {
+    "staff_travel": {
+      "status": "answered",
+      "answer": "Dienstreisen brauchen eine Genehmigung zehn Arbeitstage vor Reisebeginn.",
+      "citations": [
+        {
+          "source_id": "travel",
+          "version": 2,
+          "section": "2",
+          "sha256": "054894d9963528ff3246dea31ddd3c70afc46706fed09eb91b99f1130da571c3"
+        }
+      ],
+      "retrieved_count": 2,
+      "path": "n8n-mcp-extractive"
+    },
+    "staff_finance_denied": {
+      "status": "refused",
+      "answer": "Dazu liegt mir keine freigegebene, belastbare Textstelle vor.",
+      "citations": [],
+      "retrieved_count": 0,
+      "path": "n8n-mcp-extractive"
+    },
+    "finance_allowed": {
+      "status": "answered",
+      "answer": "Das interne Projektbudget Orion beträgt 73000 Euro.",
+      "citations": [
+        {
+          "source_id": "finance",
+          "version": 3,
+          "section": "4",
+          "sha256": "d627b45ad8a2c0e191b7568c1bf6dda1b7a70f2324c4880424bf11980b7763be"
+        }
+      ],
+      "retrieved_count": 1,
+      "path": "n8n-mcp-extractive"
+    },
+    "cross_tenant_denied": {
+      "status": "refused",
+      "answer": "Dazu liegt mir keine freigegebene, belastbare Textstelle vor.",
+      "citations": [],
+      "retrieved_count": 0,
+      "path": "n8n-mcp-extractive"
+    },
+    "beta_allowed": {
+      "status": "answered",
+      "answer": "Der Standort Beta schließt im Dezember für sieben Tage.",
+      "citations": [
+        {
+          "source_id": "beta",
+          "version": 1,
+          "section": "1",
+          "sha256": "0f1b8b72230cef739352dc6d8227f997a465ba30942048485495634fe4adf90e"
+        }
+      ],
+      "retrieved_count": 1,
+      "path": "n8n-mcp-extractive"
+    },
+    "old_wording_current_version": {
+      "status": "answered",
+      "answer": "Dienstreisen brauchen eine Genehmigung zehn Arbeitstage vor Reisebeginn.",
+      "citations": [
+        {
+          "source_id": "travel",
+          "version": 2,
+          "section": "2",
+          "sha256": "054894d9963528ff3246dea31ddd3c70afc46706fed09eb91b99f1130da571c3"
+        }
+      ],
+      "retrieved_count": 1,
+      "path": "n8n-mcp-extractive"
+    },
+    "ocr_denied": {
+      "status": "refused",
+      "answer": "Dazu liegt mir keine freigegebene, belastbare Textstelle vor.",
+      "citations": [],
+      "retrieved_count": 0,
+      "path": "n8n-mcp-extractive"
+    },
+    "absent_refused": {
+      "status": "refused",
+      "answer": "Dazu liegt mir keine freigegebene, belastbare Textstelle vor.",
+      "citations": [],
+      "retrieved_count": 0,
+      "path": "n8n-mcp-extractive"
+    }
+  },
+  "active_chunks": 5,
+  "quarantine": [
+    {
+      "source_id": "scan",
+      "reason": "ocr_quality"
+    },
+    {
+      "source_id": "hostile",
+      "reason": "untrusted_source"
+    }
+  ],
+  "candidates": {
+    "staff_travel": [
+      {
+        "source_id": "travel",
+        "version": 2,
+        "section": "2"
+      },
+      {
+        "source_id": "travel",
+        "version": 2,
+        "section": "3"
+      }
+    ],
+    "staff_finance_denied": [],
+    "finance_allowed": [
+      {
+        "source_id": "finance",
+        "version": 3,
+        "section": "4"
+      }
+    ],
+    "cross_tenant_denied": [],
+    "beta_allowed": [
+      {
+        "source_id": "beta",
+        "version": 1,
+        "section": "1"
+      }
+    ],
+    "old_wording_current_version": [
+      {
+        "source_id": "travel",
+        "version": 2,
+        "section": "2"
+      }
+    ],
+    "ocr_denied": [],
+    "absent_refused": []
+  },
+  "unauthorized_retrieval": {
+    "queries": 8,
+    "queries_with_forbidden_candidate": 0,
+    "rate": 0.0,
+    "forbidden_candidates": {},
+    "definition": "queries whose candidate list before the answer gate holds at least one chunk that is not current, released and readable for the token's tenant and groups / all queries"
+  },
+  "scope": "local teaching demo; not production authentication or semantic embeddings"
+}

@@ -1,0 +1,16 @@
+{
+  "approved_by": "reviewer@example.invalid",
+  "blocked_before_approval": true,
+  "correlation_id": "ch24-e2e-001",
+  "created": true,
+  "destination": "local://published-reviews",
+  "document_id": "SUP-2026-001",
+  "n8n_ingestion": true,
+  "n8n_mcp_agent": true,
+  "published": true,
+  "trace_services": [
+    "ch24-api",
+    "ch24-mcp",
+    "ch24-n8n"
+  ]
+}

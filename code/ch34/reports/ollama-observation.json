@@ -1,0 +1,139 @@
+{
+  "observed_at_utc": "2026-09-29T19:45:57.836295+00:00",
+  "model_name": "all-minilm:latest",
+  "model_digest": "1b226e2802dbb772b5fc32a58f103ca1804ef7501331012de126ab22f67475ef",
+  "dimension": 384,
+  "input_count": 21,
+  "l2_norm_min": 0.9999997740651301,
+  "l2_norm_max": 1.0000001523572855,
+  "scope": "synthetic labeled chapter-34 fixture; prefiltered",
+  "claim_limit": "dated observation, not a production retrieval guarantee",
+  "cases": [
+    {
+      "case_id": "vacation-frist",
+      "top_ids": [
+        "v2-bonus-hard-negative",
+        "v2-vacation",
+        "v2-scope"
+      ],
+      "top_scores": [
+        0.748554,
+        0.592341,
+        0.41118
+      ],
+      "metrics": {
+        "precision_at_k": 0.333333,
+        "recall_at_k": 1.0,
+        "false_positive_count": null
+      }
+    },
+    {
+      "case_id": "vacation-portal",
+      "top_ids": [
+        "v2-vacation-portal",
+        "v2-vacation",
+        "v2-bonus-hard-negative"
+      ],
+      "top_scores": [
+        0.639442,
+        0.536206,
+        0.512068
+      ],
+      "metrics": {
+        "precision_at_k": 0.666667,
+        "recall_at_k": 1.0,
+        "false_positive_count": null
+      }
+    },
+    {
+      "case_id": "travel-proof",
+      "top_ids": [
+        "v2-travel-proof",
+        "v2-travel",
+        "v2-bonus-hard-negative"
+      ],
+      "top_scores": [
+        0.631529,
+        0.432692,
+        0.388326
+      ],
+      "metrics": {
+        "precision_at_k": 0.333333,
+        "recall_at_k": 1.0,
+        "false_positive_count": null
+      }
+    },
+    {
+      "case_id": "rkk-frist",
+      "top_ids": [
+        "v2-travel-proof",
+        "v2-travel",
+        "v2-security"
+      ],
+      "top_scores": [
+        0.498563,
+        0.419919,
+        0.362874
+      ],
+      "metrics": {
+        "precision_at_k": 0.333333,
+        "recall_at_k": 1.0,
+        "false_positive_count": null
+      }
+    },
+    {
+      "case_id": "historical-vacation",
+      "top_ids": [
+        "v1-vacation",
+        "v1-travel",
+        "v1-scope"
+      ],
+      "top_scores": [
+        0.405009,
+        0.241109,
+        0.202151
+      ],
+      "metrics": {
+        "precision_at_k": 0.333333,
+        "recall_at_k": 1.0,
+        "false_positive_count": null
+      }
+    },
+    {
+      "case_id": "hr-code-denied",
+      "top_ids": [
+        "v2-vacation-portal",
+        "v2-travel-proof",
+        "v2-scope"
+      ],
+      "top_scores": [
+        0.336531,
+        0.326671,
+        0.31923
+      ],
+      "metrics": {
+        "precision_at_k": null,
+        "recall_at_k": null,
+        "false_positive_count": 3
+      }
+    },
+    {
+      "case_id": "hr-code-authorized",
+      "top_ids": [
+        "v2-hr",
+        "v2-vacation-portal",
+        "v2-travel-proof"
+      ],
+      "top_scores": [
+        0.626772,
+        0.336531,
+        0.326671
+      ],
+      "metrics": {
+        "precision_at_k": 0.333333,
+        "recall_at_k": 1.0,
+        "false_positive_count": null
+      }
+    }
+  ]
+}

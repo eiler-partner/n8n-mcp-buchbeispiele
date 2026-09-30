@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-27",
+  "host": {
+    "docker_client": "29.8.0",
+    "docker_server": "29.8.0",
+    "architecture": "arm64"
+  },
+  "n8n": {
+    "version": "2.40.0",
+    "image": "n8nio/n8n:2.40.0",
+    "digest": "sha256:fba7e81fa077ad8b6486804fec33a962ab44a64ce9e3bc8d488465b0f8d65a52",
+    "mcp_client_tool_version": "1.4",
+    "mcp_server_trigger_version": "2.1"
+  },
+  "python_reference_server": {
+    "sdk": "mcp==2.2.0",
+    "transports": ["streamable-http", "sse"],
+    "observed_protocol_version": "2025-11-25",
+    "authentication": "bearer",
+    "invalid_token_status": 401,
+    "selected_tools": ["catalog_lookup"]
+  },
+  "n8n_server_trigger": {
+    "transport": "streamable-http",
+    "endpoint": "http://127.0.0.1:5678/mcp/ch22-catalog",
+    "observed_protocol_version": "2025-11-25",
+    "server_name": "MCP_Server_Trigger",
+    "authentication": "bearer",
+    "missing_token_status": 403,
+    "tools": ["catalog_lookup"],
+    "required_input_fields": ["query"],
+    "call_query": "n8n",
+    "call_result_id": "N8N-022",
+    "call_succeeded": true
+  },
+  "scope": {
+    "contract_tests": 14,
+    "queue_failover_tested": false,
+    "instance_level_mcp_tested": false,
+    "note": "Queue failover and instance-level MCP remain explicit optional integration steps."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "observed_at_utc": "2026-09-29T19:48:54.615929+00:00",
+  "model": "qwen3:14b",
+  "digest": "bdbd181c33f2ed1b31c972991882db3cf4d192569092138a7d29e973cd9debe8",
+  "purpose": "editorial_form_and_observation_only_not_release_gate",
+  "observations": [
+    {
+      "case_id": "citation_mismatch",
+      "prompt": "Bewerte nur anhand der Quelle. Gib ausschließlich JSON mit verdict (A, B, tie, neither) und reason zurück.\nQuelle: Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.\nA: Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.\nB: Urlaubsanträge müssen 5 Arbeitstage vor Beginn eingereicht werden.\nWelche Antwort ist von der Quelle gestützt?",
+      "verdict": "A",
+      "reason": "Die Quelle besagt explizit, dass Urlaubsanträge 15 Arbeitstage vor Beginn eingereicht werden müssen, was der Aussage A entspricht.",
+      "total_duration_ns": 12804045625,
+      "prompt_eval_count": 124,
+      "eval_count": 52
+    },
+    {
+      "case_id": "no_evidence",
+      "prompt": "Bewerte nur anhand der Quelle. Gib ausschließlich JSON mit verdict (A, B, tie, neither) und reason zurück.\nQuelle: Homeoffice ist an zwei Tagen pro Woche möglich.\nFrage: Wie lautet der interne HR-Code?\nA: Das lässt sich aus der gegebenen Quelle nicht beantworten.\nB: Der interne HR-Code lautet 4711.\nWelche Antwort ist durch die Quelle gerechtfertigt?",
+      "verdict": "A",
+      "reason": "Die Quelle gibt keine Informationen über den internen HR-Code, sondern lediglich Auskunft darüber, dass Homeoffice an zwei Tagen pro Woche möglich ist. Die Antwort B enthält keine Beziehung zur Quelle und ist daher nicht gerechtfertigt.",
+      "total_duration_ns": 8162541958,
+      "prompt_eval_count": 120,
+      "eval_count": 69
+    }
+  ]
+}

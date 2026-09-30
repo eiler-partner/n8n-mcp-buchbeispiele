@@ -1,0 +1,49 @@
+{
+  "observed_at_utc": "2026-09-30T07:29:33.476931+00:00",
+  "n8n_image": "n8nio/n8n:2.40.7",
+  "runner_image": "n8nio/runners:2.40.7",
+  "tls": {
+    "verified_with_local_ca": true,
+    "subject": [],
+    "issuer": [
+      [
+        [
+          "commonName",
+          "Caddy Local Authority - ECC Intermediate"
+        ]
+      ]
+    ],
+    "not_after": "Sep 30 19:29:31 2026 GMT"
+  },
+  "workflow": {
+    "ok": true,
+    "runner": "external",
+    "echo": "synthetic"
+  },
+  "mcp_headers": {
+    "Mcp-Protocol-Version": "2026-07-28",
+    "Mcp-Method": "tools/call",
+    "Mcp-Name": "synthetic_probe"
+  },
+  "forwarded_headers": {
+    "sent": {
+      "X-Forwarded-For": "203.0.113.66",
+      "X-Forwarded-Host": "spoofed.example",
+      "X-Forwarded-Proto": "http"
+    },
+    "seen_by_probe": {
+      "X-Forwarded-For": "172.20.0.1",
+      "X-Forwarded-Host": "localhost:15738",
+      "X-Forwarded-Proto": "https"
+    }
+  },
+  "stream_gap_seconds": 0.803,
+  "checks": [
+    "loopback_only",
+    "no_secret_values_in_config_or_inspect",
+    "local_ca_tls_verification",
+    "forwarded_header_sanitization",
+    "python_external_runner",
+    "sse_flush"
+  ]
+}

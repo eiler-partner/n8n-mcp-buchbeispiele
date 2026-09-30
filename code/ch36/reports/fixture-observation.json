@@ -1,0 +1,1297 @@
+{
+  "observed_at_utc": "2026-09-29T14:49:40.939096+00:00",
+  "fixture_only": true,
+  "model_calls": 0,
+  "top_k": 3,
+  "case_count": 10,
+  "positive_cases": 8,
+  "no_answer_cases": 2,
+  "corpus_sha256": "57cb283470229e58d1b53146c53bd6f744a48454f13d5b0577ec3d12b3e6d4e8",
+  "golden_sha256": "7b91687594ebc09d5f1fc182336a4a185330200973eb54642aa13e7a5a6eabea",
+  "evaluator_sha256": "9496cbaca481c091f801f3e9823a657529b05acec1bf511482895c4b0762718c",
+  "aliases_sha256": "dfb01a9cc091bd70ad65f5634a2065ffa95cb8306be0bf3f66471397ad9f06e4",
+  "gate_policy": {
+    "context_recall_min": 0.75,
+    "answer_coverage_min": 0.75,
+    "answer_precision_min": 0.8,
+    "no_answer_accuracy_min": 1.0,
+    "citation_validity_min": 1.0,
+    "max_scope_violations": 0
+  },
+  "results": [
+    {
+      "variant": "short+lexical",
+      "metrics": {
+        "context_recall": 0.625,
+        "retrieval_precision": 0.5,
+        "context_fact_purity": 0.5,
+        "answer_coverage": 0.5625,
+        "answer_precision": 0.625,
+        "no_answer_accuracy": 1.0,
+        "citation_validity": 1.0,
+        "scope_violations": 0
+      },
+      "gate_checks": {
+        "context_recall": false,
+        "answer_coverage": false,
+        "answer_precision": false,
+        "no_answer_accuracy": true,
+        "citation_validity": true,
+        "scope_violations": true
+      },
+      "release": "hold",
+      "cases": [
+        {
+          "case_id": "vacation_deadline",
+          "cohort": "standard",
+          "gold": [
+            "vacation_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:1:short",
+              "fact_ids": [
+                "vacation_deadline"
+              ]
+            },
+            {
+              "chunk_id": "reiseregel:1:short",
+              "fact_ids": [
+                "travel_deadline"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_deadline",
+              "sentence": "Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "personalhandbuch:1:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 0.5,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "vacation_approval",
+          "cohort": "standard",
+          "gold": [
+            "vacation_approval"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:2:short",
+              "fact_ids": [
+                "vacation_approval"
+              ]
+            },
+            {
+              "chunk_id": "personalhandbuch:1:short",
+              "fact_ids": [
+                "vacation_deadline"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:2:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 0.5,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "vacation_two_facts",
+          "cohort": "multifakt",
+          "gold": [
+            "vacation_approval",
+            "vacation_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:2:short",
+              "fact_ids": [
+                "vacation_approval"
+              ]
+            },
+            {
+              "chunk_id": "personalhandbuch:1:short",
+              "fact_ids": [
+                "vacation_deadline"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:2:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 0.5,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "abroad_alias",
+          "cohort": "alias",
+          "gold": [
+            "abroad_expenses"
+          ],
+          "hits": [],
+          "claims": [],
+          "context_recall": 0.0,
+          "retrieval_precision": 0.0,
+          "context_fact_purity": 0.0,
+          "answer_coverage": 0.0,
+          "answer_precision": 0.0,
+          "no_answer_correct": null,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "domestic_alias",
+          "cohort": "alias",
+          "gold": [
+            "domestic_expenses"
+          ],
+          "hits": [],
+          "claims": [],
+          "context_recall": 0.0,
+          "retrieval_precision": 0.0,
+          "context_fact_purity": 0.0,
+          "answer_coverage": 0.0,
+          "answer_precision": 0.0,
+          "no_answer_correct": null,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "homeoffice",
+          "cohort": "standard",
+          "gold": [
+            "homeoffice_days"
+          ],
+          "hits": [
+            {
+              "chunk_id": "arbeitsplatzregel:1:short",
+              "fact_ids": [
+                "homeoffice_days"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "homeoffice_days",
+              "sentence": "Homeoffice ist an zwei Tagen pro Woche möglich.",
+              "citation_chunk_id": "arbeitsplatzregel:1:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "device_return",
+          "cohort": "standard",
+          "gold": [
+            "device_return"
+          ],
+          "hits": [
+            {
+              "chunk_id": "arbeitsplatzregel:2:short",
+              "fact_ids": [
+                "device_return"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "device_return",
+              "sentence": "Firmengeräte sind binnen fünf Werktagen nach Austritt zurückzugeben.",
+              "citation_chunk_id": "arbeitsplatzregel:2:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "travel_hard_negative",
+          "cohort": "hard_negative",
+          "gold": [
+            "travel_deadline"
+          ],
+          "hits": [],
+          "claims": [],
+          "context_recall": 0.0,
+          "retrieval_precision": 0.0,
+          "context_fact_purity": 0.0,
+          "answer_coverage": 0.0,
+          "answer_precision": 0.0,
+          "no_answer_correct": null,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "hr_denied",
+          "cohort": "no_answer",
+          "gold": [],
+          "hits": [],
+          "claims": [],
+          "context_recall": null,
+          "retrieval_precision": null,
+          "context_fact_purity": null,
+          "answer_coverage": null,
+          "answer_precision": null,
+          "no_answer_correct": true,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "unknown",
+          "cohort": "no_answer",
+          "gold": [],
+          "hits": [],
+          "claims": [],
+          "context_recall": null,
+          "retrieval_precision": null,
+          "context_fact_purity": null,
+          "answer_coverage": null,
+          "answer_precision": null,
+          "no_answer_correct": true,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        }
+      ],
+      "delta_answer_coverage_vs_short_lexical": 0.0
+    },
+    {
+      "variant": "short+expanded",
+      "metrics": {
+        "context_recall": 1.0,
+        "retrieval_precision": 0.875,
+        "context_fact_purity": 0.875,
+        "answer_coverage": 0.9375,
+        "answer_precision": 1.0,
+        "no_answer_accuracy": 1.0,
+        "citation_validity": 1.0,
+        "scope_violations": 0
+      },
+      "gate_checks": {
+        "context_recall": true,
+        "answer_coverage": true,
+        "answer_precision": true,
+        "no_answer_accuracy": true,
+        "citation_validity": true,
+        "scope_violations": true
+      },
+      "release": "pass",
+      "cases": [
+        {
+          "case_id": "vacation_deadline",
+          "cohort": "standard",
+          "gold": [
+            "vacation_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:1:short",
+              "fact_ids": [
+                "vacation_deadline"
+              ]
+            },
+            {
+              "chunk_id": "reiseregel:1:short",
+              "fact_ids": [
+                "travel_deadline"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_deadline",
+              "sentence": "Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "personalhandbuch:1:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 0.5,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "vacation_approval",
+          "cohort": "standard",
+          "gold": [
+            "vacation_approval"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:2:short",
+              "fact_ids": [
+                "vacation_approval"
+              ]
+            },
+            {
+              "chunk_id": "personalhandbuch:1:short",
+              "fact_ids": [
+                "vacation_deadline"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:2:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 0.5,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "vacation_two_facts",
+          "cohort": "multifakt",
+          "gold": [
+            "vacation_approval",
+            "vacation_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:2:short",
+              "fact_ids": [
+                "vacation_approval"
+              ]
+            },
+            {
+              "chunk_id": "personalhandbuch:1:short",
+              "fact_ids": [
+                "vacation_deadline"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:2:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 0.5,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "abroad_alias",
+          "cohort": "alias",
+          "gold": [
+            "abroad_expenses"
+          ],
+          "hits": [
+            {
+              "chunk_id": "reiseregel:2:short",
+              "fact_ids": [
+                "abroad_expenses"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "abroad_expenses",
+              "sentence": "Auslandsreisekosten sind binnen 30 Kalendertagen abzurechnen.",
+              "citation_chunk_id": "reiseregel:2:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "domestic_alias",
+          "cohort": "alias",
+          "gold": [
+            "domestic_expenses"
+          ],
+          "hits": [
+            {
+              "chunk_id": "spesenregel:1:short",
+              "fact_ids": [
+                "domestic_expenses"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "domestic_expenses",
+              "sentence": "Inländische Reisekostenbelege sind binnen 14 Kalendertagen einzureichen.",
+              "citation_chunk_id": "spesenregel:1:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "homeoffice",
+          "cohort": "standard",
+          "gold": [
+            "homeoffice_days"
+          ],
+          "hits": [
+            {
+              "chunk_id": "arbeitsplatzregel:1:short",
+              "fact_ids": [
+                "homeoffice_days"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "homeoffice_days",
+              "sentence": "Homeoffice ist an zwei Tagen pro Woche möglich.",
+              "citation_chunk_id": "arbeitsplatzregel:1:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "device_return",
+          "cohort": "standard",
+          "gold": [
+            "device_return"
+          ],
+          "hits": [
+            {
+              "chunk_id": "arbeitsplatzregel:2:short",
+              "fact_ids": [
+                "device_return"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "device_return",
+              "sentence": "Firmengeräte sind binnen fünf Werktagen nach Austritt zurückzugeben.",
+              "citation_chunk_id": "arbeitsplatzregel:2:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "travel_hard_negative",
+          "cohort": "hard_negative",
+          "gold": [
+            "travel_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "reiseregel:1:short",
+              "fact_ids": [
+                "travel_deadline"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "travel_deadline",
+              "sentence": "Dienstreiseanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "reiseregel:1:short"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 1,
+          "claim_count": 1,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "hr_denied",
+          "cohort": "no_answer",
+          "gold": [],
+          "hits": [],
+          "claims": [],
+          "context_recall": null,
+          "retrieval_precision": null,
+          "context_fact_purity": null,
+          "answer_coverage": null,
+          "answer_precision": null,
+          "no_answer_correct": true,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "unknown",
+          "cohort": "no_answer",
+          "gold": [],
+          "hits": [],
+          "claims": [],
+          "context_recall": null,
+          "retrieval_precision": null,
+          "context_fact_purity": null,
+          "answer_coverage": null,
+          "answer_precision": null,
+          "no_answer_correct": true,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        }
+      ],
+      "delta_answer_coverage_vs_short_lexical": 0.375
+    },
+    {
+      "variant": "wide+lexical",
+      "metrics": {
+        "context_recall": 0.625,
+        "retrieval_precision": 0.5625,
+        "context_fact_purity": 0.34375,
+        "answer_coverage": 0.625,
+        "answer_precision": 0.375,
+        "no_answer_accuracy": 1.0,
+        "citation_validity": 1.0,
+        "scope_violations": 0
+      },
+      "gate_checks": {
+        "context_recall": false,
+        "answer_coverage": false,
+        "answer_precision": false,
+        "no_answer_accuracy": true,
+        "citation_validity": true,
+        "scope_violations": true
+      },
+      "release": "hold",
+      "cases": [
+        {
+          "case_id": "vacation_deadline",
+          "cohort": "standard",
+          "gold": [
+            "vacation_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:1:wide",
+              "fact_ids": [
+                "vacation_deadline",
+                "vacation_approval"
+              ]
+            },
+            {
+              "chunk_id": "reiseregel:1:wide",
+              "fact_ids": [
+                "travel_deadline",
+                "abroad_expenses"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_deadline",
+              "sentence": "Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            },
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 0.5,
+          "context_fact_purity": 0.25,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "vacation_approval",
+          "cohort": "standard",
+          "gold": [
+            "vacation_approval"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:1:wide",
+              "fact_ids": [
+                "vacation_deadline",
+                "vacation_approval"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_deadline",
+              "sentence": "Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            },
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "vacation_two_facts",
+          "cohort": "multifakt",
+          "gold": [
+            "vacation_approval",
+            "vacation_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:1:wide",
+              "fact_ids": [
+                "vacation_deadline",
+                "vacation_approval"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_deadline",
+              "sentence": "Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            },
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "abroad_alias",
+          "cohort": "alias",
+          "gold": [
+            "abroad_expenses"
+          ],
+          "hits": [],
+          "claims": [],
+          "context_recall": 0.0,
+          "retrieval_precision": 0.0,
+          "context_fact_purity": 0.0,
+          "answer_coverage": 0.0,
+          "answer_precision": 0.0,
+          "no_answer_correct": null,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "domestic_alias",
+          "cohort": "alias",
+          "gold": [
+            "domestic_expenses"
+          ],
+          "hits": [],
+          "claims": [],
+          "context_recall": 0.0,
+          "retrieval_precision": 0.0,
+          "context_fact_purity": 0.0,
+          "answer_coverage": 0.0,
+          "answer_precision": 0.0,
+          "no_answer_correct": null,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "homeoffice",
+          "cohort": "standard",
+          "gold": [
+            "homeoffice_days"
+          ],
+          "hits": [
+            {
+              "chunk_id": "arbeitsplatzregel:1:wide",
+              "fact_ids": [
+                "homeoffice_days",
+                "device_return"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "homeoffice_days",
+              "sentence": "Homeoffice ist an zwei Tagen pro Woche möglich.",
+              "citation_chunk_id": "arbeitsplatzregel:1:wide"
+            },
+            {
+              "fact_id": "device_return",
+              "sentence": "Firmengeräte sind binnen fünf Werktagen nach Austritt zurückzugeben.",
+              "citation_chunk_id": "arbeitsplatzregel:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "device_return",
+          "cohort": "standard",
+          "gold": [
+            "device_return"
+          ],
+          "hits": [
+            {
+              "chunk_id": "arbeitsplatzregel:1:wide",
+              "fact_ids": [
+                "homeoffice_days",
+                "device_return"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "homeoffice_days",
+              "sentence": "Homeoffice ist an zwei Tagen pro Woche möglich.",
+              "citation_chunk_id": "arbeitsplatzregel:1:wide"
+            },
+            {
+              "fact_id": "device_return",
+              "sentence": "Firmengeräte sind binnen fünf Werktagen nach Austritt zurückzugeben.",
+              "citation_chunk_id": "arbeitsplatzregel:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "travel_hard_negative",
+          "cohort": "hard_negative",
+          "gold": [
+            "travel_deadline"
+          ],
+          "hits": [],
+          "claims": [],
+          "context_recall": 0.0,
+          "retrieval_precision": 0.0,
+          "context_fact_purity": 0.0,
+          "answer_coverage": 0.0,
+          "answer_precision": 0.0,
+          "no_answer_correct": null,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "hr_denied",
+          "cohort": "no_answer",
+          "gold": [],
+          "hits": [],
+          "claims": [],
+          "context_recall": null,
+          "retrieval_precision": null,
+          "context_fact_purity": null,
+          "answer_coverage": null,
+          "answer_precision": null,
+          "no_answer_correct": true,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "unknown",
+          "cohort": "no_answer",
+          "gold": [],
+          "hits": [],
+          "claims": [],
+          "context_recall": null,
+          "retrieval_precision": null,
+          "context_fact_purity": null,
+          "answer_coverage": null,
+          "answer_precision": null,
+          "no_answer_correct": true,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        }
+      ],
+      "delta_answer_coverage_vs_short_lexical": 0.0625
+    },
+    {
+      "variant": "wide+expanded",
+      "metrics": {
+        "context_recall": 1.0,
+        "retrieval_precision": 0.9375,
+        "context_fact_purity": 0.53125,
+        "answer_coverage": 1.0,
+        "answer_precision": 0.5625,
+        "no_answer_accuracy": 1.0,
+        "citation_validity": 1.0,
+        "scope_violations": 0
+      },
+      "gate_checks": {
+        "context_recall": true,
+        "answer_coverage": true,
+        "answer_precision": false,
+        "no_answer_accuracy": true,
+        "citation_validity": true,
+        "scope_violations": true
+      },
+      "release": "hold",
+      "cases": [
+        {
+          "case_id": "vacation_deadline",
+          "cohort": "standard",
+          "gold": [
+            "vacation_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:1:wide",
+              "fact_ids": [
+                "vacation_deadline",
+                "vacation_approval"
+              ]
+            },
+            {
+              "chunk_id": "reiseregel:1:wide",
+              "fact_ids": [
+                "travel_deadline",
+                "abroad_expenses"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_deadline",
+              "sentence": "Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            },
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 0.5,
+          "context_fact_purity": 0.25,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "vacation_approval",
+          "cohort": "standard",
+          "gold": [
+            "vacation_approval"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:1:wide",
+              "fact_ids": [
+                "vacation_deadline",
+                "vacation_approval"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_deadline",
+              "sentence": "Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            },
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "vacation_two_facts",
+          "cohort": "multifakt",
+          "gold": [
+            "vacation_approval",
+            "vacation_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "personalhandbuch:1:wide",
+              "fact_ids": [
+                "vacation_deadline",
+                "vacation_approval"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "vacation_deadline",
+              "sentence": "Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            },
+            {
+              "fact_id": "vacation_approval",
+              "sentence": "Die Führungskraft genehmigt Urlaubsanträge.",
+              "citation_chunk_id": "personalhandbuch:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 1.0,
+          "answer_coverage": 1.0,
+          "answer_precision": 1.0,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "abroad_alias",
+          "cohort": "alias",
+          "gold": [
+            "abroad_expenses"
+          ],
+          "hits": [
+            {
+              "chunk_id": "reiseregel:1:wide",
+              "fact_ids": [
+                "travel_deadline",
+                "abroad_expenses"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "travel_deadline",
+              "sentence": "Dienstreiseanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "reiseregel:1:wide"
+            },
+            {
+              "fact_id": "abroad_expenses",
+              "sentence": "Auslandsreisekosten sind binnen 30 Kalendertagen abzurechnen.",
+              "citation_chunk_id": "reiseregel:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "domestic_alias",
+          "cohort": "alias",
+          "gold": [
+            "domestic_expenses"
+          ],
+          "hits": [
+            {
+              "chunk_id": "spesenregel:1:wide",
+              "fact_ids": [
+                "domestic_expenses",
+                "hotel_limit"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "domestic_expenses",
+              "sentence": "Inländische Reisekostenbelege sind binnen 14 Kalendertagen einzureichen.",
+              "citation_chunk_id": "spesenregel:1:wide"
+            },
+            {
+              "fact_id": "hotel_limit",
+              "sentence": "Hotelbelege müssen den Reisetag nennen.",
+              "citation_chunk_id": "spesenregel:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "homeoffice",
+          "cohort": "standard",
+          "gold": [
+            "homeoffice_days"
+          ],
+          "hits": [
+            {
+              "chunk_id": "arbeitsplatzregel:1:wide",
+              "fact_ids": [
+                "homeoffice_days",
+                "device_return"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "homeoffice_days",
+              "sentence": "Homeoffice ist an zwei Tagen pro Woche möglich.",
+              "citation_chunk_id": "arbeitsplatzregel:1:wide"
+            },
+            {
+              "fact_id": "device_return",
+              "sentence": "Firmengeräte sind binnen fünf Werktagen nach Austritt zurückzugeben.",
+              "citation_chunk_id": "arbeitsplatzregel:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "device_return",
+          "cohort": "standard",
+          "gold": [
+            "device_return"
+          ],
+          "hits": [
+            {
+              "chunk_id": "arbeitsplatzregel:1:wide",
+              "fact_ids": [
+                "homeoffice_days",
+                "device_return"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "homeoffice_days",
+              "sentence": "Homeoffice ist an zwei Tagen pro Woche möglich.",
+              "citation_chunk_id": "arbeitsplatzregel:1:wide"
+            },
+            {
+              "fact_id": "device_return",
+              "sentence": "Firmengeräte sind binnen fünf Werktagen nach Austritt zurückzugeben.",
+              "citation_chunk_id": "arbeitsplatzregel:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "travel_hard_negative",
+          "cohort": "hard_negative",
+          "gold": [
+            "travel_deadline"
+          ],
+          "hits": [
+            {
+              "chunk_id": "reiseregel:1:wide",
+              "fact_ids": [
+                "travel_deadline",
+                "abroad_expenses"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "fact_id": "travel_deadline",
+              "sentence": "Dienstreiseanträge müssen 15 Arbeitstage vor Beginn eingereicht werden.",
+              "citation_chunk_id": "reiseregel:1:wide"
+            },
+            {
+              "fact_id": "abroad_expenses",
+              "sentence": "Auslandsreisekosten sind binnen 30 Kalendertagen abzurechnen.",
+              "citation_chunk_id": "reiseregel:1:wide"
+            }
+          ],
+          "context_recall": 1.0,
+          "retrieval_precision": 1.0,
+          "context_fact_purity": 0.5,
+          "answer_coverage": 1.0,
+          "answer_precision": 0.5,
+          "no_answer_correct": null,
+          "valid_citations": 2,
+          "claim_count": 2,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "hr_denied",
+          "cohort": "no_answer",
+          "gold": [],
+          "hits": [],
+          "claims": [],
+          "context_recall": null,
+          "retrieval_precision": null,
+          "context_fact_purity": null,
+          "answer_coverage": null,
+          "answer_precision": null,
+          "no_answer_correct": true,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        },
+        {
+          "case_id": "unknown",
+          "cohort": "no_answer",
+          "gold": [],
+          "hits": [],
+          "claims": [],
+          "context_recall": null,
+          "retrieval_precision": null,
+          "context_fact_purity": null,
+          "answer_coverage": null,
+          "answer_precision": null,
+          "no_answer_correct": true,
+          "valid_citations": 0,
+          "claim_count": 0,
+          "scope_violations": 0
+        }
+      ],
+      "delta_answer_coverage_vs_short_lexical": 0.4375
+    }
+  ]
+}

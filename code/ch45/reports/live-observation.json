@@ -1,0 +1,215 @@
+{
+  "observed_at_utc": "2026-09-30T07:35:38.875040+00:00",
+  "n8n_image": "n8nio/n8n:2.40.7",
+  "protocol": "2026-07-28",
+  "data": "synthetic",
+  "model": "deterministic_fixture_no_download",
+  "report": {
+    "catalog_id": "supplier-review",
+    "catalog_version": "v1",
+    "catalog_sha256": "6d853e8b17f45d461aac922bd840b4bc1fd097f1c3dfa709eec068ab6d1dc132",
+    "document_manifest": [
+      {
+        "document_id": "supplier-profile",
+        "version": "2026-09-v1",
+        "issued_at_utc": "2026-09-01T00:00:00Z",
+        "raw_sha256": "66d3297d0abd15258de5e62d5b3ed6ca2b230574427e168b742d8c2abcebdd60"
+      },
+      {
+        "document_id": "supplier-contract",
+        "version": "draft-2026-09-v1",
+        "issued_at_utc": "2026-09-02T00:00:00Z",
+        "raw_sha256": "b6579cde73fa42a6afb10daa2c2182ad26645d5b7a5005164bf29426d80fd0d6"
+      }
+    ],
+    "controls": [
+      {
+        "control_id": "C01",
+        "title": "Gesicherte tägliche Datensicherung",
+        "status": "fulfilled",
+        "evidence_coverage": 1,
+        "flags": [],
+        "source": {
+          "uri": "regulation://dora/oj-2022-2554",
+          "version": "OJ 2022-12-27",
+          "eli": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng",
+          "locator": "Art. 30 Abs. 2 Buchst. c",
+          "mapping_status": "unvalidated_illustrative_reference"
+        },
+        "evidence": [
+          {
+            "document_id": "supplier-profile",
+            "document_version": "2026-09-v1",
+            "raw_sha256": "66d3297d0abd15258de5e62d5b3ed6ca2b230574427e168b742d8c2abcebdd60",
+            "locator": "§ 2/Abs. 1/Ziff. 1",
+            "quote": "Die Datensicherung erfolgt täglich und verschlüsselt."
+          }
+        ],
+        "assessment_kind": "deterministic_candidate_not_legal_decision"
+      },
+      {
+        "control_id": "C02",
+        "title": "Datenexport mit festgelegter Frist",
+        "status": "partial",
+        "evidence_coverage": 0.5,
+        "flags": [],
+        "source": {
+          "uri": "regulation://dora/oj-2022-2554",
+          "version": "OJ 2022-12-27",
+          "eli": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng",
+          "locator": "Art. 30 Abs. 2 Buchst. d",
+          "mapping_status": "unvalidated_illustrative_reference"
+        },
+        "evidence": [
+          {
+            "document_id": "supplier-profile",
+            "document_version": "2026-09-v1",
+            "raw_sha256": "66d3297d0abd15258de5e62d5b3ed6ca2b230574427e168b742d8c2abcebdd60",
+            "locator": "§ 2/Abs. 1/Ziff. 2",
+            "quote": "Der Datenexport wird auf Anfrage bereitgestellt; eine Frist ist noch offen."
+          },
+          {
+            "document_id": "supplier-contract",
+            "document_version": "draft-2026-09-v1",
+            "raw_sha256": "b6579cde73fa42a6afb10daa2c2182ad26645d5b7a5005164bf29426d80fd0d6",
+            "locator": "§ 1/Abs. 1/Ziff. 1",
+            "quote": "Der Anbieter stellt den Datenexport in einem maschinenlesbaren Format bereit."
+          }
+        ],
+        "assessment_kind": "deterministic_candidate_not_legal_decision"
+      },
+      {
+        "control_id": "C03",
+        "title": "Dokumentiertes Prüf- und Zugangsrecht",
+        "status": "not_evidenced",
+        "evidence_coverage": 0,
+        "flags": [],
+        "source": {
+          "uri": "regulation://dora/oj-2022-2554",
+          "version": "OJ 2022-12-27",
+          "eli": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng",
+          "locator": "Art. 30 Abs. 3 Buchst. e",
+          "mapping_status": "unvalidated_illustrative_reference"
+        },
+        "evidence": [],
+        "assessment_kind": "deterministic_candidate_not_legal_decision"
+      },
+      {
+        "control_id": "C04",
+        "title": "Risikomanagement bei einschlägigem KI-System",
+        "status": "not_applicable",
+        "evidence_coverage": 1,
+        "flags": [
+          "applicability_requires_human_confirmation"
+        ],
+        "source": {
+          "uri": "regulation://ai-act/oj-2024-1689",
+          "version": "OJ 2024-07-12",
+          "eli": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng",
+          "locator": "Art. 9 Abs. 1",
+          "mapping_status": "unvalidated_illustrative_reference"
+        },
+        "evidence": [
+          {
+            "document_id": "supplier-profile",
+            "document_version": "2026-09-v1",
+            "raw_sha256": "66d3297d0abd15258de5e62d5b3ed6ca2b230574427e168b742d8c2abcebdd60",
+            "locator": "§ 1/Abs. 1/Ziff. 2",
+            "quote": "Der Dienst umfasst kein KI-System."
+          }
+        ],
+        "assessment_kind": "deterministic_candidate_not_legal_decision"
+      },
+      {
+        "control_id": "C05",
+        "title": "Benannter Kontakt und Meldefrist",
+        "status": "fulfilled",
+        "evidence_coverage": 1,
+        "flags": [],
+        "source": {
+          "uri": "regulation://dora/oj-2022-2554",
+          "version": "OJ 2022-12-27",
+          "eli": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng",
+          "locator": "Art. 30 Abs. 2 Buchst. f",
+          "mapping_status": "unvalidated_illustrative_reference"
+        },
+        "evidence": [
+          {
+            "document_id": "supplier-profile",
+            "document_version": "2026-09-v1",
+            "raw_sha256": "66d3297d0abd15258de5e62d5b3ed6ca2b230574427e168b742d8c2abcebdd60",
+            "locator": "§ 2/Abs. 2/Ziff. 1",
+            "quote": "Der Incidentkontakt antwortet innerhalb von 24 Stunden."
+          }
+        ],
+        "assessment_kind": "deterministic_candidate_not_legal_decision"
+      },
+      {
+        "control_id": "C06",
+        "title": "Einheitliche Löschfrist",
+        "status": "partial",
+        "evidence_coverage": 1,
+        "flags": [
+          "contradictory_documents"
+        ],
+        "source": {
+          "uri": "regulation://dora/oj-2022-2554",
+          "version": "OJ 2022-12-27",
+          "eli": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng",
+          "locator": "Art. 30 Abs. 2 Buchst. c",
+          "mapping_status": "unvalidated_illustrative_reference"
+        },
+        "evidence": [
+          {
+            "document_id": "supplier-profile",
+            "document_version": "2026-09-v1",
+            "raw_sha256": "66d3297d0abd15258de5e62d5b3ed6ca2b230574427e168b742d8c2abcebdd60",
+            "locator": "§ 3/Abs. 1/Ziff. 1",
+            "quote": "Die Löschung der Kundendaten erfolgt nach 90 Tagen."
+          },
+          {
+            "document_id": "supplier-contract",
+            "document_version": "draft-2026-09-v1",
+            "raw_sha256": "b6579cde73fa42a6afb10daa2c2182ad26645d5b7a5005164bf29426d80fd0d6",
+            "locator": "§ 2/Abs. 1/Ziff. 1",
+            "quote": "Die Löschung der Kundendaten erfolgt nach 30 Tagen."
+          }
+        ],
+        "assessment_kind": "deterministic_candidate_not_legal_decision"
+      }
+    ],
+    "open_control_ids": [
+      "C02",
+      "C03",
+      "C04",
+      "C06"
+    ],
+    "result_kind": "review_draft_not_compliance_certification",
+    "document_set_sha256": "6fa6985f692c09f30f403e1dd23344994d92eefe1f77122fac4e21ee00c9a0f2",
+    "report_sha256": "b52376e6dd580301d40b627b1be1fd4d7cfe3a8da5125d4a51acdd4a0497a41a"
+  },
+  "approval": {
+    "decision": "approve",
+    "reviewer": "synthetic-compliance",
+    "comment": "Synthetische Befunde fachlich zur Sichtung übernommen.",
+    "accepted_open_ids": [
+      "C02",
+      "C03",
+      "C04",
+      "C06"
+    ],
+    "report_sha256": "b52376e6dd580301d40b627b1be1fd4d7cfe3a8da5125d4a51acdd4a0497a41a",
+    "at_utc": "2026-09-30T07:35:38.628487+00:00"
+  },
+  "export_artifact_sha256": "943c1e7b151c7a8907b40b631c6aea36a29d2619a003cf265903934f2a168be0",
+  "audit_head_hmac": "7adeba9df49c192e49dad52fd4d0fab7e2da78c6b8c0da4893c8d7090055fb22",
+  "negative_checks": {
+    "preapproval_export": "export_requires_approval",
+    "self_approval": "self_approval_forbidden",
+    "stale_basis": "stale_review_basis",
+    "missing_open_findings": "open_findings_not_acknowledged",
+    "export_replay": "export_requires_approval",
+    "rejected_export": "export_requires_approval"
+  },
+  "scope": "technical teaching demo, not legal or production approval"
+}

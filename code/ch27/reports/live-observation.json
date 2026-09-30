@@ -1,0 +1,14 @@
+{
+  "observed_at_utc": "2026-09-29T19:43:46.039883+00:00",
+  "synthetic_data_only": true,
+  "checks": [
+    "n8n_start_checkpoint",
+    "restart_persisted",
+    "n8n_resume_effect_once",
+    "same_key_replay",
+    "different_key_rejected",
+    "lost_ack_retry_effect_once",
+    "forget_with_tombstone"
+  ],
+  "passed": 7
+}

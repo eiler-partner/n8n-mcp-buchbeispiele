@@ -1,0 +1,54 @@
+{
+  "observation_not_benchmark": true,
+  "observed_at_utc": "2026-09-29T19:51:59.652210+00:00",
+  "host": "Mac",
+  "platform": "macOS-26.7-arm64-arm-64bit",
+  "ollama_version": "0.34.4",
+  "model": "qwen3:14b",
+  "model_digest": "bdbd181c33f2ed1b31c972991882db3cf4d192569092138a7d29e973cd9debe8",
+  "prompt_version": "v2",
+  "prompt_sha256": "98f46e1f1bb4a23bafbfcf28a5ea886c14c13b18f844a6181cf23e61805a897b",
+  "schema_sha256": "5a43bddfe7c1a093efc194bf3d0cfdb0b2d04077aee8f4b5002abcc22a47c6f2",
+  "dataset_sha256": "5d526852bbc49e94dc630b91d1ab97ce8400f259e955e19fb5eb5c4f08e1d1c7",
+  "generation_options": {
+    "stream": false,
+    "think": false,
+    "temperature": 0,
+    "num_predict": 180
+  },
+  "observations": [
+    {
+      "case_id": "c01",
+      "contract_pass": true,
+      "error_class": null,
+      "golden_match_observation": false,
+      "core_fields_match_observation": true,
+      "response": "{\n  \"intent\": \"appointment\",\n  \"date\": \"2026-10-05\",\n  \"evidence\": \"am 2026-10-05\",\n  \"needs_review\": false\n}",
+      "total_duration_ns": 7220267625,
+      "prompt_eval_count": 209,
+      "eval_count": 52
+    },
+    {
+      "case_id": "c02",
+      "contract_pass": true,
+      "error_class": null,
+      "golden_match_observation": false,
+      "core_fields_match_observation": true,
+      "response": "{\n  \"intent\": \"cancellation\",\n  \"date\": \"2026-10-07\",\n  \"evidence\": \"Termin vom 2026-10-07\",\n  \"needs_review\": false\n}",
+      "total_duration_ns": 5851899084,
+      "prompt_eval_count": 208,
+      "eval_count": 55
+    },
+    {
+      "case_id": "c03",
+      "contract_pass": true,
+      "error_class": null,
+      "golden_match_observation": false,
+      "core_fields_match_observation": true,
+      "response": "{\n  \"intent\": \"information\",\n  \"date\": null,\n  \"evidence\": \"Wie sind Ihre Öffnungszeiten am Freitag?\",\n  \"needs_review\": false\n}",
+      "total_duration_ns": 4839567000,
+      "prompt_eval_count": 203,
+      "eval_count": 42
+    }
+  ]
+}

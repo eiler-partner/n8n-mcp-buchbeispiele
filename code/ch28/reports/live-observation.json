@@ -1,0 +1,152 @@
+{
+  "observed_at_utc": "2026-09-30T07:25:47.175712+00:00",
+  "synthetic_data_only": true,
+  "n8n_cases": [
+    {
+      "case_id": "c01",
+      "baseline_pass": true,
+      "multi_pass": true,
+      "handoff_context_bytes": 32
+    },
+    {
+      "case_id": "c02",
+      "baseline_pass": true,
+      "multi_pass": true,
+      "handoff_context_bytes": 32
+    },
+    {
+      "case_id": "c03",
+      "baseline_pass": true,
+      "multi_pass": true,
+      "handoff_context_bytes": 41
+    },
+    {
+      "case_id": "c04",
+      "baseline_pass": true,
+      "multi_pass": true,
+      "handoff_context_bytes": 53
+    },
+    {
+      "case_id": "c05",
+      "baseline_pass": true,
+      "multi_pass": true,
+      "handoff_context_bytes": 29
+    },
+    {
+      "case_id": "c06",
+      "baseline_pass": true,
+      "multi_pass": true,
+      "handoff_context_bytes": 32
+    },
+    {
+      "case_id": "c07",
+      "baseline_pass": true,
+      "multi_pass": true,
+      "handoff_context_bytes": 45
+    },
+    {
+      "case_id": "c08",
+      "baseline_pass": true,
+      "multi_pass": true,
+      "handoff_context_bytes": 39
+    }
+  ],
+  "negative_contract_checks": [
+    {
+      "check": "tenant_mismatch",
+      "webhook": "ch28-multi",
+      "rejected_by": "Router",
+      "status": 422
+    },
+    {
+      "check": "context_mismatch",
+      "webhook": "ch28-multi?tamper=context",
+      "rejected_by": "Specialist Worker",
+      "status": 422
+    },
+    {
+      "check": "worker_result_mismatch",
+      "webhook": "ch28-multi?tamper=answer",
+      "rejected_by": "Contract Reviewer",
+      "status": 422
+    }
+  ],
+  "comparison": {
+    "dataset_sha256": "e57f92dfec540b86e06725829851a2dcb89a4faffc0946122dad61451e6a910c",
+    "knowledge_sha256": "72d430133825548137b59504c775a9a0da7d9062024719b7c482dd53c90f268c",
+    "fixture_not_model_measurement": true,
+    "cases": [
+      {
+        "case_id": "c01",
+        "baseline_pass": true,
+        "multi_pass": true,
+        "baseline_stages": 1,
+        "multi_stages": 3,
+        "handoff_context_bytes": 32
+      },
+      {
+        "case_id": "c02",
+        "baseline_pass": true,
+        "multi_pass": true,
+        "baseline_stages": 1,
+        "multi_stages": 3,
+        "handoff_context_bytes": 32
+      },
+      {
+        "case_id": "c03",
+        "baseline_pass": true,
+        "multi_pass": true,
+        "baseline_stages": 1,
+        "multi_stages": 3,
+        "handoff_context_bytes": 41
+      },
+      {
+        "case_id": "c04",
+        "baseline_pass": true,
+        "multi_pass": true,
+        "baseline_stages": 1,
+        "multi_stages": 3,
+        "handoff_context_bytes": 53
+      },
+      {
+        "case_id": "c05",
+        "baseline_pass": true,
+        "multi_pass": true,
+        "baseline_stages": 1,
+        "multi_stages": 3,
+        "handoff_context_bytes": 29
+      },
+      {
+        "case_id": "c06",
+        "baseline_pass": true,
+        "multi_pass": true,
+        "baseline_stages": 1,
+        "multi_stages": 3,
+        "handoff_context_bytes": 32
+      },
+      {
+        "case_id": "c07",
+        "baseline_pass": true,
+        "multi_pass": true,
+        "baseline_stages": 1,
+        "multi_stages": 3,
+        "handoff_context_bytes": 45
+      },
+      {
+        "case_id": "c08",
+        "baseline_pass": true,
+        "multi_pass": true,
+        "baseline_stages": 1,
+        "multi_stages": 3,
+        "handoff_context_bytes": 39
+      }
+    ],
+    "baseline_pass": 8,
+    "multi_pass": 8,
+    "quality_gain": 0,
+    "total_baseline_stages": 8,
+    "total_multi_stages": 24,
+    "decision": "baseline",
+    "reason": "kein messbarer Qualitätsgewinn"
+  }
+}

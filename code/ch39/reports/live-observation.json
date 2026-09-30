@@ -1,0 +1,47 @@
+{
+  "observed_at_utc": "2026-09-29T20:41:21.897860+00:00",
+  "images": {
+    "n8n": "n8nio/n8n:2.40.7",
+    "runner": "n8nio/runners:2.40.7"
+  },
+  "fixture_delay_ms": 450,
+  "worker_concurrency": 5,
+  "one_worker": {
+    "requests": 18,
+    "errors": 0,
+    "error_rate": 0.0,
+    "p50_ms": 1475.0,
+    "p95_ms": 2753.1,
+    "elapsed_s": 2.808,
+    "throughput_rps": 6.41,
+    "fixture_max_active": 5,
+    "redis_wait_list_peak_if_visible": 13
+  },
+  "two_workers": {
+    "requests": 18,
+    "errors": 0,
+    "error_rate": 0.0,
+    "p50_ms": 1254.1,
+    "p95_ms": 1896.4,
+    "elapsed_s": 1.903,
+    "throughput_rps": 9.46,
+    "fixture_max_active": 10,
+    "redis_wait_list_peak_if_visible": 8
+  },
+  "worker1_stopped_worker2_survives": {
+    "requests": 8,
+    "errors": 0,
+    "error_rate": 0.0,
+    "p50_ms": 798.1,
+    "p95_ms": 1386.6,
+    "elapsed_s": 1.389,
+    "throughput_rps": 5.76,
+    "fixture_max_active": 5,
+    "redis_wait_list_peak_if_visible": 3
+  },
+  "notes": [
+    "Local synthetic I/O only; not a throughput guarantee.",
+    "Redis wait-list sample is diagnostic, not a supported queue API.",
+    "Main remains a single point of failure without licensed multi-main."
+  ]
+}

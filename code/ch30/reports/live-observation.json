@@ -1,0 +1,107 @@
+{
+  "observed_at_utc": "2026-09-29T19:45:24.262425+00:00",
+  "synthetic_data_only": true,
+  "cases": [
+    {
+      "case": "current",
+      "status": "answered",
+      "citations": [
+        {
+          "source_id": "handbook",
+          "document_id": "leave-policy",
+          "version": 2,
+          "chunk_id": "leave-v2-a",
+          "sha256": "1798c2fc459a06f3a365b91d8828c4381c07b49b31ed861947be92bd1486157d"
+        }
+      ]
+    },
+    {
+      "case": "old",
+      "status": "answered",
+      "citations": [
+        {
+          "source_id": "handbook",
+          "document_id": "leave-policy",
+          "version": 1,
+          "chunk_id": "leave-v1-a",
+          "sha256": "3fdaa534b823aa55094f514d99be130f4eadd5288203780da20ea53b83af264d"
+        }
+      ]
+    },
+    {
+      "case": "private_denied",
+      "status": "withheld",
+      "citations": []
+    },
+    {
+      "case": "private_allowed",
+      "status": "answered",
+      "citations": [
+        {
+          "source_id": "hr-private",
+          "document_id": "salary-policy",
+          "version": 1,
+          "chunk_id": "salary-v1-a",
+          "sha256": "0246f6735d071fa08c55ff2618790ce30564809c7369980e89cd577bebdc9e6a"
+        }
+      ]
+    },
+    {
+      "case": "unknown",
+      "status": "withheld",
+      "citations": []
+    }
+  ],
+  "mcp_resource_checks": [
+    "list",
+    "read",
+    "denied"
+  ],
+  "strategy_comparison": {
+    "question": "Wann muss ich Urlaub beantragen?",
+    "results": [
+      {
+        "strategy": "parametric_fixture",
+        "status": "unsupported",
+        "answer": "Im Zweifel gelten 10 Arbeitstage.",
+        "citations": [],
+        "accepted": false,
+        "reason": "no_evidence"
+      },
+      {
+        "status": "answered",
+        "answer": "Mindestens 15 Arbeitstage vor Beginn.",
+        "citations": [
+          {
+            "source_id": "handbook",
+            "document_id": "leave-policy",
+            "version": 2,
+            "chunk_id": "leave-v2-a",
+            "sha256": "1798c2fc459a06f3a365b91d8828c4381c07b49b31ed861947be92bd1486157d"
+          }
+        ],
+        "reason": null,
+        "context_chars": 143,
+        "strategy": "full_context",
+        "accepted": true
+      },
+      {
+        "status": "answered",
+        "answer": "Mindestens 15 Arbeitstage vor Beginn.",
+        "citations": [
+          {
+            "source_id": "handbook",
+            "document_id": "leave-policy",
+            "version": 2,
+            "chunk_id": "leave-v2-a",
+            "sha256": "1798c2fc459a06f3a365b91d8828c4381c07b49b31ed861947be92bd1486157d"
+          }
+        ],
+        "reason": null,
+        "context_chars": 76,
+        "strategy": "rag",
+        "accepted": true
+      }
+    ]
+  }
+}

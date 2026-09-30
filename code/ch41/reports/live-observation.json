@@ -1,0 +1,59 @@
+{
+  "observed_at_utc": "2026-09-29T19:50:41.028170+00:00",
+  "n8n_image": "n8nio/n8n:2.40.7",
+  "data": "synthetic",
+  "scope": "local teaching gate, not production identity or legal conformity",
+  "cases": {
+    "approved": {
+      "decision": "allow",
+      "reason": "approved",
+      "request_id": "ch41-109b00bfef8f",
+      "proposal_hash": "e331225c7be65317fbf7e6c6b9ed9e239b0a6063f5047a592f8007083c8cfafe"
+    },
+    "retry": {
+      "decision": "allow",
+      "reason": "idempotent",
+      "request_id": "ch41-109b00bfef8f",
+      "proposal_hash": "e331225c7be65317fbf7e6c6b9ed9e239b0a6063f5047a592f8007083c8cfafe"
+    },
+    "no_scope": {
+      "decision": "deny",
+      "reason": "actor_not_authorized",
+      "request_id": "ch41-03eca34df933",
+      "proposal_hash": "5128c41e8a8623d9b774a7f55e3284d8652b74a78e3d48f367af502323ad78dd"
+    },
+    "cross_tenant": {
+      "decision": "deny",
+      "reason": "tenant_mismatch",
+      "request_id": "ch41-261c99950933",
+      "proposal_hash": "65c0f3e4475e5035f92f0ff6cb4d9e2d0bc68844b3a2fb2d4111184bea5a189d"
+    },
+    "forged": {
+      "decision": "deny",
+      "reason": "approval_invalid",
+      "request_id": "ch41-b22270f2b20f",
+      "proposal_hash": "461314d009c69e512310c399d18886e253a615a5e5365bcc370fe7f83314f979"
+    },
+    "content_changed": {
+      "decision": "deny",
+      "reason": "approval_not_bound",
+      "request_id": "ch41-078e65ae5f70",
+      "proposal_hash": "b829d11b3624802e49e934bb9d1a4b30f7f386b97ce1b567299cbe26ffc5875b"
+    },
+    "first_replay_token": {
+      "decision": "allow",
+      "reason": "approved",
+      "request_id": "ch41-cffae89dc552",
+      "proposal_hash": "7c94b07bac6d74146b27e10284fe2fea15013885706fae9cb1111cd5bb390e95"
+    },
+    "reused_approval": {
+      "decision": "deny",
+      "reason": "approval_replayed",
+      "request_id": "ch41-f86c63e52b75",
+      "proposal_hash": "c99da8354dbd9b29ce122fa65444e7c0f378395bb31437147891e69a194cd26b"
+    }
+  },
+  "finding_count": 2,
+  "audit_count": 8,
+  "audit_contains_payload_or_tokens": false
+}

@@ -1,0 +1,86 @@
+{
+  "observed_at_utc": "2026-09-29T19:45:45.872947+00:00",
+  "synthetic_data_only": true,
+  "tools": {
+    "pdftotext": "pdftotext version 25.03.0",
+    "tesseract": "tesseract 5.5.0"
+  },
+  "cases": [
+    {
+      "case_id": "digital",
+      "source_id": "synthetic-handbook",
+      "document_id": "RICHTLINIE-31",
+      "version": "2026-09",
+      "file_name": "digital.pdf",
+      "declared_mime": "application/pdf",
+      "source_sha256": "ca19d68ab95d7e2d54504e29a124584d2efb0e6ac4b031279ec68adba1958f18",
+      "method": "text",
+      "page_count": 1,
+      "language": "not_applicable",
+      "status": "accepted",
+      "reason_codes": [],
+      "missing_phrases": [],
+      "character_error_rate": 0,
+      "mean_ocr_word_confidence": null,
+      "normalized_chars": 185,
+      "normalized_text_sha256": "c0cb2f462e840a7cd4190b2d2a020fb1a3d00c7197e5b879734c085f99e6b972",
+      "duplicate": false
+    },
+    {
+      "case_id": "scan_good",
+      "source_id": "synthetic-handbook",
+      "document_id": "RICHTLINIE-31",
+      "version": "2026-09",
+      "file_name": "scan_good.pdf",
+      "declared_mime": "application/pdf",
+      "source_sha256": "7e0fd10997d7f69c4c95b3e870f261f4781ff8b166dcd671b2477a90949b8974",
+      "method": "ocr",
+      "page_count": 1,
+      "language": "deu",
+      "status": "accepted",
+      "reason_codes": [],
+      "missing_phrases": [],
+      "character_error_rate": 0,
+      "mean_ocr_word_confidence": 94.41,
+      "normalized_chars": 185,
+      "normalized_text_sha256": "c0cb2f462e840a7cd4190b2d2a020fb1a3d00c7197e5b879734c085f99e6b972",
+      "duplicate": false
+    },
+    {
+      "case_id": "scan_cropped",
+      "source_id": "synthetic-handbook",
+      "document_id": "RICHTLINIE-31",
+      "version": "2026-09",
+      "file_name": "scan_cropped.pdf",
+      "declared_mime": "application/pdf",
+      "source_sha256": "f068d74be9a10969ff8359f64bb660acd83a51ebdabe98ca798c4269c3767550",
+      "method": "ocr",
+      "page_count": 1,
+      "language": "deu",
+      "status": "quarantined",
+      "reason_codes": [
+        "missing_required_phrase",
+        "high_character_error_rate"
+      ],
+      "missing_phrases": [
+        "15 Arbeitstage"
+      ],
+      "character_error_rate": 0.227,
+      "mean_ocr_word_confidence": 94.31,
+      "normalized_chars": 143,
+      "normalized_text_sha256": "d4de0a41bb026a2087316b9eaa0040ee67b1796e2834015540e0a792b9d2a96f",
+      "duplicate": false
+    }
+  ],
+  "duplicate_check": true,
+  "negative_contract_checks": [
+    "mime_mismatch",
+    "unknown_case",
+    "source_changed"
+  ],
+  "mcp_resource_checks": [
+    "list_accepted_only",
+    "read_accepted",
+    "deny_quarantined"
+  ]
+}

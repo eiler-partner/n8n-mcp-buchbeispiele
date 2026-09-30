@@ -1,0 +1,117 @@
+{
+  "observed_at_utc": "2026-09-29T19:50:20.971394+00:00",
+  "n8n_image": "n8nio/n8n:2.40.7",
+  "model": "synthetic-fixed-fixture",
+  "mcp_transport": "stdio-via-http-bridge",
+  "sli": {
+    "good": 1,
+    "total": 3,
+    "verified_success_ratio": 0.3333333333333333,
+    "error_budget_99_percent": 0.03,
+    "bad": 2,
+    "unverifiable": 1,
+    "known_failed": 1
+  },
+  "checks": [
+    "n8n_webhook",
+    "mcp_initialize",
+    "mcp_tools_list",
+    "mcp_tools_call",
+    "retrieval_fixture",
+    "model_fixture",
+    "correlation_loss_detected",
+    "business_error_detected",
+    "internal_metrics_endpoint"
+  ],
+  "cases": [
+    {
+      "case": "normal",
+      "response": {
+        "request_id": "ch40-c3c6dd43b5aa",
+        "correlation_id": "ec49a48c147641cbbe7ecb6a3398503e",
+        "mcp_error": false,
+        "status": "ok",
+        "answer": "Die synthetische Frist beträgt 14 Tage.",
+        "evidence_id": "synthetic-policy-v1",
+        "usage": {
+          "input_tokens": 120,
+          "output_tokens": 30,
+          "synthetic_cost_micro_usd": 48
+        }
+      },
+      "trace": {
+        "request_id": "ch40-c3c6dd43b5aa",
+        "complete": true,
+        "faults": [],
+        "stages": [
+          "n8n",
+          "mcp",
+          "retrieval",
+          "model"
+        ],
+        "correlation_id": "ec49a48c147641cbbe7ecb6a3398503e",
+        "business_ok": true
+      }
+    },
+    {
+      "case": "lost_correlation",
+      "response": {
+        "request_id": "ch40-d01d8d8325f8",
+        "correlation_id": "9bb9ee228de741bcb27a53cb8cdbc35d",
+        "mcp_error": false,
+        "status": "ok",
+        "answer": "Die synthetische Frist beträgt 14 Tage.",
+        "evidence_id": "synthetic-policy-v1",
+        "usage": {
+          "input_tokens": 120,
+          "output_tokens": 30,
+          "synthetic_cost_micro_usd": 48
+        }
+      },
+      "trace": {
+        "request_id": "ch40-d01d8d8325f8",
+        "complete": false,
+        "faults": [
+          "correlation_broken"
+        ],
+        "stages": [
+          "n8n",
+          "mcp",
+          "retrieval",
+          "model"
+        ],
+        "correlation_id": null,
+        "business_ok": true
+      }
+    },
+    {
+      "case": "model_error",
+      "response": {
+        "request_id": "ch40-5ad2254f9ecc",
+        "correlation_id": "f1b27e302d494d43ba688886aa4343ae",
+        "mcp_error": true,
+        "status": "error",
+        "answer": null,
+        "evidence_id": "synthetic-policy-v1",
+        "usage": {
+          "input_tokens": 120,
+          "output_tokens": 30,
+          "synthetic_cost_micro_usd": 48
+        }
+      },
+      "trace": {
+        "request_id": "ch40-5ad2254f9ecc",
+        "complete": true,
+        "faults": [],
+        "stages": [
+          "n8n",
+          "mcp",
+          "retrieval",
+          "model"
+        ],
+        "correlation_id": "f1b27e302d494d43ba688886aa4343ae",
+        "business_ok": false
+      }
+    }
+  ]
+}

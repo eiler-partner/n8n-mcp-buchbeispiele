@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-09-29T19:52:52.964306+00:00",
+  "model": "qwen3:14b",
+  "digest": "bdbd181c33f2ed1b31c972991882db3cf4d192569092138a7d29e973cd9debe8",
+  "prompt_version": "ch44-advisory-1",
+  "data_sha256": "34ff8f1f02267d3936d6c5d6a50534d251c0391ee69976d166cdfa4b6b0ae4fd",
+  "form_valid": true,
+  "matches_deterministic_conflict": true,
+  "observation": {
+    "decision": "review_required",
+    "focus_statement_id": "orders",
+    "uncertainty": "Bestellungen: 1198 und 1200; die Quellen widersprechen sich."
+  },
+  "published_as_fact": false,
+  "total_duration_ns": 6172595000,
+  "scope": "dated advisory observation, not a stable quality claim"
+}

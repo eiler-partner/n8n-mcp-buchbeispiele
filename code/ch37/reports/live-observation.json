@@ -1,0 +1,363 @@
+{
+  "observed_at_utc": "2026-09-29T19:48:39.423413+00:00",
+  "n8n_image": "n8nio/n8n:2.40.7",
+  "model_calls": 0,
+  "checks": [
+    "three_profiles",
+    "hard_gates",
+    "same_policy_hash",
+    "direct_http",
+    "n8n_webhook",
+    "mcp_stdio"
+  ],
+  "result": {
+    "dataset_sha256": "5466f82e0dcd4b07e7b4e41ac6ffb88a37857c8b270e5c8fa77dddeb0afb36b9",
+    "decisions": [
+      {
+        "profile_id": "kleines_team",
+        "profile_sha256": "57a5fd2fd98d4ddfb6b3a675d8e212cb0c03ec37485ec4045b05c0a2a2d4a3d7",
+        "policy_version": "ch37-teaching-policy-v1",
+        "policy_sha256": "ac6e2524f710348fde4991df4979723967f790056f96fbea402c1fa8596fe8a3",
+        "status": "decision",
+        "selected": "cloud",
+        "tied": [],
+        "weights": {
+          "operability": 5,
+          "data_control": 1,
+          "model_access": 2,
+          "portability": 1,
+          "cost_predictability": 2
+        },
+        "candidates": [
+          {
+            "architecture": "cloud",
+            "eligible": true,
+            "exclusions": [],
+            "capabilities": {
+              "operability": 5,
+              "data_control": 1,
+              "model_access": 5,
+              "portability": 2,
+              "cost_predictability": 2
+            },
+            "weighted_terms": {
+              "operability": 25,
+              "data_control": 1,
+              "model_access": 10,
+              "portability": 2,
+              "cost_predictability": 4
+            },
+            "score": 42
+          },
+          {
+            "architecture": "self_hosted",
+            "eligible": false,
+            "exclusions": [
+              "Eigenbetrieb ohne verantwortliches Betriebsteam ausgeschlossen"
+            ],
+            "capabilities": {
+              "operability": 2,
+              "data_control": 5,
+              "model_access": 3,
+              "portability": 4,
+              "cost_predictability": 3
+            },
+            "weighted_terms": {
+              "operability": 10,
+              "data_control": 5,
+              "model_access": 6,
+              "portability": 4,
+              "cost_predictability": 6
+            },
+            "score": null
+          },
+          {
+            "architecture": "hybrid",
+            "eligible": false,
+            "exclusions": [
+              "Eigenbetrieb ohne verantwortliches Betriebsteam ausgeschlossen",
+              "Hybrid-Split ist nicht explizit freigegeben"
+            ],
+            "capabilities": {
+              "operability": 1,
+              "data_control": 4,
+              "model_access": 5,
+              "portability": 3,
+              "cost_predictability": 2
+            },
+            "weighted_terms": {
+              "operability": 5,
+              "data_control": 4,
+              "model_access": 10,
+              "portability": 3,
+              "cost_predictability": 4
+            },
+            "score": null
+          }
+        ],
+        "impacts": {
+          "trust_boundary": "Client -> n8n Cloud -> freigegebene Daten-/Modell-APIs",
+          "spof": [
+            "Cloud-Kontrollpfad",
+            "Identitaetsanbieter",
+            "externe Modell-API"
+          ],
+          "cost_drivers": [
+            "Plangebuehr/Ausfuehrungen",
+            "Modell-Tokens",
+            "Daten- und Egress-Gebuehren"
+          ],
+          "raci": {
+            "workflow_owner": "Kunde",
+            "n8n_runtime": "n8n",
+            "data_classification": "Kunde",
+            "model_endpoint": "API-Anbieter"
+          },
+          "exit": [
+            "Workflowexport und Credential-Inventar",
+            "Daten-/Logexport und Loeschbestaetigung",
+            "MCP-/API-Endpunkte umstellen",
+            "Vergleichstest und Rueckfallplan"
+          ]
+        },
+        "open_checks": [
+          "Datenfluesse und Aufbewahrung fachlich freigeben",
+          "Edition und Lizenz fuer konkreten Einsatz bestaetigen",
+          "SLO, RPO/RTO, Kosten und Anbieterbedingungen messen",
+          "Bedrohungsmodell, Wiederherstellung und Exit praktisch testen"
+        ]
+      },
+      {
+        "profile_id": "interne_akte",
+        "profile_sha256": "6038e19b35d5cb0df34993d453dffdddd4f18d4e9cf7cda7dfb7520b6fbc249d",
+        "policy_version": "ch37-teaching-policy-v1",
+        "policy_sha256": "ac6e2524f710348fde4991df4979723967f790056f96fbea402c1fa8596fe8a3",
+        "status": "decision",
+        "selected": "self_hosted",
+        "tied": [],
+        "weights": {
+          "operability": 1,
+          "data_control": 5,
+          "model_access": 1,
+          "portability": 4,
+          "cost_predictability": 2
+        },
+        "candidates": [
+          {
+            "architecture": "cloud",
+            "eligible": false,
+            "exclusions": [
+              "Daten duerfen die lokale Zone nicht verlassen",
+              "Privater Index darf nicht in Cloud-Betrieb wandern"
+            ],
+            "capabilities": {
+              "operability": 5,
+              "data_control": 1,
+              "model_access": 5,
+              "portability": 2,
+              "cost_predictability": 2
+            },
+            "weighted_terms": {
+              "operability": 5,
+              "data_control": 5,
+              "model_access": 5,
+              "portability": 8,
+              "cost_predictability": 4
+            },
+            "score": null
+          },
+          {
+            "architecture": "self_hosted",
+            "eligible": true,
+            "exclusions": [],
+            "capabilities": {
+              "operability": 2,
+              "data_control": 5,
+              "model_access": 3,
+              "portability": 4,
+              "cost_predictability": 3
+            },
+            "weighted_terms": {
+              "operability": 2,
+              "data_control": 25,
+              "model_access": 3,
+              "portability": 16,
+              "cost_predictability": 6
+            },
+            "score": 52
+          },
+          {
+            "architecture": "hybrid",
+            "eligible": false,
+            "exclusions": [
+              "Daten duerfen die lokale Zone nicht verlassen",
+              "Hybrid-Split ist nicht explizit freigegeben",
+              "Externer Modellpfad ist nicht freigegeben"
+            ],
+            "capabilities": {
+              "operability": 1,
+              "data_control": 4,
+              "model_access": 5,
+              "portability": 3,
+              "cost_predictability": 2
+            },
+            "weighted_terms": {
+              "operability": 1,
+              "data_control": 20,
+              "model_access": 5,
+              "portability": 12,
+              "cost_predictability": 4
+            },
+            "score": null
+          }
+        ],
+        "impacts": {
+          "trust_boundary": "Client -> eigenes n8n -> eigene Daten/MCP -> lokales Modell",
+          "spof": [
+            "Main-Instanz ohne Multi-Main",
+            "PostgreSQL",
+            "Redis bei Queue Mode",
+            "lokaler Modellhost"
+          ],
+          "cost_drivers": [
+            "Compute/Storage",
+            "Betrieb und Bereitschaft",
+            "Backup/Restore",
+            "eventuelle Edition"
+          ],
+          "raci": {
+            "workflow_owner": "Kunde",
+            "n8n_runtime": "Kunde",
+            "data_classification": "Kunde",
+            "model_endpoint": "Kunde"
+          },
+          "exit": [
+            "Workflow-/Daten-/Credential-Inventar",
+            "verschluesselte Backups samt Schluessel",
+            "lokales Modell-/Indexformat exportieren",
+            "Restore-Probe und DNS-Umschaltung"
+          ]
+        },
+        "open_checks": [
+          "Datenfluesse und Aufbewahrung fachlich freigeben",
+          "Edition und Lizenz fuer konkreten Einsatz bestaetigen",
+          "SLO, RPO/RTO, Kosten und Anbieterbedingungen messen",
+          "Bedrohungsmodell, Wiederherstellung und Exit praktisch testen"
+        ]
+      },
+      {
+        "profile_id": "geteilte_ki",
+        "profile_sha256": "8900eaf68b76ab75f4111cf752ea52ad65523493dac7b9acd2e9f56d9de9af58",
+        "policy_version": "ch37-teaching-policy-v1",
+        "policy_sha256": "ac6e2524f710348fde4991df4979723967f790056f96fbea402c1fa8596fe8a3",
+        "status": "decision",
+        "selected": "hybrid",
+        "tied": [],
+        "weights": {
+          "operability": 2,
+          "data_control": 4,
+          "model_access": 5,
+          "portability": 2,
+          "cost_predictability": 1
+        },
+        "candidates": [
+          {
+            "architecture": "cloud",
+            "eligible": false,
+            "exclusions": [
+              "Privater Index darf nicht in Cloud-Betrieb wandern"
+            ],
+            "capabilities": {
+              "operability": 5,
+              "data_control": 1,
+              "model_access": 5,
+              "portability": 2,
+              "cost_predictability": 2
+            },
+            "weighted_terms": {
+              "operability": 10,
+              "data_control": 4,
+              "model_access": 25,
+              "portability": 4,
+              "cost_predictability": 2
+            },
+            "score": null
+          },
+          {
+            "architecture": "self_hosted",
+            "eligible": true,
+            "exclusions": [],
+            "capabilities": {
+              "operability": 2,
+              "data_control": 5,
+              "model_access": 3,
+              "portability": 4,
+              "cost_predictability": 3
+            },
+            "weighted_terms": {
+              "operability": 4,
+              "data_control": 20,
+              "model_access": 15,
+              "portability": 8,
+              "cost_predictability": 3
+            },
+            "score": 50
+          },
+          {
+            "architecture": "hybrid",
+            "eligible": true,
+            "exclusions": [],
+            "capabilities": {
+              "operability": 1,
+              "data_control": 4,
+              "model_access": 5,
+              "portability": 3,
+              "cost_predictability": 2
+            },
+            "weighted_terms": {
+              "operability": 2,
+              "data_control": 16,
+              "model_access": 25,
+              "portability": 6,
+              "cost_predictability": 2
+            },
+            "score": 51
+          }
+        ],
+        "impacts": {
+          "trust_boundary": "Client -> eigenes n8n/MCP/Index -> Egress-Gate -> externe Modell-API",
+          "spof": [
+            "Egress-Gate",
+            "eigene Datenbank/Index",
+            "externe Modell-API",
+            "Identitaetsanbieter"
+          ],
+          "cost_drivers": [
+            "eigener Betrieb",
+            "Modell-Tokens",
+            "Egress",
+            "Netz-/Sicherheitskontrolle"
+          ],
+          "raci": {
+            "workflow_owner": "Kunde",
+            "n8n_runtime": "Kunde",
+            "data_classification": "Kunde",
+            "model_endpoint": "API-Anbieter"
+          },
+          "exit": [
+            "Prompt-/Tool-Datenfluesse inventarisieren",
+            "lokales Modell als Rueckfall testen",
+            "Provider-Endpunkte und Tokens tauschen",
+            "Drittanbieter-Datenloeschung pruefen"
+          ]
+        },
+        "open_checks": [
+          "Datenfluesse und Aufbewahrung fachlich freigeben",
+          "Edition und Lizenz fuer konkreten Einsatz bestaetigen",
+          "SLO, RPO/RTO, Kosten und Anbieterbedingungen messen",
+          "Bedrohungsmodell, Wiederherstellung und Exit praktisch testen"
+        ]
+      }
+    ]
+  }
+}

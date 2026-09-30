@@ -1,0 +1,43 @@
+{
+  "observed_at_utc": "2026-09-29T19:52:04.142355+00:00",
+  "host": "Mac",
+  "platform": "macOS-26.7-arm64-arm-64bit",
+  "model": "qwen3:14b",
+  "model_digest": "bdbd181c33f2ed1b31c972991882db3cf4d192569092138a7d29e973cd9debe8",
+  "dataset_sha256": "e57f92dfec540b86e06725829851a2dcb89a4faffc0946122dad61451e6a910c",
+  "observation_not_benchmark": true,
+  "observations": [
+    {
+      "case_id": "c01",
+      "expected_route": "billing",
+      "observed_route": "billing",
+      "contract_pass": true,
+      "match_observation": true,
+      "total_duration_ns": 1488949375
+    },
+    {
+      "case_id": "c03",
+      "expected_route": "privacy",
+      "observed_route": "privacy",
+      "contract_pass": true,
+      "match_observation": true,
+      "total_duration_ns": 992086542
+    },
+    {
+      "case_id": "c05",
+      "expected_route": "general",
+      "observed_route": "general",
+      "contract_pass": true,
+      "match_observation": true,
+      "total_duration_ns": 917043250
+    },
+    {
+      "case_id": "c07",
+      "expected_route": "privacy",
+      "observed_route": "privacy",
+      "contract_pass": true,
+      "match_observation": true,
+      "total_duration_ns": 891029417
+    }
+  ]
+}

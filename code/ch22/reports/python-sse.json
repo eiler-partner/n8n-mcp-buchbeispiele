@@ -1,0 +1,9 @@
+{
+  "endpoint": "http://127.0.0.1:8023/sse",
+  "protocol_version": "2025-11-25",
+  "server_name": "Chapter 22 Catalog",
+  "tools": [
+    "catalog_lookup"
+  ],
+  "transport": "sse"
+}

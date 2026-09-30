@@ -1,0 +1,19 @@
+{
+  "observed_at_utc": "2026-09-29T19:53:02.676362+00:00",
+  "host": "macOS-26.7-arm64-arm-64bit",
+  "model": "qwen3:14b",
+  "digest": "bdbd181c33f2ed1b31c972991882db3cf4d192569092138a7d29e973cd9debe8",
+  "prompt_version": "ch45-advisory-1",
+  "data_sha256": "3880281ea67da3f7c61268b348774527b37dfd8c3be36b04cd1253bf1ff44321",
+  "form_valid": true,
+  "observation": {
+    "decision": "manual_review_required",
+    "focus_control_id": "C06",
+    "uncertainty": "Es besteht ein Dokumentkonflikt, der eine manuelle Prüfung erfordert, um die Richtigkeit und Konsistenz der Informationen zu klären."
+  },
+  "published_as_fact": false,
+  "changed_control_status": false,
+  "granted_approval": false,
+  "total_duration_ns": 9584107833,
+  "scope": "dated advisory observation, not a stable quality claim"
+}

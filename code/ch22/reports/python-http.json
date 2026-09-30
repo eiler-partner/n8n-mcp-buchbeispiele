@@ -1,0 +1,25 @@
+{
+  "call": {
+    "is_error": false,
+    "item_ids": [
+      "N8N-022"
+    ],
+    "query": "n8n",
+    "tool": "catalog_lookup"
+  },
+  "endpoint": "http://127.0.0.1:8022/mcp",
+  "era": "dual",
+  "modern_probe": {
+    "era": "modern",
+    "http_status": 200,
+    "supported_versions": [
+      "2026-07-28"
+    ]
+  },
+  "protocol_version": "2025-11-25",
+  "server_name": "Chapter 22 Catalog",
+  "tools": [
+    "catalog_lookup"
+  ],
+  "transport": "streamable-http"
+}

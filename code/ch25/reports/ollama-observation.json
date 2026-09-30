@@ -1,0 +1,46 @@
+{
+  "observation_not_benchmark": true,
+  "observed_at_utc": "2026-09-29T19:51:41.426677+00:00",
+  "host": "Mac",
+  "platform": "macOS-26.7-arm64-arm-64bit",
+  "ollama_version": "0.34.4",
+  "model": "qwen3:14b",
+  "model_digest": "bdbd181c33f2ed1b31c972991882db3cf4d192569092138a7d29e973cd9debe8",
+  "dataset_sha256": "dbe9f3216f0251f25370d33cae7d5b4830fc07cf868cebe52cace8a1b3e49b7e",
+  "prompt_version": "ch25-classify-v1",
+  "generation_options": {
+    "stream": false,
+    "think": false,
+    "temperature": 0,
+    "num_predict": 24
+  },
+  "observations": [
+    {
+      "case_id": "c01",
+      "expected": "rechnung",
+      "observed": "rechnung",
+      "correct_observation": true,
+      "total_duration_ns": 1236473500,
+      "prompt_eval_count": 70,
+      "eval_count": 4
+    },
+    {
+      "case_id": "c02",
+      "expected": "hinweis",
+      "observed": "hinweis",
+      "correct_observation": true,
+      "total_duration_ns": 543741042,
+      "prompt_eval_count": 69,
+      "eval_count": 3
+    },
+    {
+      "case_id": "e01",
+      "expected": "hinweis",
+      "observed": "hinweis",
+      "correct_observation": true,
+      "total_duration_ns": 779630709,
+      "prompt_eval_count": 79,
+      "eval_count": 3
+    }
+  ]
+}

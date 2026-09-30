@@ -1,0 +1,61 @@
+{
+  "observed_at_utc": "2026-09-30T07:27:39.477451+00:00",
+  "synthetic_vectors_only": true,
+  "n8n_image": "n8nio/n8n:2.40.7",
+  "observations": [
+    {
+      "model_id": "fixture-v1",
+      "dimension": 4,
+      "top_ids": [
+        "v2-vacation",
+        "v2-scope",
+        "v2-travel"
+      ],
+      "old_version_top_id": "v1-vacation",
+      "hr_top_id": "v2-hr",
+      "tie_top_ids": {
+        "pgvector": [
+          "v2-travel",
+          "v2-vacation"
+        ],
+        "qdrant": [
+          "v2-travel",
+          "v2-vacation"
+        ]
+      }
+    },
+    {
+      "model_id": "fixture-v2",
+      "dimension": 6,
+      "top_ids": [
+        "v2-vacation",
+        "v2-scope",
+        "v2-travel"
+      ],
+      "old_version_top_id": "v1-vacation",
+      "hr_top_id": "v2-hr",
+      "tie_top_ids": {
+        "pgvector": [
+          "v2-travel",
+          "v2-vacation"
+        ],
+        "qdrant": [
+          "v2-travel",
+          "v2-vacation"
+        ]
+      }
+    }
+  ],
+  "checks": [
+    "n8n_webhook_both_stores",
+    "repeatable_seed",
+    "pgvector_qdrant_same_top_ids_and_hashes",
+    "equal_score_tie_break_both_stores",
+    "old_version",
+    "hr_filtered",
+    "dimension_reject",
+    "tenant_reject",
+    "withdrawal_reject",
+    "mcp_scoped_tool"
+  ]
+}
