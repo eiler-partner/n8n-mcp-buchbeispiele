@@ -1,0 +1,130 @@
+{
+  "id": "ch07Processor",
+  "name": "CH07 - normalize and summarize sub-workflow",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {"inputSource": "passthrough"},
+      "id": "07070707-0011-4000-8000-000000000011",
+      "name": "Sub-workflow Input",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [-880, 0]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "if ($input.all().length !== 1) throw new Error('Expected one envelope');\nconst input = $input.first().json;\nif (typeof input.case !== 'string' || !Array.isArray(input.records) || input.records.length > 1000) throw new Error('Invalid envelope');\nconst rows = input.records.map((row) => {\n  if (typeof row.id !== 'string' || !/^R-\\d{3}$/.test(row.id) || !['north', 'south'].includes(row.team) || typeof row.active !== 'boolean' || typeof row.amount !== 'string' || !/^\\d+\\.\\d{2}$/.test(row.amount)) throw new Error('Invalid record');\n  const [whole, fraction] = row.amount.split('.');\n  const amount_cents = Number(whole) * 100 + Number(fraction);\n  if (!Number.isSafeInteger(amount_cents)) throw new Error('Amount overflow');\n  return { id: row.id, team: row.team, amount_cents, eligible: row.active && amount_cents > 0 };\n});\nreturn [{ json: { case: input.case, raw_count: rows.length, eligible_count: rows.filter(row => row.eligible).length, rows } }];"
+      },
+      "id": "07070707-0012-4000-8000-000000000012",
+      "name": "Validate and Normalize",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-640, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [
+            {"id": "ch07-has-rows", "leftValue": "={{ $json.eligible_count > 0 }}", "rightValue": true, "operator": {"type": "boolean", "operation": "true", "singleValue": true}}
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "07070707-0013-4000-8000-000000000013",
+      "name": "Any Eligible?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [-400, 0]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const x = $input.first().json;\nreturn [{json: {case: x.case, raw_count: x.raw_count, eligible_count: 0, unique_count: 0, north_cents: 0, south_cents: 0, first_id: null, last_id: null}}];"
+      },
+      "id": "07070707-0014-4000-8000-000000000014",
+      "name": "Empty Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-160, 180]
+    },
+    {
+      "parameters": {"fieldToSplitOut": "rows", "include": "allOtherFields", "options": {}},
+      "id": "07070707-0015-4000-8000-000000000015",
+      "name": "Split Records",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [-160, -100]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 2},
+          "conditions": [
+            {"id": "ch07-eligible", "leftValue": "={{ $json.rows.eligible }}", "rightValue": true, "operator": {"type": "boolean", "operation": "true", "singleValue": true}}
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "07070707-0016-4000-8000-000000000016",
+      "name": "Filter Eligible",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [80, -100]
+    },
+    {
+      "parameters": {"compare": "selectedFields", "fieldsToCompare": "rows.id", "options": {}},
+      "id": "07070707-0017-4000-8000-000000000017",
+      "name": "Dedupe This Input",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 1,
+      "position": [320, -100]
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {"sortField": [{"fieldName": "rows.team", "order": "ascending"}, {"fieldName": "rows.id", "order": "ascending"}]},
+        "options": {}
+      },
+      "id": "07070707-0018-4000-8000-000000000018",
+      "name": "Sort Team and ID",
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [560, -100]
+    },
+    {
+      "parameters": {"aggregate": "aggregateAllItemData", "destinationFieldName": "items", "options": {}},
+      "id": "07070707-0019-4000-8000-000000000019",
+      "name": "Aggregate Items",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [800, -100]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const items = $input.first().json.items;\nif (!Array.isArray(items) || items.length === 0) throw new Error('Missing aggregate');\nconst totals = { north: 0, south: 0 };\nfor (const item of items) totals[item.rows.team] += item.rows.amount_cents;\nreturn [{json: {case: items[0].case, raw_count: items[0].raw_count, eligible_count: items[0].eligible_count, unique_count: items.length, north_cents: totals.north, south_cents: totals.south, first_id: items[0].rows.id, last_id: items[items.length - 1].rows.id}}];"
+      },
+      "id": "07070707-0020-4000-8000-000000000020",
+      "name": "Summary Contract",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1040, -100]
+    }
+  ],
+  "connections": {
+    "Sub-workflow Input": {"main": [[{"node": "Validate and Normalize", "type": "main", "index": 0}]]},
+    "Validate and Normalize": {"main": [[{"node": "Any Eligible?", "type": "main", "index": 0}]]},
+    "Any Eligible?": {"main": [[{"node": "Split Records", "type": "main", "index": 0}], [{"node": "Empty Summary", "type": "main", "index": 0}]]},
+    "Split Records": {"main": [[{"node": "Filter Eligible", "type": "main", "index": 0}]]},
+    "Filter Eligible": {"main": [[{"node": "Dedupe This Input", "type": "main", "index": 0}]]},
+    "Dedupe This Input": {"main": [[{"node": "Sort Team and ID", "type": "main", "index": 0}]]},
+    "Sort Team and ID": {"main": [[{"node": "Aggregate Items", "type": "main", "index": 0}]]},
+    "Aggregate Items": {"main": [[{"node": "Summary Contract", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "07070707-1000-4000-8000-000000000011"
+}

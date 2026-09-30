@@ -1,0 +1,10 @@
+{
+  "id":"ch37Architecture","name":"CH37 - architecture decision","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch37-architecture","responseMode":"responseNode","options":{}},"id":"37373737-0001-4000-8000-000000000001","name":"Architecture Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"37373737-ch37-architecture"},
+    {"parameters":{"method":"POST","url":"http://architect:8137/decide","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"37373737-0002-4000-8000-000000000002","name":"Evaluate Fixed Rules","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-80,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"37373737-0003-4000-8000-000000000003","name":"Return Decision","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]}
+  ],
+  "connections":{"Architecture Request":{"main":[[{"node":"Evaluate Fixed Rules","type":"main","index":0}]]},"Evaluate Fixed Rules":{"main":[[{"node":"Return Decision","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"37373737-1000-4000-8000-000000000001"
+}

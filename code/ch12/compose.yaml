@@ -1,0 +1,33 @@
+services:
+  model-lab:
+    build: .
+    environment:
+      MODEL_PROVIDER: ${MODEL_PROVIDER:-ollama}
+      # Eigene Variable: OLLAMA_HOST aus .env gilt fuer Aufrufe auf dem Mac,
+      # im Container wuerde 127.0.0.1 den Container selbst meinen.
+      OLLAMA_HOST: ${CONTAINER_OLLAMA_HOST:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen3:14b}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8020:8020"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8020/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  ollama-cpu:
+    image: ${OLLAMA_IMAGE:-ollama/ollama:0.34.2}
+    profiles: ["cpu-local"]
+    volumes:
+      - ollama-models:/root/.ollama
+    ports:
+      - "127.0.0.1:11435:11434"
+
+volumes:
+  ollama-models:

@@ -1,0 +1,70 @@
+{
+  "name": "Kapitel 12 - Providerneutrale Extraktion",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual-trigger",
+      "name": "Manuell starten",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "document-id",
+              "name": "document_id",
+              "type": "string",
+              "value": "n8n-demo"
+            },
+            {
+              "id": "document-text",
+              "name": "text",
+              "type": "string",
+              "value": "Rechnung RE-2026-1042 der Alpenlicht GmbH vom 12.09.2026. Gesamtbetrag EUR 1.488,00. Zahlbar bis 12.10.2026."
+            }
+          ]
+        }
+      },
+      "id": "fixture",
+      "name": "Testrechnung",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [240, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8020/extract",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ document_id: $json.document_id, text: $json.text }) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "extract",
+      "name": "Extraktion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [500, 0]
+    }
+  ],
+  "connections": {
+    "Manuell starten": {
+      "main": [[{"node": "Testrechnung", "type": "main", "index": 0}]]
+    },
+    "Testrechnung": {
+      "main": [[{"node": "Extraktion", "type": "main", "index": 0}]]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "versionId": "20c0ffee-2026-4020-8020-abcdefabcdef"
+}

@@ -1,0 +1,98 @@
+{
+  "name": "Kapitel 21 - Kontrollierte Read-only-Recherche",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-420, 0],
+      "id": "ch21-manual",
+      "name": "Manuell starten"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ch21-question",
+              "name": "question",
+              "type": "string",
+              "value": "Welche Kontrollen verlangt der MCP-Toolvertrag?"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [-200, 0],
+      "id": "ch21-question-node",
+      "name": "Rechercheauftrag"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8030/research",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({ question: $json.question, limits: { max_steps: 4, max_calls_per_tool: 3, max_elapsed_seconds: 45, max_result_chars: 8000 } }) }}",
+        "options": {"timeout": 60000}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [20, 0],
+      "id": "ch21-research-call",
+      "name": "Kontrollierter Agent"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict"},
+          "conditions": [
+            {
+              "id": "ch21-completed",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "completed",
+              "operator": {"type": "string", "operation": "equals"}
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [240, 0],
+      "id": "ch21-status-gate",
+      "name": "Nur validiertes Ergebnis"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "ch21-answer", "name": "answer", "type": "string", "value": "={{ $json.answer }}"},
+            {"id": "ch21-evidence", "name": "document_ids", "type": "array", "value": "={{ $json.document_ids }}"},
+            {"id": "ch21-run", "name": "run_id", "type": "string", "value": "={{ $json.run_id }}"}
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [480, -80],
+      "id": "ch21-release-candidate",
+      "name": "Freigabekandidat"
+    }
+  ],
+  "connections": {
+    "Manuell starten": {"main": [[{"node": "Rechercheauftrag", "type": "main", "index": 0}]]},
+    "Rechercheauftrag": {"main": [[{"node": "Kontrollierter Agent", "type": "main", "index": 0}]]},
+    "Kontrollierter Agent": {"main": [[{"node": "Nur validiertes Ergebnis", "type": "main", "index": 0}]]},
+    "Nur validiertes Ergebnis": {"main": [[{"node": "Freigabekandidat", "type": "main", "index": 0}], []]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "active": false,
+  "tags": []
+}

@@ -1,0 +1,28 @@
+[project]
+name = "advanced-policy-mcp"
+version = "0.1.0"
+description = "Begleitprojekt zu Kapitel 18: fortgeschrittene MCP-Servermuster"
+requires-python = ">=3.12"
+dependencies = [
+  "mcp[cli]>=2,<3",
+  "pydantic>=2.7,<3",
+]
+
+[project.scripts]
+advanced-policy-mcp = "advanced_policy_mcp.server:main"
+advanced-policy-mcp-http = "advanced_policy_mcp.server:http_main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<9",
+  "pytest-anyio>=0.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+anyio_mode = "auto"

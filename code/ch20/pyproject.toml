@@ -1,0 +1,31 @@
+[project]
+name = "mcp-auth-lab"
+version = "0.1.0"
+description = "Begleitprojekt zu Kapitel 20: OAuth, Consent und Mandantentrennung"
+requires-python = ">=3.12"
+dependencies = [
+  "mcp[cli]==2.2.0",
+  "pyjwt[crypto]>=2.15,<3",
+]
+
+[project.scripts]
+mcp-auth-server = "mcp_auth_lab.server:main"
+mcp-auth-token = "mcp_auth_lab.token_cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<9",
+  "pytest-anyio>=0.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+anyio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_auth_lab"]

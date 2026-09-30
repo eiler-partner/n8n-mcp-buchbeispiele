@@ -1,0 +1,57 @@
+{
+  "id": "ch10Error",
+  "name": "CH10 - central error record",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "10101010-0091-4000-8000-000000000091",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://service:8079/alert",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify({workflow_id:String($json.workflow.id || 'unknown'),execution_id:String($json.execution?.id || $json.trigger?.error?.timestamp || 'unknown'),message:String($json.execution?.error?.message || $json.trigger?.error?.message || 'failure').slice(0,200)}) }}",
+        "options": {
+          "timeout": 1500
+        }
+      },
+      "id": "10101010-0092-4000-8000-000000000092",
+      "name": "Record Alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -80,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Record Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "10101010-1000-4000-8000-000000000091"
+}

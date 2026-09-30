@@ -1,0 +1,24 @@
+{
+  "id": "ch25Selection",
+  "name": "CH25 - model selection contract",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {"httpMethod":"POST","path":"ch25-select","responseMode":"responseNode","options":{}},
+      "id":"25252525-0001-4000-8000-000000000001","name":"Selection Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-400,0],"webhookId":"25252525-ch25-select"
+    },
+    {
+      "parameters": {"method":"POST","url":"http://selector:8125/choose","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},
+      "id":"25252525-0002-4000-8000-000000000002","name":"Apply Selection Contract","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-100,0]
+    },
+    {
+      "parameters": {"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},
+      "id":"25252525-0003-4000-8000-000000000003","name":"Return Decision","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]
+    }
+  ],
+  "connections": {
+    "Selection Request":{"main":[[{"node":"Apply Selection Contract","type":"main","index":0}]]},
+    "Apply Selection Contract":{"main":[[{"node":"Return Decision","type":"main","index":0}]]}
+  },
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"25252525-1000-4000-8000-000000000001"
+}

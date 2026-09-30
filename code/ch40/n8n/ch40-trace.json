@@ -1,0 +1,11 @@
+{
+  "id": "ch40Trace", "name": "CH40 - correlated synthetic request", "active": true,
+  "nodes": [
+    {"parameters":{"httpMethod":"POST","path":"ch40-trace","responseMode":"responseNode","options":{}},"id":"40404040-0001-4000-8000-000000000001","name":"Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"40404040-ch40-trace"},
+    {"parameters":{"method":"POST","url":"http://telemetry:8140/trace/start","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"40404040-0002-4000-8000-000000000002","name":"Start Correlation","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-100,0]},
+    {"parameters":{"method":"POST","url":"http://telemetry:8140/mcp/execute","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json) }}","options":{}},"id":"40404040-0003-4000-8000-000000000003","name":"Call MCP Bridge","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[160,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"40404040-0004-4000-8000-000000000004","name":"Return Result","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[420,0]}
+  ],
+  "connections":{"Request":{"main":[[{"node":"Start Correlation","type":"main","index":0}]]},"Start Correlation":{"main":[[{"node":"Call MCP Bridge","type":"main","index":0}]]},"Call MCP Bridge":{"main":[[{"node":"Return Result","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"40404040-1000-4000-8000-000000000001"
+}

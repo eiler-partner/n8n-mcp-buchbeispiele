@@ -1,0 +1,1 @@
+Du liest eine Terminanfrage. Gib ein JSON-Objekt mit Absicht, Datum und Beleg zurück.

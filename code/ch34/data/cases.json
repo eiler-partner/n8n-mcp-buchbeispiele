@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {"id":"vacation-frist","question":"Wie viele Arbeitstage vorher muss Urlaub beantragt werden?","lexical_query":"Urlaubsanträge Arbeitstage","expanded_query":"Urlaubsanträge OR Urlaubsantrag Arbeitstage","vector":[1.0,0.1,0.1,0.1],"as_of":"2026-09-29","role":"employee","tenant":"buchlabor","relevant":["v2-vacation"]},
+    {"id":"vacation-portal","question":"Wo reiche ich den Urlaubsantrag ein?","lexical_query":"Urlaubsantrag Portal","expanded_query":"Urlaubsantrag OR Urlaubsanträge Portal","vector":[0.93,0.1,0.1,0.1],"as_of":"2026-09-29","role":"employee","tenant":"buchlabor","relevant":["v2-vacation","v2-vacation-portal"]},
+    {"id":"travel-proof","question":"Welcher Nachweis gehört zur Auslandsreise?","lexical_query":"Krankenversicherungsnachweis","expanded_query":"Krankenversicherungsnachweis OR Auslandsreise","vector":[0.1,1.0,0.1,0.1],"as_of":"2026-09-29","role":"employee","tenant":"buchlabor","relevant":["v2-travel-proof"]},
+    {"id":"rkk-frist","question":"Welche Frist gilt für RKK-Belege im Ausland?","lexical_query":"RKK Ausland","expanded_query":"Reisekostenbelege OR Reise-ID Ausland","vector":[0.1,1.0,0.1,0.1],"as_of":"2026-09-29","role":"employee","tenant":"buchlabor","relevant":["v2-travel"]},
+    {"id":"historical-vacation","question":"Welche Urlaubsfrist galt im August?","lexical_query":"Urlaubsanträge Arbeitstage","expanded_query":"Urlaubsantrag OR Urlaubsanträge Arbeitstage","vector":[1.0,0.1,0.1,0.1],"as_of":"2026-08-31","role":"employee","tenant":"buchlabor","relevant":["v1-vacation"]},
+    {"id":"hr-code-denied","question":"Was bedeutet HR-FREIGABE-42?","lexical_query":"HR-FREIGABE-42","expanded_query":"HR-FREIGABE-42","vector":[0.1,0.1,1.0,0.1],"as_of":"2026-09-29","role":"employee","tenant":"buchlabor","relevant":[]},
+    {"id":"hr-code-authorized","question":"Was bedeutet HR-FREIGABE-42?","lexical_query":"HR-FREIGABE-42","expanded_query":"HR-FREIGABE-42","vector":[0.1,0.1,1.0,0.1],"as_of":"2026-09-29","role":"hr","tenant":"buchlabor","relevant":["v2-hr"]}
+  ]
+}

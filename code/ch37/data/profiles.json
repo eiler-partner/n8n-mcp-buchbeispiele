@@ -1,0 +1,7 @@
+{
+  "profiles": [
+    {"id": "kleines_team", "label": "Kleines Team mit freigegebenen Testdaten", "data_policy": "external_allowed", "ops_team": false, "private_retrieval": false, "external_model_approved": true, "requires_multi_main": false, "community_only": false, "third_party_hosting": false, "weights": {"operability": 5, "data_control": 1, "model_access": 2, "portability": 1, "cost_predictability": 2}},
+    {"id": "interne_akte", "label": "Interne Akte ohne externen Datenabfluss", "data_policy": "local_only", "ops_team": true, "private_retrieval": true, "external_model_approved": false, "requires_multi_main": false, "community_only": true, "third_party_hosting": false, "weights": {"operability": 1, "data_control": 5, "model_access": 1, "portability": 4, "cost_predictability": 2}},
+    {"id": "geteilte_ki", "label": "Private Suche, freigegebener externer Modellpfad", "data_policy": "split_allowed", "ops_team": true, "private_retrieval": true, "external_model_approved": true, "requires_multi_main": false, "community_only": false, "third_party_hosting": false, "weights": {"operability": 2, "data_control": 4, "model_access": 5, "portability": 2, "cost_predictability": 1}}
+  ]
+}

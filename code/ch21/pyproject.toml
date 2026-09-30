@@ -1,0 +1,38 @@
+[project]
+name = "controlled-research-agent"
+version = "0.1.0"
+description = "Kontrollierter Read-only-Recherche-Agent zu Kapitel 21"
+requires-python = ">=3.12"
+dependencies = [
+  "anthropic>=1,<2",
+  "fastapi>=0.118,<1",
+  "ollama>=0.6,<1",
+  "openai>=2,<3",
+  "pydantic>=2.13,<3",
+  "pydantic-settings>=2.11,<3",
+  "uvicorn>=0.37,<1",
+]
+
+[project.scripts]
+research-agent = "controlled_research_agent.cli:main"
+research-agent-api = "controlled_research_agent.api:main"
+
+[dependency-groups]
+dev = [
+  "httpx>=0.28,<1",
+  "pytest>=8,<9",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+markers = [
+  "live: ruft einen echten Modellprovider auf und ist standardmaessig deaktiviert",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/controlled_research_agent"]

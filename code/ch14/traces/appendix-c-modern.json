@@ -1,0 +1,231 @@
+{
+  "era": "modern",
+  "protocol_version": "2026-07-28",
+  "frames": [
+    {
+      "direction": "client->server",
+      "headers": {
+        "MCP-Protocol-Version": "2026-07-28",
+        "Mcp-Method": "server/discover"
+      },
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "discover-1",
+        "method": "server/discover",
+        "params": {
+          "_meta": {
+            "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+            "io.modelcontextprotocol/clientInfo": {
+              "name": "Anhang-C-Client",
+              "version": "1.0.0"
+            },
+            "io.modelcontextprotocol/clientCapabilities": {}
+          }
+        }
+      }
+    },
+    {
+      "direction": "server->client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "discover-1",
+        "result": {
+          "resultType": "complete",
+          "supportedVersions": [
+            "2026-07-28"
+          ],
+          "capabilities": {
+            "tools": {
+              "listChanged": true
+            }
+          },
+          "ttlMs": 60000,
+          "cacheScope": "public",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "Anhang-C-Server",
+              "version": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "client->server",
+      "headers": {
+        "MCP-Protocol-Version": "2026-07-28",
+        "Mcp-Method": "tools/call",
+        "Mcp-Name": "publish_policy"
+      },
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-1",
+        "method": "tools/call",
+        "params": {
+          "name": "publish_policy",
+          "arguments": {
+            "policy_id": "POL-101"
+          },
+          "_meta": {
+            "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+            "io.modelcontextprotocol/clientInfo": {
+              "name": "Anhang-C-Client",
+              "version": "1.0.0"
+            },
+            "io.modelcontextprotocol/clientCapabilities": {
+              "elicitation": {
+                "form": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "server->client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-1",
+        "result": {
+          "resultType": "input_required",
+          "inputRequests": {
+            "confirm": {
+              "method": "elicitation/create",
+              "params": {
+                "mode": "form",
+                "message": "POL-101 wirklich veröffentlichen?",
+                "requestedSchema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ]
+                }
+              }
+            }
+          },
+          "requestState": "eyJzdGVwIjoiY29uZmlybSJ9.c2lnbmF0dXI",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "Anhang-C-Server",
+              "version": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "client->server",
+      "headers": {
+        "MCP-Protocol-Version": "2026-07-28",
+        "Mcp-Method": "tools/call",
+        "Mcp-Name": "publish_policy"
+      },
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-2",
+        "method": "tools/call",
+        "params": {
+          "name": "publish_policy",
+          "arguments": {
+            "policy_id": "POL-101"
+          },
+          "inputResponses": {
+            "confirm": {
+              "action": "accept",
+              "content": {
+                "ok": true
+              }
+            }
+          },
+          "requestState": "eyJzdGVwIjoiY29uZmlybSJ9.c2lnbmF0dXI",
+          "_meta": {
+            "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+            "io.modelcontextprotocol/clientInfo": {
+              "name": "Anhang-C-Client",
+              "version": "1.0.0"
+            },
+            "io.modelcontextprotocol/clientCapabilities": {
+              "elicitation": {
+                "form": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "server->client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-2",
+        "result": {
+          "resultType": "complete",
+          "content": [
+            {
+              "type": "text",
+              "text": "POL-101 ist veröffentlicht."
+            }
+          ],
+          "structuredContent": {
+            "policy_id": "POL-101",
+            "status": "published"
+          },
+          "isError": false,
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "Anhang-C-Server",
+              "version": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "client->server",
+      "headers": {
+        "MCP-Protocol-Version": "2026-07-28",
+        "Mcp-Method": "tools/call",
+        "Mcp-Name": "delete_policy"
+      },
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-3",
+        "method": "tools/call",
+        "params": {
+          "name": "delete_policy",
+          "arguments": {
+            "policy_id": "POL-101"
+          },
+          "_meta": {
+            "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+            "io.modelcontextprotocol/clientInfo": {
+              "name": "Anhang-C-Client",
+              "version": "1.0.0"
+            },
+            "io.modelcontextprotocol/clientCapabilities": {
+              "elicitation": {
+                "form": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "server->client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-3",
+        "error": {
+          "code": -32602,
+          "message": "Unknown tool: delete_policy"
+        }
+      }
+    }
+  ]
+}

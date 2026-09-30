@@ -1,0 +1,19 @@
+{
+  "id": "ch05FileAnalysis",
+  "name": "CH05 - file analysis: manual and webhook",
+  "active": false,
+  "nodes": [
+    {"parameters": {}, "id": "05050505-0001-4000-8000-000000000001", "name": "Manual Start", "type": "n8n-nodes-base.manualTrigger", "typeVersion": 1, "position": [-480, -160]},
+    {"parameters": {"url": "http://analyzer:8055/fixture", "options": {}}, "id": "05050505-0002-4000-8000-000000000002", "name": "Load Synthetic Fixture", "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.4, "position": [-220, -160]},
+    {"parameters": {"httpMethod": "POST", "path": "ch05-file-analysis", "responseMode": "lastNode", "options": {"responseData": "firstEntryJson"}}, "id": "05050505-0003-4000-8000-000000000003", "name": "File Intake", "type": "n8n-nodes-base.webhook", "typeVersion": 2.1, "position": [-220, 80], "webhookId": "05050505-ch05-file-analysis"},
+    {"parameters": {"method": "POST", "url": "http://analyzer:8055/analyze", "sendBody": true, "contentType": "raw", "rawContentType": "application/json", "body": "={{ JSON.stringify($json.body || $json) }}", "options": {}}, "id": "05050505-0004-4000-8000-000000000004", "name": "Analyze Document", "type": "n8n-nodes-base.httpRequest", "typeVersion": 4.4, "position": [60, -40]}
+  ],
+  "connections": {
+    "Manual Start": {"main": [[{"node": "Load Synthetic Fixture", "type": "main", "index": 0}]]},
+    "Load Synthetic Fixture": {"main": [[{"node": "Analyze Document", "type": "main", "index": 0}]]},
+    "File Intake": {"main": [[{"node": "Analyze Document", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "05050505-1000-4000-8000-000000000001"
+}

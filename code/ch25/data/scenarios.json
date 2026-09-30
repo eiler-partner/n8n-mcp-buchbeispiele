@@ -1,0 +1,17 @@
+{
+  "lokal-qualitaet":{
+    "task":"klassifikation","required_capabilities":["text"],
+    "allowed_regions":["local"],"max_cost_units":5,"max_latency_ms":500,
+    "min_accuracy":0.7,"weights":{"quality":0.8,"latency":0.1,"cost":0.1}
+  },
+  "lokal-kosten":{
+    "task":"klassifikation","required_capabilities":["text"],
+    "allowed_regions":["local"],"max_cost_units":5,"max_latency_ms":500,
+    "min_accuracy":0.7,"weights":{"quality":0.35,"latency":0.35,"cost":0.3}
+  },
+  "tool-lokal":{
+    "task":"tool","required_capabilities":["text","tool"],
+    "allowed_regions":["local"],"max_cost_units":5,"max_latency_ms":500,
+    "min_accuracy":0.7,"weights":{"quality":0.8,"latency":0.1,"cost":0.1}
+  }
+}

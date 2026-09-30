@@ -1,0 +1,9 @@
+services:
+  transport-lab:
+    build: .
+    network_mode: none
+    read_only: true
+    tmpfs:
+      - /tmp
+    environment:
+      UV_CACHE_DIR: /tmp/uv-cache

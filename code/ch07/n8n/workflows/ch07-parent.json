@@ -1,0 +1,52 @@
+{
+  "id": "ch07Parent",
+  "name": "CH07 - empty single large and filtered cases",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "07070707-0031-4000-8000-000000000031",
+      "name": "Manual Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-600, 0]
+    },
+    {
+      "parameters": {"mode": "runOnceForAllItems", "jsCode": "return ['empty', 'single', 'large', 'filtered'].map(caseName => ({json: {case: caseName}}));"},
+      "id": "07070707-0032-4000-8000-000000000032",
+      "name": "Test Cases",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-360, 0]
+    },
+    {
+      "parameters": {"url": "=http://api:8077/cases/{{ $json.case }}", "options": {}},
+      "id": "07070707-0033-4000-8000-000000000033",
+      "name": "Fetch Synthetic Records",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-120, 0]
+    },
+    {
+      "parameters": {
+        "source": "database",
+        "workflowId": {"__rl": true, "value": "ch07Processor", "mode": "id"},
+        "mode": "each",
+        "options": {"waitForSubWorkflow": true}
+      },
+      "id": "07070707-0034-4000-8000-000000000034",
+      "name": "Process One Envelope",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [120, 0]
+    }
+  ],
+  "connections": {
+    "Manual Start": {"main": [[{"node": "Test Cases", "type": "main", "index": 0}]]},
+    "Test Cases": {"main": [[{"node": "Fetch Synthetic Records", "type": "main", "index": 0}]]},
+    "Fetch Synthetic Records": {"main": [[{"node": "Process One Envelope", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "07070707-1000-4000-8000-000000000031"
+}

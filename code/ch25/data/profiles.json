@@ -1,0 +1,28 @@
+[
+  {
+    "id":"sparsam-lokal","capabilities":["text"],"region":"local",
+    "synthetic_cost_units":1,"synthetic_latency_ms":80,
+    "outputs":{
+      "c01":"rechnung","c02":"hinweis","c03":"rechnung","c04":"hinweis",
+      "c05":"rechnung","c06":"hinweis","e01":"rechnung","e02":"rechnung","e03":"rechnung"
+    }
+  },
+  {
+    "id":"praezise-lokal","capabilities":["text","tool"],"region":"local",
+    "synthetic_cost_units":3,"synthetic_latency_ms":350,
+    "outputs":{
+      "c01":"rechnung","c02":"hinweis","c03":"rechnung","c04":"hinweis",
+      "c05":"rechnung","c06":"hinweis","t01":"lesen","t02":"schreiben",
+      "t03":"kein_tool","e01":"hinweis","e02":"rechnung","e03":"hinweis"
+    }
+  },
+  {
+    "id":"extern-variabel","capabilities":["text","tool"],"region":"external",
+    "synthetic_cost_units":2,"synthetic_latency_ms":150,
+    "outputs":{
+      "c01":"rechnung","c02":"hinweis","c03":"rechnung","c04":"hinweis",
+      "c05":"hinweis","c06":"hinweis","t01":"lesen","t02":"lesen",
+      "t03":"kein_tool","e01":"hinweis","e02":"rechnung","e03":"rechnung"
+    }
+  }
+]

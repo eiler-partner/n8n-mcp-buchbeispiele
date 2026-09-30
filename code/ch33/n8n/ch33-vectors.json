@@ -1,0 +1,10 @@
+{
+  "id":"ch33Vectors","name":"CH33 - compare versioned vector stores","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch33-vectors","responseMode":"responseNode","options":{}},"id":"33333333-0001-4000-8000-000000000001","name":"Vector Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"33333333-ch33-vectors"},
+    {"parameters":{"method":"POST","url":"http://vectors:8133/operate","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"33333333-0002-4000-8000-000000000002","name":"Compare Stores","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-80,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"33333333-0003-4000-8000-000000000003","name":"Return Scoped Hits","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]}
+  ],
+  "connections":{"Vector Request":{"main":[[{"node":"Compare Stores","type":"main","index":0}]]},"Compare Stores":{"main":[[{"node":"Return Scoped Hits","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"33333333-1000-4000-8000-000000000001"
+}

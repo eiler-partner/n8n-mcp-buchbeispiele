@@ -1,0 +1,43 @@
+{
+  "source_id": "synthetic-policy",
+  "document_id": "RICHTLINIE-32",
+  "version_id": "2026-09",
+  "valid_from": "2026-09-01",
+  "previous_version": "2026-01",
+  "sections": [
+    {
+      "section_id": "scope",
+      "heading": "§ 1 Geltungsbereich",
+      "audience": "all",
+      "blocks": [
+        {"kind": "paragraph", "text": "Diese synthetische Richtlinie gilt nur im Buchlabor. Sie beschreibt keine reale Arbeitgeberregel und keine gesetzliche Frist."}
+      ]
+    },
+    {
+      "section_id": "vacation",
+      "heading": "§ 2 Urlaub",
+      "audience": "all",
+      "blocks": [
+        {"kind": "paragraph", "text": "Urlaubsanträge müssen mindestens 15 Arbeitstage vor Beginn im Portal eingehen. Eine Bestätigung erfolgt erst nach Prüfung durch die zuständige Führungskraft. Bereits gebuchte Reisen begründen keinen Anspruch auf Genehmigung."},
+        {"kind": "paragraph", "text": "Für Rückfragen bleibt die Dokumentkennung RICHTLINIE-32 maßgeblich."}
+      ]
+    },
+    {
+      "section_id": "travel",
+      "heading": "§ 3 Reisekosten",
+      "audience": "all",
+      "blocks": [
+        {"kind": "paragraph", "text": "Reisekostenbelege werden mit der Reise-ID eingereicht. Der Krankenversicherungsnachweis bleibt als zusammenhängendes Wort im Abschnitt erhalten."},
+        {"kind": "table", "rows": ["Inland | 30 Kalendertage", "Ausland | 30 Kalendertage"]}
+      ]
+    },
+    {
+      "section_id": "hr",
+      "heading": "§ 4 HR-interne Kontrollnotiz",
+      "audience": "hr",
+      "blocks": [
+        {"kind": "paragraph", "text": "HR-FREIGABE-42 ist eine ausschließlich synthetische interne Kennung. Dieser Absatz darf Beschäftigten nicht im Kontext erscheinen."}
+      ]
+    }
+  ]
+}

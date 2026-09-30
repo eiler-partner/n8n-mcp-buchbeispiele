@@ -1,0 +1,9 @@
+{
+  "id":"ch42Proof", "name":"CH42 - restore proof", "active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch42-proof","responseMode":"responseNode","options":{}},"id":"42424242-0001-4000-8000-000000000001","name":"Probe","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-200,0],"webhookId":"42424242-ch42-proof"},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify({ lab: 'ch42', version: 'v1', challenge: $json.body.challenge }) }}","options":{}},"id":"42424242-0002-4000-8000-000000000002","name":"Answer","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[100,0]}
+  ],
+  "connections":{"Probe":{"main":[[{"node":"Answer","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"42424242-1000-4000-8000-000000000001"
+}

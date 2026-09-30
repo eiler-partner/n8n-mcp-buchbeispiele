@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ch26_appointment_extraction_v1",
+  "type": "object",
+  "properties": {
+    "intent": {"type": "string", "enum": ["appointment", "cancellation", "information"]},
+    "date": {"type": ["string", "null"], "format": "date"},
+    "evidence": {"type": "string", "minLength": 1, "maxLength": 120},
+    "needs_review": {"type": "boolean"}
+  },
+  "required": ["intent", "date", "evidence", "needs_review"],
+  "additionalProperties": false
+}

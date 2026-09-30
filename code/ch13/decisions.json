@@ -1,0 +1,47 @@
+{
+  "scenario": "Synthetic document API; architectural judgments, not production policy",
+  "cards": [
+    {
+      "operation": "get_document",
+      "endpoint": "GET /documents/{document_id}",
+      "callers": "One deterministic n8n workflow knows the document ID",
+      "independent_hosts": 1,
+      "dynamic_discovery_needed": false,
+      "data_classification": "internal",
+      "model_boundary": "No model receives the document in this fixed path",
+      "side_effect": "none",
+      "consent_and_authorization": "Service identity and document ACL would be required in production",
+      "trust_boundaries": ["n8n workflow -> internal document API"],
+      "decision": "keep_direct",
+      "rationale": "A stable one-caller lookup already has a precise HTTP contract; MCP adds no needed discovery here."
+    },
+    {
+      "operation": "search_documents",
+      "endpoint": "GET /search?q={query}",
+      "callers": "Two independent AI hosts need a bounded policy search",
+      "independent_hosts": 2,
+      "dynamic_discovery_needed": true,
+      "data_classification": "internal",
+      "model_boundary": "Only authorized, minimized snippets may enter a model context",
+      "side_effect": "none",
+      "consent_and_authorization": "Server must filter by user and tenant before returning snippets",
+      "trust_boundaries": ["host -> MCP candidate", "MCP candidate -> internal search API", "authorized snippet -> model"],
+      "decision": "mcp_candidate",
+      "rationale": "A narrow discoverable search contract could be reused by separate hosts, if filtering and data minimization are enforced."
+    },
+    {
+      "operation": "approve_document",
+      "endpoint": "POST /approvals",
+      "callers": "A human-led review workflow",
+      "independent_hosts": 1,
+      "dynamic_discovery_needed": false,
+      "data_classification": "internal",
+      "model_boundary": "No autonomous model call is permitted for this write path",
+      "side_effect": "records a simulated approval",
+      "consent_and_authorization": "Lab has no real identity, object authorization, or approval evidence",
+      "trust_boundaries": ["reviewer -> approval API", "approval API -> in-memory lab state"],
+      "decision": "withhold_from_model",
+      "rationale": "A write-capable tool would be unsafe without verified identity, object permission, explicit consent, and audit evidence."
+    }
+  ]
+}

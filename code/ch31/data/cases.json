@@ -1,0 +1,19 @@
+{
+  "document_id": "RICHTLINIE-31",
+  "source_id": "synthetic-handbook",
+  "version": "2026-09",
+  "lines": [
+    "Betriebshandbuch - SYNTHETISCH",
+    "Dokument-ID: RICHTLINIE-31",
+    "Version: 2026-09",
+    "Urlaubsantrag: 15 Arbeitstage vor Beginn.",
+    "Reisekosten: Belege binnen 30 Kalendertagen.",
+    "Kontakt: Team Prozesse."
+  ],
+  "required_phrases": ["RICHTLINIE-31", "15 Arbeitstage", "30 Kalendertagen"],
+  "cases": {
+    "digital": {"file": "digital.pdf", "expected_method": "text"},
+    "scan_good": {"file": "scan_good.pdf", "expected_method": "ocr"},
+    "scan_cropped": {"file": "scan_cropped.pdf", "expected_method": "ocr"}
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-29",
+  "source": "Prüflauf T2 (Claude/pruefen/pruefen.sh) auf dem Referenz-Mac; Rohdaten in reports/*.json",
+  "host": {
+    "docker_client": "29.8.1",
+    "docker_server": "29.8.1",
+    "architecture": "arm64"
+  },
+  "n8n": {
+    "version": "2.40.7",
+    "image": "n8nio/n8n:2.40.7",
+    "digest": "sha256:ffeb52485f78b1b06c9a832205853cf75da72a07a514c9a27724df85979d6c34",
+    "mcp_server_trigger_version": "2.1",
+    "tool_workflow_version": "2.1"
+  },
+  "python_reference_server": {
+    "sdk": "mcp==2.2.0",
+    "transports": [
+      "streamable-http",
+      "sse"
+    ],
+    "era": "dual",
+    "handshake_protocol_version": "2025-11-25",
+    "modern_probe": {
+      "era": "modern",
+      "http_status": 200,
+      "supported_versions": [
+        "2026-07-28"
+      ]
+    },
+    "authentication": "bearer",
+    "selected_tools": [
+      "catalog_lookup"
+    ],
+    "call_query": "n8n",
+    "call_result_ids": [
+      "N8N-022"
+    ],
+    "call_succeeded": true
+  },
+  "n8n_server_trigger": {
+    "transport": "streamable-http",
+    "endpoint": "http://127.0.0.1:5678/mcp/ch22-catalog",
+    "era": "legacy",
+    "observed_protocol_version": "2025-11-25",
+    "modern_probe": {
+      "era": "legacy",
+      "error_code": -32000,
+      "http_status": 400
+    },
+    "server_name": "MCP_Server_Trigger",
+    "authentication": "bearer",
+    "missing_token_status": 403,
+    "tools": [
+      "catalog_lookup"
+    ],
+    "required_input_fields": [
+      "query"
+    ],
+    "call_query": "n8n",
+    "call_result_id": "N8N-022",
+    "call_succeeded": true
+  },
+  "scope": {
+    "contract_tests": 19,
+    "queue_failover_tested": false,
+    "instance_level_mcp_tested": false,
+    "note": "Queue failover and instance-level MCP remain explicit optional integration steps."
+  }
+}

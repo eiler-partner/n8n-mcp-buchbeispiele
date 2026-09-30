@@ -1,0 +1,14 @@
+[
+  {"id":"c01","task":"klassifikation","text":"Rechnung R-1 über 42 Euro.","expected":"rechnung"},
+  {"id":"c02","task":"klassifikation","text":"Hinweis: Das Büro bleibt morgen geschlossen.","expected":"hinweis"},
+  {"id":"c03","task":"klassifikation","text":"Bitte begleichen Sie Rechnung R-2 bis Freitag.","expected":"rechnung"},
+  {"id":"c04","task":"klassifikation","text":"Wartungsankündigung für den Aufzug.","expected":"hinweis"},
+  {"id":"c05","task":"klassifikation","text":"Gesamtbetrag 19 Euro, Belegnummer R-3.","expected":"rechnung"},
+  {"id":"c06","task":"klassifikation","text":"Die neue Richtlinie gilt ab Oktober.","expected":"hinweis"},
+  {"id":"t01","task":"tool","text":"Lies Dokument D-1, ohne etwas zu ändern.","expected":"lesen"},
+  {"id":"t02","task":"tool","text":"Veröffentliche den bereits freigegebenen Entwurf D-2.","expected":"schreiben"},
+  {"id":"t03","task":"tool","text":"Beantworte nur eine Verständnisfrage ohne Dokumentzugriff.","expected":"kein_tool"},
+  {"id":"e01","task":"klassifikation","text":"Rechnung? Nein: Dies ist nur ein Hinweis zum Rechnungsprozess.","expected":"hinweis"},
+  {"id":"e02","task":"klassifikation","text":"RECHNUNG R-4: Gesamtbetrag 0 Euro.","expected":"rechnung"},
+  {"id":"e03","task":"klassifikation","text":"Hinweis an die Buchhaltung: Rechnung R-5 liegt als Anhang bei.","expected":"hinweis"}
+]

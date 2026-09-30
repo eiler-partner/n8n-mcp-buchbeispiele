@@ -1,0 +1,33 @@
+[project]
+name = "mcp-contract-lab"
+version = "0.1.0"
+description = "Begleitprojekt zu Kapitel 19: MCP-Clients, Inspector und Contract Tests"
+requires-python = ">=3.12"
+dependencies = [
+  "mcp[cli]==2.2.0",
+  "pydantic>=2.13,<3",
+]
+
+[project.scripts]
+mcp-contract-client = "mcp_contract_lab.cli:main"
+mcp-contract-snapshot = "mcp_contract_lab.snapshot_cli:main"
+mcp-contract-server = "mcp_contract_lab.servers:stdio_main"
+mcp-contract-server-http = "mcp_contract_lab.servers:http_main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<9",
+  "pytest-anyio>=0.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+anyio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_contract_lab"]

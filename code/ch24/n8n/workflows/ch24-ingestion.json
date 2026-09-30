@@ -1,0 +1,63 @@
+{
+  "id": "ch24Ingestion",
+  "name": "CH24 - document ingestion",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ch24-document-intake",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "24242424-0001-4000-8000-000000000001",
+      "name": "Document Intake",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-460, 0],
+      "webhookId": "24242424-ch24-document-intake"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://api:8024/documents",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "X-Tenant-ID", "value": "tenant-alpen"},
+            {"name": "X-Correlation-ID", "value": "={{ $json.headers['x-correlation-id'] || 'n8n-' + $execution.id }}"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify($json.body) }}",
+        "options": {}
+      },
+      "id": "24242424-0002-4000-8000-000000000002",
+      "name": "Validate and Normalize",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-180, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "24242424-0003-4000-8000-000000000003",
+      "name": "Return Contract",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [100, 0]
+    }
+  ],
+  "connections": {
+    "Document Intake": {"main": [[{"node": "Validate and Normalize", "type": "main", "index": 0}]]},
+    "Validate and Normalize": {"main": [[{"node": "Return Contract", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "24242424-1000-4000-8000-000000000001"
+}

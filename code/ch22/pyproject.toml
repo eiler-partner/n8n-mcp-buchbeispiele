@@ -1,0 +1,34 @@
+[project]
+name = "n8n-mcp-integration-lab"
+version = "0.1.0"
+description = "Begleitprojekt zu Kapitel 22: n8n als MCP-Client und MCP-Server"
+requires-python = ">=3.12"
+dependencies = [
+  "httpx>=0.28,<1",
+  "mcp[cli]==2.2.0",
+  "pydantic>=2.13,<3",
+  "uvicorn>=0.40,<1",
+]
+
+[project.scripts]
+ch22-mcp-http = "n8n_mcp_lab.server:http_main"
+ch22-mcp-sse = "n8n_mcp_lab.server:sse_main"
+ch22-probe = "n8n_mcp_lab.probe:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<9",
+  "pytest-anyio>=0.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+anyio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/n8n_mcp_lab"]

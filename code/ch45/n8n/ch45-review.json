@@ -1,0 +1,10 @@
+{
+  "id":"ch45Review","name":"CH45 - human-gated document review","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch45-review","responseMode":"responseNode","options":{}},"id":"45454545-0001-4000-8000-000000000001","name":"Review Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"45454545-ch45-review"},
+    {"parameters":{"method":"POST","url":"http://reviewer:8146/dispatch","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"45454545-0002-4000-8000-000000000002","name":"Run Versioned Review Service","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-80,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"45454545-0003-4000-8000-000000000003","name":"Return Decision Envelope","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]}
+  ],
+  "connections":{"Review Request":{"main":[[{"node":"Run Versioned Review Service","type":"main","index":0}]]},"Run Versioned Review Service":{"main":[[{"node":"Return Decision Envelope","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"45454545-1000-4000-8000-000000000001"
+}

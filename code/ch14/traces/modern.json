@@ -1,0 +1,107 @@
+{
+  "era": "modern",
+  "protocol_version": "2026-07-28",
+  "frames": [
+    {
+      "direction": "client->server",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "discover-1",
+        "method": "server/discover",
+        "params": {
+          "_meta": {
+            "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+            "io.modelcontextprotocol/clientInfo": {
+              "name": "Kapitel-14-Rohclient",
+              "version": "1.0.0"
+            },
+            "io.modelcontextprotocol/clientCapabilities": {}
+          }
+        }
+      }
+    },
+    {
+      "direction": "server->client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "discover-1",
+        "result": {
+          "cacheScope": "private",
+          "capabilities": {
+            "prompts": {
+              "listChanged": true
+            },
+            "resources": {
+              "listChanged": true,
+              "subscribe": true
+            },
+            "tools": {
+              "listChanged": true
+            }
+          },
+          "resultType": "complete",
+          "supportedVersions": [
+            "2026-07-28"
+          ],
+          "ttlMs": 0,
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "Kapitel-14-Wire-Labor",
+              "version": "1.0.0"
+            }
+          }
+        }
+      }
+    },
+    {
+      "direction": "client->server",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-1",
+        "method": "tools/call",
+        "params": {
+          "name": "read_policy",
+          "arguments": {
+            "document_id": "DOC-101"
+          },
+          "_meta": {
+            "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+            "io.modelcontextprotocol/clientInfo": {
+              "name": "Kapitel-14-Rohclient",
+              "version": "1.0.0"
+            },
+            "io.modelcontextprotocol/clientCapabilities": {}
+          }
+        }
+      }
+    },
+    {
+      "direction": "server->client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-1",
+        "result": {
+          "content": [
+            {
+              "text": "{\n  \"document_id\": \"DOC-101\",\n  \"title\": \"Reiserichtlinie\",\n  \"status\": \"approved\"\n}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "resultType": "complete",
+          "structuredContent": {
+            "document_id": "DOC-101",
+            "title": "Reiserichtlinie",
+            "status": "approved"
+          },
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "Kapitel-14-Wire-Labor",
+              "version": "1.0.0"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

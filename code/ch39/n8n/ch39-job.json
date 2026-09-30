@@ -1,0 +1,10 @@
+{
+  "id":"ch39Job","name":"CH39 - bounded queue workload","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch39-job","responseMode":"lastNode","options":{}},"id":"39393939-0001-4000-8000-000000000001","name":"Queue Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"39393939-ch39-job"},
+    {"parameters":{"method":"POST","url":"http://workload:8139/work","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"39393939-0002-4000-8000-000000000002","name":"Synthetic I-O","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-80,0]},
+    {"parameters":{"mode":"runOnceForAllItems","language":"pythonNative","pythonCode":"result = _items[0]['json']\nif result.get('ok') is not True or not isinstance(result.get('id'), str):\n    raise ValueError('fixture_contract')\nreturn [{'json': {'id': result['id'], 'ok': True, 'runner': 'external-python'}}]\n"},"id":"39393939-0003-4000-8000-000000000003","name":"Python Contract","type":"n8n-nodes-base.code","typeVersion":2,"position":[200,0]}
+  ],
+  "connections":{"Queue Request":{"main":[[{"node":"Synthetic I-O","type":"main","index":0}]]},"Synthetic I-O":{"main":[[{"node":"Python Contract","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"39393939-1000-4000-8000-000000000001"
+}

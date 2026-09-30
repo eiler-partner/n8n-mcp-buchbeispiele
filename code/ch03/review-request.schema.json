@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReviewRequest",
+  "type": "object",
+  "required": ["document_id", "decision"],
+  "properties": {
+    "document_id": {"type": "string", "pattern": "^doc-[0-9]+$"},
+    "decision": {"enum": ["approve", "reject"]}
+  },
+  "additionalProperties": false
+}

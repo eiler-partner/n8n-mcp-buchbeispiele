@@ -1,0 +1,22 @@
+{
+  "candidate": {
+    "c01":{"intent":"appointment","date":"2026-10-05","evidence":"Termin am 2026-10-05","needs_review":false},
+    "c02":{"intent":"cancellation","date":"2026-10-07","evidence":"Termin vom 2026-10-07 ab","needs_review":false},
+    "c03":{"intent":"information","date":null,"evidence":"Öffnungszeiten am Freitag","needs_review":false},
+    "c04":{"intent":"appointment","date":"2026-10-12","evidence":"Termin für 2026-10-12","needs_review":false},
+    "c05":{"intent":"cancellation","date":null,"evidence":"storniere meinen Termin","needs_review":true},
+    "c06":{"intent":"information","date":null,"evidence":"Wie kann ich grundsätzlich einen Termin buchen?","needs_review":false},
+    "c07":{"intent":"appointment","date":"2026-10-31","evidence":"Termin am 2026-10-31","needs_review":false},
+    "c08":{"intent":"information","date":null,"evidence":"Was bedeutet die Meldung 'Termin nicht verfügbar'?","needs_review":false}
+  },
+  "baseline": {
+    "c01":{"intent":"appointment","date":"2026-10-05","evidence":"Termin am 2026-10-05","needs_review":false},
+    "c02":{"intent":"cancellation","date":"2026-10-07","evidence":"Termin vom 2026-10-07 ab","needs_review":false},
+    "c03":{"intent":"information","date":null,"evidence":"Öffnungszeiten am Freitag","needs_review":false},
+    "c04":{"intent":"appointment","date":"2026-10-12","evidence":"Termin für 2026-10-12","needs_review":false},
+    "c05":{"intent":"cancellation","date":null,"evidence":"storniere meinen Termin"},
+    "c06":{"intent":"question","date":null,"evidence":"Wie kann ich grundsätzlich einen Termin buchen?","needs_review":false},
+    "c07":{"intent":"appointment","date":"2026-10-31","evidence":"Termin am 2026-10-31","needs_review":false},
+    "c08":{"intent":"appointment","date":null,"evidence":"Was bedeutet die Meldung 'Termin nicht verfügbar'?","needs_review":true}
+  }
+}

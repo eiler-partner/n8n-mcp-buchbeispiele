@@ -1,0 +1,55 @@
+{
+  "id": "ch08Pages",
+  "name": "CH08 - fetch all three API pages",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "08080808-0001-4000-8000-000000000001",
+      "name": "Manual Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-420, 0]
+    },
+    {
+      "parameters": {
+        "url": "http://api:8078/records?page=1",
+        "options": {
+          "pagination": {
+            "pagination": {
+              "paginationMode": "responseContainsNextURL",
+              "nextURL": "={{ $response.body.next }}",
+              "paginationCompleteWhen": "other",
+              "completeExpression": "={{ !$response.body.next }}",
+              "limitPagesFetched": true,
+              "maxRequests": 4
+            }
+          }
+        }
+      },
+      "id": "08080808-0002-4000-8000-000000000002",
+      "name": "Fetch Pages",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-180, 0]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const pages = $input.all().map(item => item.json); if (pages.length !== 3 || pages.some((p, i) => !Array.isArray(p.data) || p.data.length !== [3,3,1][i])) throw new Error('Page contract failed'); const rows = pages.flatMap(p => p.data); if (new Set(rows.map(r => r.id)).size !== 7 || pages.at(-1).next !== null) throw new Error('Pagination incomplete or duplicated'); return [{json: {page_count: pages.length, record_count: rows.length, ids: rows.map(r => r.id)}}];"
+      },
+      "id": "08080808-0003-4000-8000-000000000003",
+      "name": "Assert Complete Catalog",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [60, 0]
+    }
+  ],
+  "connections": {
+    "Manual Start": {"main": [[{"node": "Fetch Pages", "type": "main", "index": 0}]]},
+    "Fetch Pages": {"main": [[{"node": "Assert Complete Catalog", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "08080808-1000-4000-8000-000000000001"
+}

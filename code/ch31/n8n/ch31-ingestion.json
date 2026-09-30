@@ -1,0 +1,18 @@
+{
+  "id":"ch31Ingest",
+  "name":"CH31 - preflight, quality gate, accepted resources",
+  "active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch31-ingest","responseMode":"responseNode","options":{}},"id":"31313131-0001-4000-8000-000000000001","name":"Synthetic Document","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-560,0],"webhookId":"31313131-ch31-ingest"},
+    {"parameters":{"method":"POST","url":"http://ingestion:8131/inspect","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"31313131-0002-4000-8000-000000000002","name":"Preflight and Extraction Report","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-280,0]},
+    {"parameters":{"method":"POST","url":"http://ingestion:8131/ingest","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify({case_id:$json.case_id, declared_mime:$json.declared_mime, expected_sha256:$json.source_sha256}) }}","options":{}},"id":"31313131-0003-4000-8000-000000000003","name":"Commit or Quarantine","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[0,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"31313131-0004-4000-8000-000000000004","name":"Return Quality Decision","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[280,0]}
+  ],
+  "connections":{
+    "Synthetic Document":{"main":[[{"node":"Preflight and Extraction Report","type":"main","index":0}]]},
+    "Preflight and Extraction Report":{"main":[[{"node":"Commit or Quarantine","type":"main","index":0}]]},
+    "Commit or Quarantine":{"main":[[{"node":"Return Quality Decision","type":"main","index":0}]]}
+  },
+  "pinData":{},"settings":{"executionOrder":"v1"},
+  "versionId":"31313131-1000-4000-8000-000000000001"
+}

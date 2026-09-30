@@ -1,0 +1,10 @@
+{
+  "id":"ch44Research","name":"CH44 - source-traceable research briefing","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch44-research","responseMode":"responseNode","options":{}},"id":"44444444-0001-4000-8000-000000000001","name":"Research Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"44444444-ch44-research"},
+    {"parameters":{"method":"POST","url":"http://analyst:8145/research","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"44444444-0002-4000-8000-000000000002","name":"Run Read-only MCP Pipeline","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-80,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"44444444-0003-4000-8000-000000000003","name":"Return Traced Briefing","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]}
+  ],
+  "connections":{"Research Request":{"main":[[{"node":"Run Read-only MCP Pipeline","type":"main","index":0}]]},"Run Read-only MCP Pipeline":{"main":[[{"node":"Return Traced Briefing","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"44444444-1000-4000-8000-000000000001"
+}

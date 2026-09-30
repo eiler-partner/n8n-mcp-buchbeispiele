@@ -1,0 +1,4 @@
+services:
+  wire-lab:
+    build: .
+    network_mode: none

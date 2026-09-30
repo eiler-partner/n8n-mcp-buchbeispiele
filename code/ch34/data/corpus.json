@@ -1,0 +1,20 @@
+{
+  "source_id": "synthetic-policy",
+  "splitter_version": "structure-v1",
+  "rows": [
+    {"id":"v1-scope","tenant":"buchlabor","version":"2026-01","audience":"all","status":"approved","text":"Diese synthetische Richtlinie gilt nur im Buchlabor. Sie beschreibt keine reale Arbeitgeberregel und keine gesetzliche Frist.","vector":[0.1,0.1,0.1,0.9]},
+    {"id":"v1-vacation","tenant":"buchlabor","version":"2026-01","audience":"all","status":"approved","text":"Urlaubsanträge müssen mindestens 10 Arbeitstage vor Beginn im Portal eingehen.","vector":[1.0,0.1,0.1,0.1]},
+    {"id":"v1-travel","tenant":"buchlabor","version":"2026-01","audience":"all","status":"approved","text":"Reisekostenbelege werden mit der Reise-ID eingereicht. Inland und Ausland: 45 Kalendertage.","vector":[0.1,1.0,0.1,0.1]},
+    {"id":"v1-hr","tenant":"buchlabor","version":"2026-01","audience":"hr","status":"approved","text":"HR-FREIGABE-42 ist eine ausschließlich synthetische interne Kennung.","vector":[0.1,0.1,1.0,0.1]},
+    {"id":"v2-scope","tenant":"buchlabor","version":"2026-09","audience":"all","status":"approved","text":"Diese synthetische Richtlinie gilt nur im Buchlabor. Sie beschreibt keine reale Arbeitgeberregel und keine gesetzliche Frist.","vector":[0.1,0.1,0.1,0.9]},
+    {"id":"v2-vacation","tenant":"buchlabor","version":"2026-09","audience":"all","status":"approved","text":"Urlaubsanträge müssen mindestens 15 Arbeitstage vor Beginn im Portal eingehen. Eine Bestätigung erfolgt erst nach Prüfung durch die Führungskraft.","vector":[0.96,0.1,0.1,0.1]},
+    {"id":"v2-vacation-portal","tenant":"buchlabor","version":"2026-09","audience":"all","status":"approved","text":"Der Urlaubsantrag wird im Portal mit Startdatum und Vertretung eingereicht. Die Führungskraft prüft den Antrag.","vector":[0.91,0.1,0.1,0.1]},
+    {"id":"v2-travel","tenant":"buchlabor","version":"2026-09","audience":"all","status":"approved","text":"Reisekostenbelege werden mit der Reise-ID eingereicht. Inland und Ausland: 30 Kalendertage.","vector":[0.1,0.95,0.1,0.1]},
+    {"id":"v2-travel-proof","tenant":"buchlabor","version":"2026-09","audience":"all","status":"approved","text":"Ein Krankenversicherungsnachweis gehört bei Auslandsreisen zu den Belegen. Die Reise-ID verbindet die Unterlagen.","vector":[0.1,0.91,0.1,0.1]},
+    {"id":"v2-hr","tenant":"buchlabor","version":"2026-09","audience":"hr","status":"approved","text":"HR-FREIGABE-42 ist eine ausschließlich synthetische interne Kennung.","vector":[0.1,0.1,1.0,0.1]},
+    {"id":"v2-bonus-hard-negative","tenant":"buchlabor","version":"2026-09","audience":"all","status":"approved","text":"Eine Dienstreise muss mindestens 15 Arbeitstage vor Beginn beantragt werden. Dies ist keine Urlaubsregel.","vector":[0.98,0.16,0.1,0.1]},
+    {"id":"v2-draft-hard-negative","tenant":"buchlabor","version":"2026-09","audience":"all","status":"draft","text":"Entwurf: Urlaubsanträge müssen nur 2 Arbeitstage vor Beginn eingehen. Nicht freigegeben.","vector":[1.0,0.1,0.1,0.1]},
+    {"id":"v2-other-tenant","tenant":"andere-firma","version":"2026-09","audience":"all","status":"approved","text":"Urlaubsanträge der anderen Firma müssen 1 Arbeitstag vor Beginn eingehen.","vector":[1.0,0.1,0.1,0.1]},
+    {"id":"v2-security","tenant":"buchlabor","version":"2026-09","audience":"all","status":"approved","text":"MCP und RAG sind technische Abkürzungen. Retrieval verwendet Quellen und Berechtigungsfilter.","vector":[0.1,0.1,0.2,0.8]}
+  ]
+}

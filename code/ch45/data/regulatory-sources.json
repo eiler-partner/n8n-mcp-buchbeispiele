@@ -1,0 +1,6 @@
+{
+  "sources": [
+    {"uri":"regulation://dora/oj-2022-2554","title":"Verordnung (EU) 2022/2554 (DORA)","version":"OJ 2022-12-27","eli":"https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng","locators":["Art. 30 Abs. 2 Buchst. c","Art. 30 Abs. 2 Buchst. d","Art. 30 Abs. 2 Buchst. f","Art. 30 Abs. 3 Buchst. e"],"mapping_status":"unvalidated_illustrative_reference","note":"Amtliche Quelle nur als Versionsanker; Fundstellen auf Buchstabenebene zugeordnet (Lehrkatalog, keine Rechtsauslegung). Art. 30 Abs. 3 gilt nur für Verträge über kritische oder wichtige Funktionen. Geltung und Wortlaut fachlich prüfen."},
+    {"uri":"regulation://ai-act/oj-2024-1689","title":"Verordnung (EU) 2024/1689 (AI Act)","version":"OJ 2024-07-12","eli":"https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng","locators":["Art. 9 Abs. 1"],"mapping_status":"unvalidated_illustrative_reference","note":"Keine automatische Feststellung, ob ein Hochrisiko-KI-System vorliegt."}
+  ]
+}

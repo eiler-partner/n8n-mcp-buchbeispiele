@@ -1,0 +1,8 @@
+{
+  "dataset": "synthetic-quarter-2026-q2",
+  "published_at_utc": "2026-07-05T08:00:00Z",
+  "metrics": [
+    {"name": "orders", "value": 1200, "unit": "count"},
+    {"name": "returns", "value": 48, "unit": "count"}
+  ]
+}

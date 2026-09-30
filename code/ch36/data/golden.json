@@ -1,0 +1,12 @@
+[
+  {"case_id":"vacation_deadline","question":"Wann muss ein Urlaubsantrag eingereicht werden?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":["vacation_deadline"],"cohort":"standard"},
+  {"case_id":"vacation_approval","question":"Wer genehmigt Urlaubsanträge?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":["vacation_approval"],"cohort":"standard"},
+  {"case_id":"vacation_two_facts","question":"Welche Frist und wer genehmigt Urlaubsanträge?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":["vacation_deadline","vacation_approval"],"cohort":"multifakt"},
+  {"case_id":"abroad_alias","question":"Welche Frist gilt für RKK Ausland?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":["abroad_expenses"],"cohort":"alias"},
+  {"case_id":"domestic_alias","question":"Wie lange habe ich für Reisespesen Inland?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":["domestic_expenses"],"cohort":"alias"},
+  {"case_id":"homeoffice","question":"Wie viele Homeoffice-Tage gibt es?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":["homeoffice_days"],"cohort":"standard"},
+  {"case_id":"device_return","question":"Wann sind Firmengeräte zurückzugeben?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":["device_return"],"cohort":"standard"},
+  {"case_id":"travel_hard_negative","question":"Wie früh muss ich eine Dienstreise beantragen?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":["travel_deadline"],"cohort":"hard_negative"},
+  {"case_id":"hr_denied","question":"Wie lautet der interne HR-Code?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":[],"cohort":"no_answer"},
+  {"case_id":"unknown","question":"Wie hoch ist das Mondprojektbudget?","tenant":"buchlabor","role":"employee","version":"2026-09","gold":[],"cohort":"no_answer"}
+]

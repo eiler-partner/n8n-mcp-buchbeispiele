@@ -1,0 +1,58 @@
+services:
+  auth-mcp:
+    build: .
+    environment:
+      MCP_AUTH_PORT: "8019"
+      MCP_AUTH_ISSUER: "http://127.0.0.1:9019"
+      MCP_AUTH_RESOURCE: "http://127.0.0.1:8019/mcp"
+      MCP_JWT_FIXTURE_SECRET: "chapter-20-local-fixture-only-32-bytes-minimum"
+      MCP_AUDIT_PATH: "/var/log/mcp/audit.jsonl"
+    ports:
+      - "127.0.0.1:8019:8019"
+    volumes:
+      - auth-audit:/var/log/mcp
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1', 8019), 2).close()"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7.4
+    profiles: ["keycloak"]
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: local-admin-only
+    ports:
+      - "127.0.0.1:8081:8080"
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import:ro
+    healthcheck:
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/8080; echo -e 'GET /realms/mcp-lab HTTP/1.1\r\nhost: localhost\r\nConnection: close\r\n\r\n' >&3; grep '200 OK' <&3"]
+      interval: 10s
+      timeout: 5s
+      retries: 18
+
+  auth-mcp-keycloak:
+    build: .
+    profiles: ["keycloak"]
+    depends_on:
+      keycloak:
+        condition: service_healthy
+    environment:
+      MCP_AUTH_PORT: "8019"
+      MCP_AUTH_ISSUER: "http://127.0.0.1:8081/realms/mcp-lab"
+      MCP_AUTH_RESOURCE: "http://127.0.0.1:8020/mcp"
+      MCP_JWT_ALGORITHM: "RS256"
+      MCP_JWKS_URL: "http://keycloak:8080/realms/mcp-lab/protocol/openid-connect/certs"
+      MCP_JWT_FIXTURE_SECRET: ""
+      MCP_AUDIT_PATH: "/var/log/mcp/audit.jsonl"
+    ports:
+      - "127.0.0.1:8020:8019"
+    volumes:
+      - keycloak-audit:/var/log/mcp
+
+volumes:
+  auth-audit:
+  keycloak-audit:

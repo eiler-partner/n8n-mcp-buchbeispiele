@@ -1,0 +1,10 @@
+{
+  "id":"ch35Citations","name":"CH35 - packed context and citation contract","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch35-citations","responseMode":"responseNode","options":{}},"id":"35353535-0001-4000-8000-000000000001","name":"Citation Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"35353535-ch35-citations"},
+    {"parameters":{"method":"POST","url":"http://citation:8135/operate","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"35353535-0002-4000-8000-000000000002","name":"Pack and Verify","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-80,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"35353535-0003-4000-8000-000000000003","name":"Return Checked Answer","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]}
+  ],
+  "connections":{"Citation Request":{"main":[[{"node":"Pack and Verify","type":"main","index":0}]]},"Pack and Verify":{"main":[[{"node":"Return Checked Answer","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"35353535-1000-4000-8000-000000000001"
+}

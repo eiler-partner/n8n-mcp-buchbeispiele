@@ -1,0 +1,71 @@
+{
+  "id": "ch22ServerTrigger",
+  "name": "CH22 - controlled workflow as MCP tool",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ch22-catalog",
+        "authentication": "bearerAuth",
+        "instructions": "Read-only synthetic catalog. Only catalog_lookup is available."
+      },
+      "id": "20222022-0011-4000-8000-000000000011",
+      "name": "MCP Server Trigger",
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2.1,
+      "position": [-240, 0],
+      "webhookId": "20222022-ch22-catalog",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "CONFIGURE_AFTER_IMPORT",
+          "name": "CH22 n8n MCP Bearer"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "catalog_lookup",
+        "description": "Search the synthetic read-only catalog. Input query is required; no writes or maintenance operations are available.",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "ch22CatalogTool"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', 'Catalog search term, 2 to 120 characters', 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "id": "20222022-0012-4000-8000-000000000012",
+      "name": "catalog_lookup",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.1,
+      "position": [-20, 220]
+    }
+  ],
+  "connections": {
+    "catalog_lookup": {
+      "ai_tool": [[{"node": "MCP Server Trigger", "type": "ai_tool", "index": 0}]]
+    }
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "active": false,
+  "versionId": "20222022-1000-4000-8000-000000000011"
+}

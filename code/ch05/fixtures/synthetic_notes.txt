@@ -1,0 +1,4 @@
+Projekt: fiktive Dokumentenprobe
+Status: Entwurf fuer das Lernlabor
+TODO: Metadaten vor einer Freigabe pruefen
+Keine personenbezogenen oder vertraulichen Daten.

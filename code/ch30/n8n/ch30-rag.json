@@ -1,0 +1,18 @@
+{
+  "id":"ch30Rag",
+  "name":"CH30 - retrieve then evidence-bound answer",
+  "active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch30-rag","responseMode":"responseNode","options":{}},"id":"30303030-0001-4000-8000-000000000001","name":"Knowledge Question","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-560,0],"webhookId":"30303030-ch30-rag"},
+    {"parameters":{"method":"POST","url":"http://knowledge:8130/retrieve","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify({...$json.body, strategy: 'rag'}) }}","options":{}},"id":"30303030-0002-4000-8000-000000000002","name":"Retrieve Authorized Context","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-280,0]},
+    {"parameters":{"method":"POST","url":"http://knowledge:8130/answer","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json) }}","options":{}},"id":"30303030-0003-4000-8000-000000000003","name":"Validate Evidence and Answer","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[0,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"30303030-0004-4000-8000-000000000004","name":"Return Decision","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[280,0]}
+  ],
+  "connections":{
+    "Knowledge Question":{"main":[[{"node":"Retrieve Authorized Context","type":"main","index":0}]]},
+    "Retrieve Authorized Context":{"main":[[{"node":"Validate Evidence and Answer","type":"main","index":0}]]},
+    "Validate Evidence and Answer":{"main":[[{"node":"Return Decision","type":"main","index":0}]]}
+  },
+  "pinData":{},"settings":{"executionOrder":"v1"},
+  "versionId":"30303030-1000-4000-8000-000000000001"
+}

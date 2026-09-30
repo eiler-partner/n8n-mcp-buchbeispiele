@@ -1,0 +1,32 @@
+services:
+  research-agent:
+    build: .
+    environment:
+      MODEL_PROVIDER: ${MODEL_PROVIDER:-ollama}
+      # Eigene Variable: OLLAMA_HOST aus .env gilt fuer Aufrufe auf dem Mac,
+      # im Container wuerde 127.0.0.1 den Container selbst meinen.
+      OLLAMA_HOST: ${CONTAINER_OLLAMA_HOST:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen3:14b}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-}
+      AGENT_MAX_STEPS: ${AGENT_MAX_STEPS:-4}
+      AGENT_MAX_SECONDS: ${AGENT_MAX_SECONDS:-45}
+      AGENT_MAX_RESULT_CHARS: ${AGENT_MAX_RESULT_CHARS:-8000}
+      AGENT_AUDIT_PATH: /app/var/audit.jsonl
+      AGENT_CATALOG_PATH: /app/examples/catalog.json
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:8030:8030"
+    volumes:
+      - agent-audit:/app/var
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8030/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+volumes:
+  agent-audit:

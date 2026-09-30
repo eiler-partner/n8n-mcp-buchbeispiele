@@ -1,0 +1,67 @@
+{
+  "id": "ch08Webhook",
+  "name": "CH08 - signed webhook and idempotent order",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ch08-signed-order",
+        "responseMode": "responseNode",
+        "options": {"rawBody": true}
+      },
+      "id": "08080808-0011-4000-8000-000000000011",
+      "name": "Untrusted Delivery",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [-420, 0],
+      "webhookId": "08080808-ch08-signed-order"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://api:8078/ingest",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "X-Lab-Timestamp", "value": "={{ $json.headers['x-lab-timestamp'] || '' }}"},
+            {"name": "X-Lab-Delivery", "value": "={{ $json.headers['x-lab-delivery'] || '' }}"},
+            {"name": "X-Lab-Signature", "value": "={{ $json.headers['x-lab-signature'] || '' }}"},
+            {"name": "X-Correlation-ID", "value": "={{ $json.headers['x-correlation-id'] || $execution.id }}"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "binaryData",
+        "inputDataFieldName": "data",
+        "options": {
+          "response": {"response": {"fullResponse": true, "neverError": true}},
+          "timeout": 10000
+        }
+      },
+      "id": "08080808-0012-4000-8000-000000000012",
+      "name": "Verify and Commit",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-160, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.body) }}",
+        "options": {"responseCode": "={{ $json.statusCode }}"}
+      },
+      "id": "08080808-0013-4000-8000-000000000013",
+      "name": "Return Verified Result",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [100, 0]
+    }
+  ],
+  "connections": {
+    "Untrusted Delivery": {"main": [[{"node": "Verify and Commit", "type": "main", "index": 0}]]},
+    "Verify and Commit": {"main": [[{"node": "Return Verified Result", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "08080808-1000-4000-8000-000000000011"
+}

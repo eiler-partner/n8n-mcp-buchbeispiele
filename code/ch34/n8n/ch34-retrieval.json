@@ -1,0 +1,10 @@
+{
+  "id":"ch34Retrieval","name":"CH34 - compare retrieval variants","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch34-retrieval","responseMode":"responseNode","options":{}},"id":"34343434-0001-4000-8000-000000000001","name":"Retrieval Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"34343434-ch34-retrieval"},
+    {"parameters":{"method":"POST","url":"http://retrieval:8134/operate","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"34343434-0002-4000-8000-000000000002","name":"Compare Retrieval","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-80,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"34343434-0003-4000-8000-000000000003","name":"Return Scoped Results","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]}
+  ],
+  "connections":{"Retrieval Request":{"main":[[{"node":"Compare Retrieval","type":"main","index":0}]]},"Compare Retrieval":{"main":[[{"node":"Return Scoped Results","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"34343434-1000-4000-8000-000000000001"
+}

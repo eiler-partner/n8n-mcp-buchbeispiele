@@ -1,0 +1,10 @@
+{
+  "id":"ch41Review", "name":"CH41 - reviewed synthetic write", "active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch41-review","responseMode":"responseNode","options":{}},"id":"41414141-0001-4000-8000-000000000001","name":"Propose","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-280,0],"webhookId":"41414141-ch41-review"},
+    {"parameters":{"method":"POST","url":"http://gate:8141/review","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"41414141-0002-4000-8000-000000000002","name":"Check and Write","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[0,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"41414141-0003-4000-8000-000000000003","name":"Decision","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[280,0]}
+  ],
+  "connections":{"Propose":{"main":[[{"node":"Check and Write","type":"main","index":0}]]},"Check and Write":{"main":[[{"node":"Decision","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"41414141-1000-4000-8000-000000000001"
+}

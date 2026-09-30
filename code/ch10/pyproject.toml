@@ -1,0 +1,12 @@
+[project]
+name = "buch-ch10-lab"
+version = "0.1.0"
+description = "Deterministic fault and idempotency tests for n8n chapter 10"
+requires-python = ">=3.12,<3.14"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest==8.4.2"]
+
+[tool.uv]
+package = false

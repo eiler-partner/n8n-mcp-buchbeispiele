@@ -1,0 +1,22 @@
+[
+  {"document_id":"personalhandbuch","tenant":"buchlabor","audience":"all","status":"approved","version":"2026-09","facts":[
+    {"id":"vacation_deadline","text":"Urlaubsanträge müssen 15 Arbeitstage vor Beginn eingereicht werden."},
+    {"id":"vacation_approval","text":"Die Führungskraft genehmigt Urlaubsanträge."}]},
+  {"document_id":"reiseregel","tenant":"buchlabor","audience":"all","status":"approved","version":"2026-09","facts":[
+    {"id":"travel_deadline","text":"Dienstreiseanträge müssen 15 Arbeitstage vor Beginn eingereicht werden."},
+    {"id":"abroad_expenses","text":"Auslandsreisekosten sind binnen 30 Kalendertagen abzurechnen."}]},
+  {"document_id":"spesenregel","tenant":"buchlabor","audience":"all","status":"approved","version":"2026-09","facts":[
+    {"id":"domestic_expenses","text":"Inländische Reisekostenbelege sind binnen 14 Kalendertagen einzureichen."},
+    {"id":"hotel_limit","text":"Hotelbelege müssen den Reisetag nennen."}]},
+  {"document_id":"arbeitsplatzregel","tenant":"buchlabor","audience":"all","status":"approved","version":"2026-09","facts":[
+    {"id":"homeoffice_days","text":"Homeoffice ist an zwei Tagen pro Woche möglich."},
+    {"id":"device_return","text":"Firmengeräte sind binnen fünf Werktagen nach Austritt zurückzugeben."}]},
+  {"document_id":"hr-intern","tenant":"buchlabor","audience":"hr","status":"approved","version":"2026-09","facts":[
+    {"id":"hr_secret","text":"Der interne HR-Code lautet 4711."}]},
+  {"document_id":"personalhandbuch-alt","tenant":"buchlabor","audience":"all","status":"approved","version":"2026-01","facts":[
+    {"id":"vacation_old","text":"Urlaubsanträge müssen 10 Arbeitstage vor Beginn eingereicht werden."}]},
+  {"document_id":"personalhandbuch-entwurf","tenant":"buchlabor","audience":"all","status":"draft","version":"2026-09","facts":[
+    {"id":"vacation_draft","text":"Urlaubsanträge müssen 5 Arbeitstage vor Beginn eingereicht werden."}]},
+  {"document_id":"fremdhandbuch","tenant":"fremdfirma","audience":"all","status":"approved","version":"2026-09","facts":[
+    {"id":"vacation_foreign","text":"Urlaubsanträge müssen 20 Arbeitstage vor Beginn eingereicht werden."}]}
+]

@@ -1,0 +1,16 @@
+{
+  "document_id": "RICHTLINIE-32",
+  "source_id": "synthetic-policy",
+  "tenant_id": "buchlabor",
+  "splitter_version": "structure-v1",
+  "chunks": [
+    {"chunk_id":"v1-scope","version_id":"2026-01","section_id":"scope","audience":"all","text":"Diese synthetische Richtlinie gilt nur im Buchlabor. Sie beschreibt keine reale Arbeitgeberregel und keine gesetzliche Frist."},
+    {"chunk_id":"v1-vacation","version_id":"2026-01","section_id":"vacation","audience":"all","text":"Urlaubsanträge müssen mindestens 10 Arbeitstage vor Beginn im Portal eingehen."},
+    {"chunk_id":"v1-travel","version_id":"2026-01","section_id":"travel","audience":"all","text":"Reisekostenbelege werden mit der Reise-ID eingereicht. Inland und Ausland: 45 Kalendertage."},
+    {"chunk_id":"v1-hr","version_id":"2026-01","section_id":"hr","audience":"hr","text":"HR-FREIGABE-42 ist eine ausschließlich synthetische interne Kennung."},
+    {"chunk_id":"v2-scope","version_id":"2026-09","section_id":"scope","audience":"all","text":"Diese synthetische Richtlinie gilt nur im Buchlabor. Sie beschreibt keine reale Arbeitgeberregel und keine gesetzliche Frist."},
+    {"chunk_id":"v2-vacation","version_id":"2026-09","section_id":"vacation","audience":"all","text":"Urlaubsanträge müssen mindestens 15 Arbeitstage vor Beginn im Portal eingehen. Eine Bestätigung erfolgt erst nach Prüfung durch die zuständige Führungskraft."},
+    {"chunk_id":"v2-travel","version_id":"2026-09","section_id":"travel","audience":"all","text":"Reisekostenbelege werden mit der Reise-ID eingereicht. Inland und Ausland: 30 Kalendertage."},
+    {"chunk_id":"v2-hr","version_id":"2026-09","section_id":"hr","audience":"hr","text":"HR-FREIGABE-42 ist eine ausschließlich synthetische interne Kennung."}
+  ]
+}

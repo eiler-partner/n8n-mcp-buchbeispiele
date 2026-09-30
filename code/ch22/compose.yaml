@@ -1,0 +1,107 @@
+name: chapter-22-n8n-mcp
+
+x-n8n-environment: &n8n-environment
+  DB_TYPE: postgresdb
+  DB_POSTGRESDB_HOST: postgres
+  DB_POSTGRESDB_PORT: 5432
+  DB_POSTGRESDB_DATABASE: n8n
+  DB_POSTGRESDB_USER: n8n
+  DB_POSTGRESDB_PASSWORD: ${POSTGRES_PASSWORD:-chapter-22-local-db-password}
+  N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:-chapter-22-local-encryption-key-change-me}
+  N8N_HOST: 127.0.0.1
+  N8N_PORT: 5678
+  N8N_PROTOCOL: http
+  WEBHOOK_URL: http://127.0.0.1:5678/
+  N8N_DIAGNOSTICS_ENABLED: "false"
+  N8N_PERSONALIZATION_ENABLED: "false"
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: n8n
+      POSTGRES_USER: n8n
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-chapter-22-local-db-password}
+    volumes:
+      - ch22-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U n8n -d n8n"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mcp-http:
+    build: .
+    environment:
+      CH22_MCP_TOKEN: ${CH22_MCP_TOKEN:-chapter-22-local-token-change-me}
+      CH22_MCP_HTTP_RESOURCE: http://mcp-http:8022/mcp
+    ports:
+      - "127.0.0.1:8022:8022"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1', 8022), 2).close()"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  mcp-sse:
+    build: .
+    command: ["ch22-mcp-sse"]
+    environment:
+      CH22_MCP_TOKEN: ${CH22_MCP_TOKEN:-chapter-22-local-token-change-me}
+      CH22_MCP_SSE_RESOURCE: http://mcp-sse:8023/sse
+    ports:
+      - "127.0.0.1:8023:8023"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1', 8023), 2).close()"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  n8n:
+    image: n8nio/n8n:2.40.7
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mcp-http:
+        condition: service_healthy
+      mcp-sse:
+        condition: service_healthy
+    environment:
+      <<: *n8n-environment
+    ports:
+      - "127.0.0.1:5678:5678"
+    volumes:
+      - ch22-n8n:/home/node/.n8n
+      - ./n8n:/lab/n8n:ro
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://127.0.0.1:5678/healthz >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+  redis:
+    image: redis:8-alpine
+    profiles: ["queue"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  worker:
+    image: n8nio/n8n:2.40.7
+    profiles: ["queue"]
+    command: ["worker", "--concurrency=2"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      <<: *n8n-environment
+      EXECUTIONS_MODE: queue
+      QUEUE_BULL_REDIS_HOST: redis
+
+volumes:
+  ch22-postgres:
+  ch22-n8n:

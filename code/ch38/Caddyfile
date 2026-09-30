@@ -1,0 +1,15 @@
+localhost:8443 {
+    tls internal
+
+    handle /lab/* {
+        reverse_proxy probe:8138 {
+            flush_interval -1
+        }
+    }
+
+    handle {
+        reverse_proxy n8n:5678 {
+            flush_interval -1
+        }
+    }
+}

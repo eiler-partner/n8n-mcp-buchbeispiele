@@ -1,0 +1,94 @@
+{
+  "id": "ch24HumanReview",
+  "name": "CH24 - human publication review",
+  "active": true,
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "none",
+        "formTitle": "Publikationsvorschlag prüfen",
+        "formDescription": "Lokales Kapitel-24-Labor. Vergleichen Sie Request-ID und angezeigten Vorschlag vor der Entscheidung.",
+        "formFields": {
+          "values": [
+            {"fieldLabel": "Request ID", "fieldName": "request_id", "fieldType": "text", "requiredField": true},
+            {"fieldLabel": "Reviewer", "fieldName": "reviewer", "fieldType": "email", "requiredField": true},
+            {"fieldLabel": "Entscheidung", "fieldName": "decision", "fieldType": "radio", "fieldOptions": {"values": [{"option": "Freigeben"}, {"option": "Ablehnen"}]}, "requiredField": true}
+          ]
+        },
+        "responseMode": "lastNode",
+        "options": {"path": "ch24-review", "buttonLabel": "Gebundene Entscheidung senden", "appendAttribution": false}
+      },
+      "id": "24242424-0021-4000-8000-000000000021",
+      "name": "Human Review",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.4,
+      "position": [-500, 0],
+      "webhookId": "24242424-ch24-human-review"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://api:8024/publication-requests/{{ $json.request_id }}/decision",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "X-Approval-Key", "value": "chapter-24-local-approval-key-change-me"}]},
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { reviewer: $json.reviewer, approve: $json.decision === 'Freigeben' } }}",
+        "options": {}
+      },
+      "id": "24242424-0022-4000-8000-000000000022",
+      "name": "Bind Review Decision",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-220, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict", "version": 3},
+          "conditions": [{"id": "24242424-approved", "leftValue": "={{ $json.status }}", "rightValue": "approved", "operator": {"type": "string", "operation": "equals"}}],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "24242424-0023-4000-8000-000000000023",
+      "name": "Approved?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [40, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://api:8024/publication-requests/{{ $json.request_id }}/execute",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "X-Executor-Key", "value": "chapter-24-local-executor-key-change-me"}]},
+        "options": {}
+      },
+      "id": "24242424-0024-4000-8000-000000000024",
+      "name": "Execute Bound Publication",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [320, -100]
+    },
+    {
+      "parameters": {
+        "assignments": {"assignments": [{"id": "24242424-denied", "name": "result", "value": "Publikation wurde abgelehnt und nicht ausgeführt.", "type": "string"}]},
+        "options": {}
+      },
+      "id": "24242424-0025-4000-8000-000000000025",
+      "name": "Denied Without Execution",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [320, 100]
+    }
+  ],
+  "connections": {
+    "Human Review": {"main": [[{"node": "Bind Review Decision", "type": "main", "index": 0}]]},
+    "Bind Review Decision": {"main": [[{"node": "Approved?", "type": "main", "index": 0}]]},
+    "Approved?": {"main": [[{"node": "Execute Bound Publication", "type": "main", "index": 0}], [{"node": "Denied Without Execution", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "24242424-1000-4000-8000-000000000021"
+}

@@ -1,0 +1,14 @@
+{
+  "catalog_id": "supplier-review",
+  "version": "v2",
+  "issued_at_utc": "2026-09-20T00:00:00Z",
+  "mapping_status": "illustrative_internal_rules_not_legal_interpretation",
+  "controls": [
+    {"id":"C01","title":"Gesicherte tägliche Datensicherung","source_uri":"regulation://dora/oj-2022-2554","source_locator":"Art. 30 Abs. 2 Buchst. c","required_terms":["täglich","verschlüsselt"],"topic":"datensicherung"},
+    {"id":"C02","title":"Datenexport mit festgelegter Frist","source_uri":"regulation://dora/oj-2022-2554","source_locator":"Art. 30 Abs. 2 Buchst. d","required_terms":["datenexport","14 tage"],"topic":"datenexport"},
+    {"id":"C03","title":"Dokumentiertes Prüf- und Zugangsrecht","source_uri":"regulation://dora/oj-2022-2554","source_locator":"Art. 30 Abs. 3 Buchst. e","required_terms":["prüfrecht","zugang"],"topic":"prüfrecht"},
+    {"id":"C04","title":"Risikomanagement bei einschlägigem KI-System","source_uri":"regulation://ai-act/oj-2024-1689","source_locator":"Art. 9 Abs. 1","required_terms":["risikomanagement","ki-system"],"not_applicable_if":"kein ki-system","topic":"ki-system"},
+    {"id":"C05","title":"Benannter Kontakt und Meldefrist","source_uri":"regulation://dora/oj-2022-2554","source_locator":"Art. 30 Abs. 2 Buchst. f","required_terms":["incidentkontakt","24 stunden"],"topic":"incidentkontakt"},
+    {"id":"C06","title":"Einheitliche Löschfrist","source_uri":"regulation://dora/oj-2022-2554","source_locator":"Art. 30 Abs. 2 Buchst. c","required_terms":["löschung","30 tage"],"topic":"löschung","conflict_pattern":"([0-9]+) tage"}
+  ]
+}

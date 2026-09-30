@@ -1,0 +1,24 @@
+{
+  "id":"ch26Extraction",
+  "name":"CH26 - prompt and output contract",
+  "active":true,
+  "nodes":[
+    {
+      "parameters":{"httpMethod":"POST","path":"ch26-extract","responseMode":"responseNode","options":{}},
+      "id":"26262626-0001-4000-8000-000000000001","name":"Synthetic Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-400,0],"webhookId":"26262626-ch26-extract"
+    },
+    {
+      "parameters":{"method":"POST","url":"http://extractor:8126/extract","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},
+      "id":"26262626-0002-4000-8000-000000000002","name":"Validate Fixture Output","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-100,0]
+    },
+    {
+      "parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},
+      "id":"26262626-0003-4000-8000-000000000003","name":"Return Test Result","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]
+    }
+  ],
+  "connections":{
+    "Synthetic Request":{"main":[[{"node":"Validate Fixture Output","type":"main","index":0}]]},
+    "Validate Fixture Output":{"main":[[{"node":"Return Test Result","type":"main","index":0}]]}
+  },
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"26262626-1000-4000-8000-000000000001"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "notice-standard",
+    "tenant_id": "lab",
+    "target": "synthetic_outbox",
+    "evidence_id": "record-100-v2",
+    "draft": "Synthetische Statusmeldung zu Vorgang 100: Prüfung abgeschlossen.",
+    "review_timeout_seconds": 120
+  },
+  {
+    "case_id": "notice-timeout",
+    "tenant_id": "lab",
+    "target": "synthetic_outbox",
+    "evidence_id": "record-200-v1",
+    "draft": "Synthetische Statusmeldung zu Vorgang 200: Rückfrage offen.",
+    "review_timeout_seconds": 1
+  },
+  {
+    "case_id": "notice-deny",
+    "tenant_id": "lab",
+    "target": "synthetic_outbox",
+    "evidence_id": "record-300-v1",
+    "draft": "Synthetische Statusmeldung zu Vorgang 300: Freigabe angefragt.",
+    "review_timeout_seconds": 120
+  }
+]

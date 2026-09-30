@@ -1,0 +1,32 @@
+[project]
+name = "prompt-boundary-lab"
+version = "0.1.0"
+description = "Begleitprojekt zu Kapitel 23: Sicherheitsgrenzen und Prompt-Injection-Abwehr"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.118,<1",
+  "httpx>=0.28,<1",
+  "pydantic>=2.13,<3",
+  "uvicorn>=0.40,<1",
+]
+
+[project.scripts]
+ch23-boundary = "prompt_boundary_lab.api:main"
+ch23-sink = "prompt_boundary_lab.sink:main"
+ch23-demo = "prompt_boundary_lab.demo:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<9",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prompt_boundary_lab"]

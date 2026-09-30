@@ -1,0 +1,9 @@
+{
+  "id":"ch38Probe","name":"CH38 - TLS and external runner probe","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch38-probe","responseMode":"lastNode","options":{}},"id":"38383838-0001-4000-8000-000000000001","name":"Probe Request","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-200,0],"webhookId":"38383838-ch38-probe"},
+    {"parameters":{"mode":"runOnceForAllItems","language":"pythonNative","pythonCode":"body = _items[0]['json'].get('body', {})\nif not isinstance(body, dict) or set(body) != {'ping'} or body['ping'] != 'synthetic':\n    raise ValueError('request_contract')\nreturn [{'json': {'ok': True, 'runner': 'external', 'echo': body['ping']}}]\n"},"id":"38383838-0002-4000-8000-000000000002","name":"Python Runner Probe","type":"n8n-nodes-base.code","typeVersion":2,"position":[80,0]}
+  ],
+  "connections":{"Probe Request":{"main":[[{"node":"Python Runner Probe","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"38383838-1000-4000-8000-000000000001"
+}

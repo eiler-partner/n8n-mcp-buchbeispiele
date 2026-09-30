@@ -1,0 +1,69 @@
+{
+  "id": "ch06FixedLink",
+  "name": "CH06 - repaired item link",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "06060606-0011-4000-8000-000000000011",
+      "name": "Manual Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-600, 0]
+    },
+    {
+      "parameters": {"url": "http://api:8066/orders", "options": {}},
+      "id": "06060606-0012-4000-8000-000000000012",
+      "name": "Fetch Orders",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [-360, 0]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const out = [];\nfor (const [i, item] of $input.all().entries()) {\n  const row = item.json;\n  if (row.customer_id === null) continue;\n  if (typeof row.order_id !== 'string' || typeof row.customer_id !== 'string' || !/^\\d+(?:\\.\\d{1,2})?$/.test(row.amount)) throw new Error('Invalid order');\n  if (typeof row.created_at !== 'string' || !/(Z|[+-]\\d{2}:\\d{2})$/.test(row.created_at)) throw new Error('Timestamp needs offset');\n  const time = DateTime.fromISO(row.created_at, { setZone: true });\n  if (!time.isValid) throw new Error('Invalid timestamp');\n  const [whole, fraction = ''] = row.amount.split('.');\n  out.push({ json: { order_id: row.order_id, customer_id: row.customer_id, amount_cents: Number(whole) * 100 + Number(fraction.padEnd(2, '0')), occurred_at_utc: time.toUTC().toISO() }, pairedItem: { item: i } });\n}\nreturn out;"
+      },
+      "id": "06060606-0013-4000-8000-000000000013",
+      "name": "Normalize Orders",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-100, 0]
+    },
+    {
+      "parameters": {"url": "=http://api:8066/customers/{{ $json.customer_id }}", "options": {}},
+      "id": "06060606-0014-4000-8000-000000000014",
+      "name": "Lookup Customer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [160, 0]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {"id": "06060606-order-fixed", "name": "order_id", "value": "={{ $('Fetch Orders').item.json.order_id }}", "type": "string"},
+            {"id": "06060606-customer-fixed", "name": "customer_name", "value": "={{ $json.name }}", "type": "string"},
+            {"id": "06060606-cents-fixed", "name": "amount_cents", "value": "={{ $('Normalize Orders').item.json.amount_cents }}", "type": "number"},
+            {"id": "06060606-time-fixed", "name": "occurred_at_utc", "value": "={{ $('Normalize Orders').item.json.occurred_at_utc }}", "type": "string"}
+          ]
+        },
+        "options": {}
+      },
+      "id": "06060606-0015-4000-8000-000000000015",
+      "name": "Join Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [420, 0]
+    }
+  ],
+  "connections": {
+    "Manual Start": {"main": [[{"node": "Fetch Orders", "type": "main", "index": 0}]]},
+    "Fetch Orders": {"main": [[{"node": "Normalize Orders", "type": "main", "index": 0}]]},
+    "Normalize Orders": {"main": [[{"node": "Lookup Customer", "type": "main", "index": 0}]]},
+    "Lookup Customer": {"main": [[{"node": "Join Result", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "06060606-1000-4000-8000-000000000011"
+}

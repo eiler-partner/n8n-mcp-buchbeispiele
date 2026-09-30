@@ -1,0 +1,10 @@
+[
+  {"id":"c01","tenant_id":"lab","text":"Wie hoch ist die Rechnung R-100?","source_id":"inv-100","expected_route":"billing","expected_answer":"Rechnung R-100: 120 Euro (synthetisch)."},
+  {"id":"c02","tenant_id":"lab","text":"Wo finde ich die Rechnung R-101?","source_id":"inv-101","expected_route":"billing","expected_answer":"Rechnung R-101 liegt im Testarchiv."},
+  {"id":"c03","tenant_id":"lab","text":"Darf die Rechnung R-100 gelöscht werden?","source_id":"pol-1","expected_route":"privacy","expected_answer":"Löschung nur nach Prüfung der Aufbewahrung."},
+  {"id":"c04","tenant_id":"lab","text":"Wie beantrage ich die Löschung meines Kundenprofils?","source_id":"pol-2","expected_route":"privacy","expected_answer":"Profil-Löschung wird als Testanfrage registriert."},
+  {"id":"c05","tenant_id":"lab","text":"Wer ist mein Ansprechpartner?","source_id":"faq-1","expected_route":"general","expected_answer":"Testkontakt: Service Team."},
+  {"id":"c06","tenant_id":"lab","text":"Wann ist der Service erreichbar?","source_id":"faq-2","expected_route":"general","expected_answer":"Testservice: werktags."},
+  {"id":"c07","tenant_id":"lab","text":"Welche Aufbewahrung gilt für Rechnung R-101?","source_id":"pol-3","expected_route":"privacy","expected_answer":"Aufbewahrung richtet sich nach Testregel P-1."},
+  {"id":"c08","tenant_id":"lab","text":"Ich habe eine Frage zur Rechnung R-102.","source_id":"inv-102","expected_route":"billing","expected_answer":"Rechnung R-102: Testfall offen."}
+]

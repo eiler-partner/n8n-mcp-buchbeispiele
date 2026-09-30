@@ -1,0 +1,14 @@
+[
+  {"id":"e01","subject":"Rechnung R-100","body":"Bitte überweisen Sie den Betrag bis Freitag.","expected":"rechnung"},
+  {"id":"e02","subject":"Unterlagen für die Buchhaltung","body":"Im Anhang liegt die Kostenaufstellung unserer September-Leistungen.","expected":"rechnung"},
+  {"id":"e03","subject":"Login funktioniert nicht","body":"Ich sehe nach der Anmeldung eine Fehlermeldung.","expected":"support"},
+  {"id":"e04","subject":"Rechnung im Portal","body":"Der Login funktioniert nicht; ich kann meine Rechnung nicht öffnen.","expected":"support"},
+  {"id":"e05","subject":"Angebot für 50 Lizenzen","body":"Bitte senden Sie uns eine Demo und den Preis.","expected":"vertrieb"},
+  {"id":"e06","subject":"Gesprächstermin","body":"Wir möchten eine mögliche Zusammenarbeit besprechen.","expected":"vertrieb"},
+  {"id":"e07","subject":"Rechnung und Angebot","body":"Bitte prüfen Sie die Rechnung und senden Sie zugleich ein neues Angebot.","expected":"unsicher"},
+  {"id":"e08","subject":"Konto entfernen","body":"Bitte löschen Sie mein Konto und alle gespeicherten Daten.","expected":"unsicher"},
+  {"id":"e09","subject":"Fehler an der Bezahlseite","body":"Nach dem Absenden erscheint eine Störung.","expected":"support"},
+  {"id":"e10","subject":"Zahlungsbeleg","body":"Der Beleg zur Überweisung liegt bei.","expected":"rechnung"},
+  {"id":"e11","subject":"Preisliste","body":"Können Sie mir die Konditionen für 20 Lizenzen schicken?","expected":"vertrieb"},
+  {"id":"e12","subject":"Zugang bleibt leer","body":"Nach der Anmeldung bleibt die Oberfläche weiß.","expected":"support"}
+]

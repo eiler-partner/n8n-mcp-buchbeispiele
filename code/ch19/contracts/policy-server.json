@@ -1,0 +1,126 @@
+{
+  "capabilities": {
+    "prompts": {
+      "listChanged": true
+    },
+    "resources": {
+      "listChanged": true,
+      "subscribe": true
+    },
+    "tools": {
+      "listChanged": true
+    }
+  },
+  "protocolVersion": "2026-07-28",
+  "resourceTemplates": [],
+  "resources": [
+    {
+      "description": "Liefere die IDs des freigegebenen Richtlinienkatalogs.",
+      "mimeType": "application/json",
+      "name": "policy_catalog",
+      "uri": "policy://catalog"
+    }
+  ],
+  "serverInfo": {
+    "name": "Policy Contract Lab",
+    "version": "1.0.0"
+  },
+  "tools": [
+    {
+      "description": "Prüfe eine kleine Dokumentliste und melde den Fortschritt.",
+      "inputSchema": {
+        "properties": {
+          "document_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 10,
+            "minItems": 1,
+            "title": "Document Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "document_ids"
+        ],
+        "title": "check_documentsArguments",
+        "type": "object"
+      },
+      "name": "check_documents",
+      "outputSchema": {
+        "additionalProperties": {
+          "type": "integer"
+        },
+        "title": "check_documentsDictOutput",
+        "type": "object"
+      }
+    },
+    {
+      "description": "Suche ausschließlich in den freigegebenen Beispielrichtlinien.",
+      "inputSchema": {
+        "properties": {
+          "limit": {
+            "default": 5,
+            "maximum": 20,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "query": {
+            "maxLength": 200,
+            "minLength": 2,
+            "title": "Query",
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "title": "search_policiesArguments",
+        "type": "object"
+      },
+      "name": "search_policies",
+      "outputSchema": {
+        "$defs": {
+          "PolicyHit": {
+            "properties": {
+              "excerpt": {
+                "title": "Excerpt",
+                "type": "string"
+              },
+              "policy_id": {
+                "title": "Policy Id",
+                "type": "string"
+              },
+              "title": {
+                "title": "Title",
+                "type": "string"
+              }
+            },
+            "required": [
+              "policy_id",
+              "title",
+              "excerpt"
+            ],
+            "title": "PolicyHit",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "result": {
+            "items": {
+              "$ref": "#/$defs/PolicyHit"
+            },
+            "title": "Result",
+            "type": "array"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "title": "search_policiesOutput",
+        "type": "object"
+      }
+    }
+  ]
+}

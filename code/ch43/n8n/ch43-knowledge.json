@@ -1,0 +1,10 @@
+{
+  "id":"ch43Knowledge","name":"CH43 - Authorized knowledge answer","active":true,
+  "nodes":[
+    {"parameters":{"httpMethod":"POST","path":"ch43-ask","responseMode":"responseNode","options":{}},"id":"43434343-0001-4000-8000-000000000001","name":"Question","type":"n8n-nodes-base.webhook","typeVersion":2.1,"position":[-360,0],"webhookId":"43434343-ch43-ask"},
+    {"parameters":{"method":"POST","url":"http://knowledge:8143/ask","sendBody":true,"contentType":"raw","rawContentType":"application/json","body":"={{ JSON.stringify($json.body) }}","options":{}},"id":"43434343-0002-4000-8000-000000000002","name":"Authorized MCP Retrieval and Gate","type":"n8n-nodes-base.httpRequest","typeVersion":4.4,"position":[-80,0]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ JSON.stringify($json) }}","options":{}},"id":"43434343-0003-4000-8000-000000000003","name":"Answer or Refuse","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[200,0]}
+  ],
+  "connections":{"Question":{"main":[[{"node":"Authorized MCP Retrieval and Gate","type":"main","index":0}]]},"Authorized MCP Retrieval and Gate":{"main":[[{"node":"Answer or Refuse","type":"main","index":0}]]}},
+  "pinData":{},"settings":{"executionOrder":"v1"},"versionId":"43434343-1000-4000-8000-000000000001"
+}

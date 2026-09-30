@@ -1,0 +1,7 @@
+services:
+  primitives-lab:
+    build: .
+    network_mode: none
+    read_only: true
+    tmpfs:
+      - /tmp

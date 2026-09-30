@@ -1,0 +1,24 @@
+{
+  "scenario": "Pruefung einer internen Richtlinie vor Veroeffentlichung",
+  "classification_order": ["public", "internal", "confidential"],
+  "components": [
+    {"id": "requester", "role": "human", "zone": "workplace", "owner": "Fachbereich", "input": "Pruefbedarf", "output": "Pruefauftrag"},
+    {"id": "approver", "role": "human", "zone": "workplace", "owner": "Compliance-Freigabe", "input": "gepruefter Entwurf", "output": "Freigabe oder Ablehnung"},
+    {"id": "n8n", "role": "orchestrator", "zone": "internal", "owner": "Automationsteam", "input": "Auftrag-ID", "output": "Pruefstatus"},
+    {"id": "document_store", "role": "source", "zone": "internal", "owner": "Dokumentenmanagement", "input": "Dokument-ID", "output": "Dokument mit Version"},
+    {"id": "retrieval", "role": "retriever", "zone": "internal", "owner": "Wissensteam", "input": "Suchfrage und Mandant", "output": "belegte Textstellen"},
+    {"id": "model", "role": "model", "zone": "provider", "owner": "Modellbetreiber", "input": "minimierter Kontext", "output": "Entwurf mit Belegen"},
+    {"id": "review", "role": "policy", "zone": "internal", "owner": "Compliance", "input": "Entwurf und Belege", "output": "gepruefter Entwurf"},
+    {"id": "publisher", "role": "write_api", "zone": "internal", "owner": "Publikationsteam", "input": "freigegebener Entwurf", "output": "Publikations-ID"}
+  ],
+  "flows": [
+    {"from": "requester", "to": "n8n", "contract": "Auftrag-ID und Zweck", "classification": "internal", "control": "Anmeldung und Zweckbindung", "approval": false},
+    {"from": "n8n", "to": "document_store", "contract": "Dokument-ID zu Version", "classification": "confidential", "control": "Serviceidentitaet und Mandantenfilter", "approval": false},
+    {"from": "n8n", "to": "retrieval", "contract": "Suchfrage zu Quellen-IDs und Zitaten", "classification": "confidential", "control": "Leserechte und Mandantenfilter", "approval": false},
+    {"from": "n8n", "to": "model", "contract": "Redigierte Textstellen zu JSON-Entwurf", "classification": "internal", "control": "Datenminimierung und Providervertrag", "approval": false},
+    {"from": "model", "to": "review", "contract": "JSON-Entwurf und Quellen-IDs", "classification": "internal", "control": "Schema- und Belegpruefung", "approval": false},
+    {"from": "review", "to": "approver", "contract": "Pruefansicht zu Freigabeentscheidung", "classification": "internal", "control": "getrennte Freigabeidentitaet", "approval": false},
+    {"from": "approver", "to": "review", "contract": "signierte Entscheidung zu Freigabe-ID", "classification": "internal", "control": "Vier-Augen-Prinzip und Identitaet", "approval": false},
+    {"from": "review", "to": "publisher", "contract": "Freigabe-ID und gepruefter Entwurf", "classification": "internal", "control": "Freigabe-Token und Schreibrecht", "approval": true}
+  ]
+}

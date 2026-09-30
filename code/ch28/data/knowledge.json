@@ -1,0 +1,10 @@
+{
+  "inv-100":{"route":"billing","answer":"Rechnung R-100: 120 Euro (synthetisch).","version":"v1"},
+  "inv-101":{"route":"billing","answer":"Rechnung R-101 liegt im Testarchiv.","version":"v1"},
+  "pol-1":{"route":"privacy","answer":"Löschung nur nach Prüfung der Aufbewahrung.","version":"v1"},
+  "pol-2":{"route":"privacy","answer":"Profil-Löschung wird als Testanfrage registriert.","version":"v1"},
+  "faq-1":{"route":"general","answer":"Testkontakt: Service Team.","version":"v1"},
+  "faq-2":{"route":"general","answer":"Testservice: werktags.","version":"v1"},
+  "pol-3":{"route":"privacy","answer":"Aufbewahrung richtet sich nach Testregel P-1.","version":"v1"},
+  "inv-102":{"route":"billing","answer":"Rechnung R-102: Testfall offen.","version":"v1"}
+}

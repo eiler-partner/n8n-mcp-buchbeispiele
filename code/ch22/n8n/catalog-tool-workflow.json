@@ -1,0 +1,39 @@
+{
+  "id": "ch22CatalogTool",
+  "name": "CH22 - catalog lookup tool implementation",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {"name": "query", "type": "string"}
+          ]
+        }
+      },
+      "id": "20222022-0021-4000-8000-000000000021",
+      "name": "Tool Input",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [-220, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const q = String($json.query ?? '').toLowerCase();\nconst rows = [\n {item_id: 'MCP-001', title: 'MCP-Betriebshandbuch', status: 'approved'},\n {item_id: 'N8N-022', title: 'n8n-MCP-Integrationsmuster', status: 'approved'},\n {item_id: 'SEC-023', title: 'Prompt-Injection-Prüfplan', status: 'draft'}\n];\nif (q.length < 2 || q.length > 120) throw new Error('invalid_query_length');\nreturn rows.filter(r => `${r.item_id} ${r.title}`.toLowerCase().includes(q)).map(json => ({json}));"
+      },
+      "id": "20222022-0022-4000-8000-000000000022",
+      "name": "Read-only catalog",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [40, 0]
+    }
+  ],
+  "connections": {
+    "Tool Input": {
+      "main": [[{"node": "Read-only catalog", "type": "main", "index": 0}]]
+    }
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "active": false,
+  "versionId": "20222022-1000-4000-8000-000000000021"
+}

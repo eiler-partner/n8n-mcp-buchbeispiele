@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DocumentResponse",
+  "type": "object",
+  "required": ["id", "title", "version", "published"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^doc-[0-9]+$"},
+    "title": {"type": "string", "minLength": 1},
+    "version": {"type": "integer", "minimum": 1},
+    "published": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

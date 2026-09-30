@@ -1,0 +1,82 @@
+{
+  "id": "ch11Review",
+  "name": "CH11 - reviewed synthetic decision",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ch11-review",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "11111111-0001-4000-8000-000000000001",
+      "name": "Receive Synthetic Case",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -400,
+        0
+      ],
+      "webhookId": "11111111-ch11-review"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const body = $input.first().json.body || {};\nconst score = body.score;\nconst caseId = typeof body.case_id === 'string' ? body.case_id : '';\nif (!Number.isInteger(score) || score < 0 || score > 100 || !caseId) {\n  return [{json:{case_id:caseId,accepted:false,reason:'invalid_input'}}];\n}\nconst accepted = score >= 70;\nreturn [{json:{case_id:caseId,accepted,reason:accepted?'approved':'manual_review'}}];\n"
+      },
+      "id": "11111111-0002-4000-8000-000000000002",
+      "name": "Apply Reviewed Rule",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -140,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "11111111-0003-4000-8000-000000000003",
+      "name": "Return Decision",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        120,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Receive Synthetic Case": {
+      "main": [
+        [
+          {
+            "node": "Apply Reviewed Rule",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apply Reviewed Rule": {
+      "main": [
+        [
+          {
+            "node": "Return Decision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "11111111-1000-4000-8000-000000000070"
+}

@@ -1,0 +1,91 @@
+{
+  "era": "legacy",
+  "protocol_version": "2025-11-25",
+  "frames": [
+    {
+      "direction": "client->server",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "init-1",
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-11-25",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "Kapitel-14-Rohclient",
+            "version": "1.0.0"
+          }
+        }
+      }
+    },
+    {
+      "direction": "server->client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "init-1",
+        "result": {
+          "capabilities": {
+            "experimental": {},
+            "prompts": {
+              "listChanged": false
+            },
+            "resources": {
+              "listChanged": false,
+              "subscribe": false
+            },
+            "tools": {
+              "listChanged": false
+            }
+          },
+          "protocolVersion": "2025-11-25",
+          "serverInfo": {
+            "name": "Kapitel-14-Wire-Labor",
+            "version": "1.0.0"
+          }
+        }
+      }
+    },
+    {
+      "direction": "client->server",
+      "message": {
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized"
+      }
+    },
+    {
+      "direction": "client->server",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-1",
+        "method": "tools/call",
+        "params": {
+          "name": "read_policy",
+          "arguments": {
+            "document_id": "DOC-101"
+          }
+        }
+      }
+    },
+    {
+      "direction": "server->client",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": "call-1",
+        "result": {
+          "content": [
+            {
+              "text": "{\n  \"document_id\": \"DOC-101\",\n  \"title\": \"Reiserichtlinie\",\n  \"status\": \"approved\"\n}",
+              "type": "text"
+            }
+          ],
+          "isError": false,
+          "structuredContent": {
+            "document_id": "DOC-101",
+            "title": "Reiserichtlinie",
+            "status": "approved"
+          }
+        }
+      }
+    }
+  ]
+}

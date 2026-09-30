@@ -1,0 +1,10 @@
+[
+  {"id":"c01","text":"Bitte vereinbare einen Termin am 2026-10-05.","golden":{"intent":"appointment","date":"2026-10-05","evidence":"Termin am 2026-10-05","needs_review":false}},
+  {"id":"c02","text":"Bitte sage meinen Termin vom 2026-10-07 ab.","golden":{"intent":"cancellation","date":"2026-10-07","evidence":"Termin vom 2026-10-07 ab","needs_review":false}},
+  {"id":"c03","text":"Wie sind Ihre Öffnungszeiten am Freitag?","golden":{"intent":"information","date":null,"evidence":"Öffnungszeiten am Freitag","needs_review":false}},
+  {"id":"c04","text":"Ich brauche einen Termin für 2026-10-12.","golden":{"intent":"appointment","date":"2026-10-12","evidence":"Termin für 2026-10-12","needs_review":false}},
+  {"id":"c05","text":"Bitte storniere meinen Termin; ein Datum habe ich nicht.","golden":{"intent":"cancellation","date":null,"evidence":"storniere meinen Termin","needs_review":true}},
+  {"id":"c06","text":"Wie kann ich grundsätzlich einen Termin buchen?","golden":{"intent":"information","date":null,"evidence":"Wie kann ich grundsätzlich einen Termin buchen?","needs_review":false}},
+  {"id":"c07","text":"Reserviere bitte einen Termin am 2026-10-31.","golden":{"intent":"appointment","date":"2026-10-31","evidence":"Termin am 2026-10-31","needs_review":false}},
+  {"id":"c08","text":"Was bedeutet die Meldung 'Termin nicht verfügbar'?","golden":{"intent":"information","date":null,"evidence":"Was bedeutet die Meldung 'Termin nicht verfügbar'?","needs_review":false}}
+]

@@ -1,0 +1,41 @@
+[project]
+name = "document-release-service"
+version = "0.1.0"
+description = "Produktionsnahes Integrationsprojekt zu Kapitel 24"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.118,<1",
+  "httpx>=0.28,<1",
+  "mcp[cli]==2.2.0",
+  "opentelemetry-exporter-otlp-proto-http>=1.38,<2",
+  "opentelemetry-instrumentation-fastapi>=0.59b0,<1",
+  "opentelemetry-instrumentation-httpx>=0.59b0,<1",
+  "opentelemetry-sdk>=1.38,<2",
+  "psycopg[binary]>=3.2,<4",
+  "pydantic>=2.13,<3",
+  "uvicorn>=0.40,<1",
+]
+
+[project.scripts]
+ch24-api = "document_release_service.api:main"
+ch24-mcp = "document_release_service.mcp_server:main"
+ch24-model-fixture = "document_release_service.model_fixture:main"
+ch24-verify = "document_release_service.verify:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8,<9",
+  "pytest-anyio>=0.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+anyio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/document_release_service"]

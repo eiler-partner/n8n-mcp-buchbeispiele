@@ -1,0 +1,14 @@
+{
+  "e01":{"category":"rechnung","evidence":"Rechnung R-100","reason":"Explizite Rechnung"},
+  "e02":{"category":"rechnung","evidence":"Kostenaufstellung unserer September-Leistungen","reason":"Abrechnung für erbrachte Leistungen"},
+  "e03":{"category":"support","evidence":"Fehlermeldung","reason":"Technische Störung"},
+  "e04":{"category":"support","evidence":"Login funktioniert nicht","reason":"Zugriffsproblem ist das unmittelbare Anliegen"},
+  "e05":{"category":"vertrieb","evidence":"Angebot für 50 Lizenzen","reason":"Angebotsanfrage"},
+  "e06":{"category":"vertrieb","evidence":"mögliche Zusammenarbeit","reason":"Vertriebsgespräch gewünscht"},
+  "e07":{"category":"unsicher","evidence":"","reason":"Zwei unterschiedliche Anliegen"},
+  "e08":{"category":"unsicher","evidence":"","reason":"Löschwunsch braucht menschliche Prüfung"},
+  "e09":{"category":"support","evidence":"Störung","reason":"Funktionsfehler"},
+  "e10":{"category":"rechnung","evidence":"Zahlungsbeleg","reason":"Finanzdokument"},
+  "e11":{"category":"support","evidence":"Preisliste","reason":"Absichtlich falsche Fixture-Zuordnung für die Fehleranalyse"},
+  "e12":{"category":"support","evidence":"Oberfläche weiß","reason":"Technisches Zugriffsproblem"}
+}

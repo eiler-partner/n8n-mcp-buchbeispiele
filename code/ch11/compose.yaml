@@ -1,0 +1,49 @@
+name: buch-ch11
+
+x-n8n-env: &n8n-env
+  N8N_DIAGNOSTICS_ENABLED: "false"
+  N8N_PERSONALIZATION_ENABLED: "false"
+  N8N_SECURE_COOKIE: "false"
+  GENERIC_TIMEZONE: Europe/Vienna
+  TZ: Europe/Vienna
+
+services:
+  dev:
+    image: n8nio/n8n:2.40.7
+    environment:
+      <<: *n8n-env
+      N8N_ENCRYPTION_KEY: ${DEV_ENCRYPTION_KEY:?Run python3 init_env.py}
+      N8N_WEBHOOK_URL: http://127.0.0.1:${DEV_PORT:-15685}/
+    ports:
+      - "127.0.0.1:${DEV_PORT:-15685}:5678"
+    volumes:
+      - dev-data:/home/node/.n8n
+      - ./workflows:/lab/workflows:ro
+      - ./.exchange:/exchange
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:5678/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  test:
+    image: n8nio/n8n:2.40.7
+    environment:
+      <<: *n8n-env
+      N8N_ENCRYPTION_KEY: ${TEST_ENCRYPTION_KEY:?Run python3 init_env.py}
+      N8N_WEBHOOK_URL: http://127.0.0.1:${TEST_PORT:-15686}/
+    ports:
+      - "127.0.0.1:${TEST_PORT:-15686}:5678"
+    volumes:
+      - test-data:/home/node/.n8n
+      - ./workflows:/lab/workflows:ro
+      - ./.exchange:/exchange
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://127.0.0.1:5678/healthz"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  dev-data:
+  test-data:

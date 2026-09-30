@@ -1,0 +1,12 @@
+[project]
+name = "buch-ch09-lab"
+version = "0.1.0"
+description = "CSV contract tests for n8n native Python task runners"
+requires-python = ">=3.12,<3.14"
+dependencies = ["pandas==3.0.6"]
+
+[dependency-groups]
+dev = ["pytest==8.4.2"]
+
+[tool.uv]
+package = false

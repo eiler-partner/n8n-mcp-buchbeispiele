@@ -1,0 +1,56 @@
+{
+  "id": "ch07Batches",
+  "name": "CH07 - explicit batches of three",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "07070707-0041-4000-8000-000000000041",
+      "name": "Manual Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-560, 0]
+    },
+    {
+      "parameters": {"mode": "runOnceForAllItems", "jsCode": "return Array.from({length: 7}, (_, i) => ({json: {id: `B-${i + 1}`}}));"},
+      "id": "07070707-0042-4000-8000-000000000042",
+      "name": "Seven Items",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [-320, 0]
+    },
+    {
+      "parameters": {"batchSize": 3, "options": {}},
+      "id": "07070707-0043-4000-8000-000000000043",
+      "name": "Loop Over Items",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [-80, 0]
+    },
+    {
+      "parameters": {"mode": "runOnceForAllItems", "jsCode": "return $input.all().map(item => ({json: {id: item.json.id}}));"},
+      "id": "07070707-0044-4000-8000-000000000044",
+      "name": "Process Batch",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [160, 120]
+    },
+    {
+      "parameters": {"mode": "runOnceForAllItems", "jsCode": "const ids = $input.all().map(item => item.json.id);\nreturn [{json: {processed_count: ids.length, ids}}];"},
+      "id": "07070707-0045-4000-8000-000000000045",
+      "name": "Done Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [160, -120]
+    }
+  ],
+  "connections": {
+    "Manual Start": {"main": [[{"node": "Seven Items", "type": "main", "index": 0}]]},
+    "Seven Items": {"main": [[{"node": "Loop Over Items", "type": "main", "index": 0}]]},
+    "Loop Over Items": {"main": [[{"node": "Done Summary", "type": "main", "index": 0}], [{"node": "Process Batch", "type": "main", "index": 0}]]},
+    "Process Batch": {"main": [[{"node": "Loop Over Items", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "versionId": "07070707-1000-4000-8000-000000000041"
+}
